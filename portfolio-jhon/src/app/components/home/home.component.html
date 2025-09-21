@@ -1,0 +1,89 @@
+<p><section class="hero-section">
+  <div class="container">
+    <div class="hero-content" [@fadeIn]>
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Olá, eu sou
+          <span class="highlight">Jhon Codari</span>
+        </h1>
+
+        <div class="typing-container">
+          <span class="typing-text">{{ currentText }}</span>
+          <span class="cursor">|</span>
+        </div>
+
+        <p class="hero-description">
+          Desenvolvedor Backend especializado em Java e AWS, com mais de 5 anos de experiência
+          criando soluções robustas e escaláveis. Trabalho em uma das maiores consultorias de
+          tecnologia do mundo, atuando principalmente no setor financeiro nacional.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            routerLink="/projects"
+            class="btn btn-primary"
+            [@scaleIn]
+          >
+            Ver Projetos
+          </a>
+          <a
+            routerLink="/contact"
+            class="btn btn-outline"
+            [@scaleIn]
+          >
+            Entre em Contato
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual" [@scaleIn]>
+        <div class="code-window">
+          <div class="window-header">
+            <div class="window-controls">
+              <span class="control close"></span>
+              <span class="control minimize"></span>
+              <span class="control maximize"></span>
+            </div>
+            <span class="window-title">Developer.java</span>
+          </div>
+          <div class="code-content">
+            <pre><code><span class="keyword">&#64;Component</span>
+<span class="keyword">public class</span> <span class="class-name">Developer</span> &#123;
+
+  <span class="keyword">private</span> <span class="property">String</span> name = <span class="string">"Jhon Codari"</span>;
+  <span class="keyword">private</span> <span class="property">List&lt;String&gt;</span> skills = Arrays.asList(
+    <span class="string">"Java"</span>, <span class="string">"Spring Boot"</span>,
+    <span class="string">"AWS"</span>, <span class="string">"Docker"</span>
+  );
+  <span class="keyword">private</span> <span class="property">String</span> passion = <span class="string">"Backend Development"</span>;
+
+  <span class="keyword">&#64;Autowired</span>
+  <span class="keyword">public</span> <span class="function">String</span> buildAmazingSolutions() &#123;
+    <span class="keyword">return</span> <span class="string">"🚀 Scalable & Robust!"</span>;
+  &#125;
+&#125;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" (click)="scrollToSection('about')">
+      <div class="scroll-arrow"></div>
+      <span>Explore mais</span>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <app-card
+        *ngFor="let statCard of statsCards"
+        [data]="statCard"
+        variant="stat"
+        [@fadeIn]>
+      </app-card>
+    </div>
+  </div>
+</section>

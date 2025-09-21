@@ -1,0 +1,69 @@
+<p><section class="about-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" [@fadeIn]>
+      <h2 class="section-title">Sobre Mim</h2>
+      <p class="section-subtitle">Conheça um pouco mais sobre minha jornada e paixão por tecnologia</p>
+    </div>
+
+    <!-- Main About Content -->
+    <div class="about-content">
+      <div class="about-text" [@fadeIn]>
+        <div class="personal-intro">
+          <h3>{{ personalInfo.displayName }}</h3>
+          <p class="real-name">Nome completo: {{ personalInfo.realName }}</p>
+          <div class="intro-text">
+            <p *ngFor="let paragraph of aboutText.split('\n\n')">{{ paragraph.trim() }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual" [@scaleIn]>
+        <app-card
+          [data]="profileCard"
+          variant="profile">
+        </app-card>
+      </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="mission-section">
+      <h3 class="subsection-title" [@fadeIn]>Minha Missão</h3>
+      <div class="mission-content" [@fadeIn]>
+        <div class="mission-text">
+          <p *ngFor="let paragraph of mission.split('\n\n')">{{ paragraph.trim() }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="values-section">
+      <h3 class="subsection-title" [@fadeIn]>Meus Valores</h3>
+      <div class="values-grid">
+        <app-card
+          *ngFor="let value of values"
+          [data]="value"
+          variant="value"
+          [@scaleIn]>
+        </app-card>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-section">
+      <h3 class="subsection-title" [@fadeIn]>Minha Jornada</h3>
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let item of timeline; let i = index" [@fadeIn]>
+          <div class="timeline-marker" [class.present]="item.isPresent">
+            <span class="year" *ngIf="!item.isPresent">{{ item.year }}</span>
+          </div>
+          <div class="timeline-content" [class.present]="item.isPresent">
+            <div class="present-tag" *ngIf="item.isPresent">Hoje</div>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

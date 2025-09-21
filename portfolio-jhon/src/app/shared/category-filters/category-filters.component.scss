@@ -1,0 +1,36 @@
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-base);
+  margin-bottom: var(--spacing-3xl);
+  flex-wrap: wrap;
+
+  .category-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 2px solid var(--color-border);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm); // Menos arredondado (era var(--radius-full))
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+
+    &:hover {
+      border-color: var(--color-secondary);
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+      border-color: var(--color-secondary);
+      color: var(--color-primary);
+      box-shadow: 0 4px 16px rgba(88, 166, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      padding: var(--spacing-xs) var(--spacing-base);
+      font-size: var(--font-size-xs);
+    }
+  }
+}

@@ -1,0 +1,27 @@
+﻿<div
+  class="skill-card"
+  [style.animation-delay.ms]="animationDelay">
+
+  <div class="skill-icon-wrapper">
+    <app-skill-icon
+      [skillName]="skill.name"
+      [fallbackIcon]="skill.icon">
+    </app-skill-icon>
+  </div>
+
+  <div class="skill-name">{{ skill.name }}</div>
+
+  <div class="skill-progress">
+    <div class="skill-level-text">{{ getLevelText(skill.level) }}</div>
+    <div class="progress-bar-container">
+      <div class="progress-bar-background">
+        <div
+          class="progress-bar-fill"
+          [style.width.%]="getLevelPercentage(skill.level)"
+          [style.background-color]="getLevelColor(skill.level)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

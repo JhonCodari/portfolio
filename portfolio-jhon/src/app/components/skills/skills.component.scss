@@ -1,0 +1,204 @@
+.skills-section {
+  padding: var(--spacing-3xl) 0;
+  background: var(--color-bg-primary);
+  position: relative;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+
+    .section-title {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--spacing-base);
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @media (max-width: 768px) {
+        font-size: var(--font-size-3xl);
+      }
+    }
+
+    .section-subtitle {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: var(--font-size-base);
+        padding: 0 var(--spacing-base);
+      }
+    }
+  }
+}
+
+
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-3xl);
+  align-items: flex-start; // Mudado de center para flex-start para sticky funcionar
+  margin-bottom: var(--spacing-3xl);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center; // Volta para center em mobile
+  }
+}
+
+.skills-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Sticky behavior para telas maiores
+  @media (min-width: 1025px) {
+    position: sticky;
+    top: 220px; // Maior offset para ficar abaixo dos filtros (header 70px + título 80px + filtros 70px)
+    align-self: flex-start;
+    height: fit-content;
+  }
+
+  @media (max-width: 1024px) {
+    order: -1;
+    position: static; // Remove sticky em tablets/mobile
+  }
+}
+
+.laptop-illustration {
+  position: relative;
+  transition: transform 0.3s ease-out;
+
+  // Efeito sutil de hover para desktop
+  @media (min-width: 1025px) {
+    &:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+  }
+
+  .laptop-screen {
+    width: 240px;
+    height: 160px;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border-radius: 12px 12px 4px 4px;
+    border: 3px solid #475569;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: #64748b;
+      border-radius: 50%;
+    }
+
+    .screen-content {
+      padding: var(--spacing-lg);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .code-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .code-line {
+        height: 12px;
+        background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+        border-radius: 6px;
+        opacity: 0.8;
+
+        &.short {
+          width: 60%;
+        }
+
+        &.medium {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  .laptop-base {
+    width: 280px;
+    height: 20px;
+    background: linear-gradient(135deg, #475569, #64748b);
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    margin-top: -2px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 8px;
+      background: #64748b;
+      border-radius: 0 0 8px 8px;
+    }
+  }
+}
+
+.skills-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  justify-content: center;
+
+  // Desktop: largura fixa de 200px, máximo 4 cards por linha
+  grid-template-columns: repeat(auto-fit, 200px);
+  max-width: 100%;
+
+  // Tablets: largura fixa de 180px
+  @media (max-width: 1024px) and (min-width: 769px) {
+    grid-template-columns: repeat(auto-fit, 180px);
+    gap: var(--spacing-base);
+  }
+
+  // Mobile: largura fixa de 110px, máximo 3 cards por linha
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 120px));
+    gap: var(--spacing-base);
+    max-width: 100%;
+  }
+
+  // Mobile pequeno: largura fixa menor
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 110px));
+    gap: var(--spacing-sm);
+  }
+}
+
+
+
+.next-steps {
+  text-align: center;
+
+  .next-steps-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: var(--font-size-base);
+      padding: 0 var(--spacing-base);
+    }
+  }
+}

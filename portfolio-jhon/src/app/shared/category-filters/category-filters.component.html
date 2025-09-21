@@ -1,0 +1,15 @@
+<div class="category-filters">
+  <button
+    class="category-btn"
+    [class.active]="selectedCategory === 'all'"
+    (click)="selectCategory('all')">
+    {{ allCategoryLabel }}
+  </button>
+  <button
+    *ngFor="let category of categories"
+    class="category-btn"
+    [class.active]="selectedCategory === category.key"
+    (click)="selectCategory(category.key)">
+    {{ category.icon }} {{ category.name }}
+  </button>
+</div>

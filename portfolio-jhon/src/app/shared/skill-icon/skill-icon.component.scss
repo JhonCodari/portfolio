@@ -1,0 +1,46 @@
+.skill-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform var(--transition-medium);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.emoji-icon {
+  font-size: var(--font-size-4xl);
+  display: block;
+  transition: transform var(--transition-medium);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    font-size: var(--font-size-3xl);
+  }
+
+  @media (max-width: 480px) {
+    font-size: var(--font-size-2xl);
+  }
+}

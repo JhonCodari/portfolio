@@ -1,0 +1,56 @@
+<section class="skills-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" [@fadeIn]>
+      <h2 class="section-title">� Competências Técnicas & Metodologias</h2>
+      <p class="section-subtitle">
+        Tecnologias, ferramentas, metodologias e conhecimentos que aplico no desenvolvimento de soluções robustas e escaláveis:
+      </p>
+    </div>
+
+    <!-- Category Filters -->
+    <div [@fadeIn]>
+      <app-category-filters
+        [categories]="categories"
+        [selectedCategory]="selectedCategory"
+        [allCategoryLabel]="'🌟 Todas'"
+        (categoryChange)="setCategory($event)">
+      </app-category-filters>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-container" [@fadeIn]>
+      <div class="skills-visual">
+        <div class="laptop-illustration">
+          <div class="laptop-screen">
+            <div class="screen-content">
+              <div class="code-lines">
+                <div class="code-line"></div>
+                <div class="code-line short"></div>
+                <div class="code-line"></div>
+                <div class="code-line medium"></div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <app-skill-card
+          *ngFor="let skill of filterSkills(); let i = index"
+          [skill]="skill"
+          [animationDelay]="i * 100"
+          [@scaleIn]>
+        </app-skill-card>
+      </div>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="next-steps" [@fadeIn]>
+      <p class="next-steps-text">
+        Meus próximos passos incluem especializações em frameworks e ferramentas emergentes do mercado.
+      </p>
+    </div>
+  </div>
+</section>
