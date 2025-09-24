@@ -24,7 +24,7 @@ export class SkillsComponent implements OnInit {
     { name: 'JavaScript', icon: 'assets/icons/techs/javascript.svg', category: 'frontend', level: 'intermediate' },
     { name: 'TypeScript', icon: 'assets/icons/techs/typescript.svg', category: 'frontend', level: 'beginner' },
     { name: 'Angular', icon: 'assets/icons/techs/angular.svg', category: 'frontend', level: 'intermediate' },
-    { name: 'React', icon: 'assets/icons/techs/gradient/react.svg', category: 'frontend', level: 'beginner' },
+    { name: 'React', icon: 'assets/icons/techs/react.svg', category: 'frontend', level: 'beginner' },
     { name: 'HTML5', icon: 'assets/icons/techs/html.svg', category: 'frontend', level: 'advanced' },
     { name: 'CSS3', icon: 'assets/icons/techs/css.svg', category: 'frontend', level: 'advanced' },
 
