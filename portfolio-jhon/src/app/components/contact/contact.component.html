@@ -1,1 +1,103 @@
-<p>contact works!</p>
+<section class="contact-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" [@fadeIn]>
+      <h2 class="section-title">📞 Vamos Conversar?</h2>
+      <p class="section-subtitle">
+        Estou sempre aberto a novas oportunidades, projetos interessantes e conversas sobre tecnologia. Entre em contato!
+      </p>
+    </div>
+
+    <!-- Contact Methods -->
+    <div class="contact-methods" [@fadeIn]>
+      <h3 class="methods-title">💬 Formas de Contato</h3>
+      <div class="methods-grid">
+        <app-contact-card
+          *ngFor="let contact of contactMethods; let i = index; trackBy: trackByContact"
+          [contact]="contact"
+          [animationDelay]="i * 100"
+          [@scaleIn]>
+        </app-contact-card>
+      </div>
+    </div>
+
+    <!-- Contact Form and Illustration -->
+    <div class="contact-container" [@fadeIn]>
+      <!-- Illustration -->
+      <div class="contact-visual">
+        <div class="message-illustration">
+          <div class="phone-device">
+            <div class="phone-screen">
+              <div class="screen-content">
+                <div class="chat-window">
+                  <div class="chat-header">
+                    <div class="avatar">👨‍💻</div>
+                    <div class="contact-info">
+                      <div class="name">Jhon Codari</div>
+                      <div class="status">Online agora</div>
+                    </div>
+                  </div>
+                  <div class="chat-messages">
+                    <div class="message received">
+                      <div class="message-bubble">
+                        Olá! Como posso ajudar?
+                      </div>
+                    </div>
+                    <div class="message sent">
+                      <div class="message-bubble">
+                        Gostaria de conversar sobre um projeto...
+                      </div>
+                    </div>
+                    <div class="message received">
+                      <div class="message-bubble">
+                        Perfeito! Vamos agendar uma conversa 🚀
+                      </div>
+                    </div>
+                  </div>
+                  <div class="typing-indicator">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <h3 class="form-title">📝 Envie sua Mensagem</h3>
+        <app-contact-form></app-contact-form>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section" [@fadeIn]>
+      <div class="cta-content">
+        <h3 class="cta-title">🚀 Pronto para começar?</h3>
+        <p class="cta-description">
+          Seja para discutir um projeto, trocar experiências ou apenas bater um papo sobre tecnologia, estarei feliz em conversar com você!
+        </p>
+        <div class="cta-buttons">
+          <a
+            href="mailto:jhon.codari@exemplo.com"
+            class="cta-button primary">
+            <span class="button-icon">📧</span>
+            Enviar Email
+          </a>
+          <a
+            href="https://linkedin.com/in/jhoncodari"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button secondary">
+            <span class="button-icon">💼</span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,129 @@
+.contact-card {
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(86, 211, 100, 0.08));
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius-base);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(88, 166, 255, 0.25);
+  }
+
+  .contact-icon {
+    margin-bottom: var(--spacing-lg);
+
+    .icon {
+      font-size: 48px;
+      display: block;
+      line-height: 1;
+
+      @media (max-width: 768px) {
+        font-size: 40px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 36px;
+      }
+    }
+  }
+
+  .contact-info {
+    margin-bottom: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .contact-label {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      margin: 0 0 var(--spacing-sm) 0;
+
+      @media (max-width: 768px) {
+        font-size: var(--font-size-base);
+      }
+    }
+
+    .contact-value {
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-base);
+      margin: 0;
+      word-break: break-word;
+
+      @media (max-width: 768px) {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+
+  .contact-action {
+    width: 100%;
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+
+      .button-icon {
+        font-size: 16px;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(88, 166, 255, 0.3);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        padding: var(--spacing-xs) var(--spacing-base);
+        font-size: var(--font-size-xs);
+      }
+    }
+  }
+
+  // Responsividade
+  @media (max-width: 768px) {
+    padding: var(--spacing-lg);
+  }
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-base);
+  }
+}

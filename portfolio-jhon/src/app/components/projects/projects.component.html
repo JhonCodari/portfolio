@@ -1,1 +1,104 @@
-<p>projects works!</p>
+<section class="projects-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header" [@fadeIn]>
+      <h2 class="section-title">💼 Projetos & Portfolio</h2>
+      <p class="section-subtitle">
+        Alguns dos principais projetos que desenvolvi, aplicando diferentes tecnologias e metodologias de desenvolvimento:
+      </p>
+    </div>
+
+    <!-- Featured Projects -->
+    <div class="featured-section" [@fadeIn] *ngIf="getFeaturedProjects().length > 0">
+      <h3 class="featured-title">⭐ Projetos em Destaque</h3>
+      <div class="featured-grid">
+        <app-project-card
+          *ngFor="let project of getFeaturedProjects(); let i = index; trackBy: trackByProject"
+          [project]="project"
+          [animationDelay]="i * 100"
+          [@scaleIn]>
+        </app-project-card>
+      </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div [@fadeIn]>
+      <app-category-filters
+        [categories]="categories"
+        [selectedCategory]="selectedCategory"
+        [allCategoryLabel]="'🌟 Todos os Projetos'"
+        (categoryChange)="setCategory($event)">
+      </app-category-filters>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-container" [@fadeIn]>
+      <!-- Illustration -->
+      <div class="projects-visual">
+        <div class="coding-illustration">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <div class="screen-content">
+                <div class="code-window">
+                  <div class="window-header">
+                    <div class="window-controls">
+                      <span class="control red"></span>
+                      <span class="control yellow"></span>
+                      <span class="control green"></span>
+                    </div>
+                    <div class="window-title">main.ts</div>
+                  </div>
+                  <div class="code-content">
+                    <div class="code-line">
+                      <span class="code-purple">import</span>
+                      <span class="code-blue">{{ '{' }} Component {{ '}' }}</span>
+                      <span class="code-purple">from</span>
+                      <span class="code-green">'&#64;angular/core'</span>
+                    </div>
+                    <div class="code-line empty"></div>
+                    <div class="code-line">
+                      <span class="code-purple">&#64;Component</span>
+                      <span class="code-white">({{ '{' }}</span>
+                    </div>
+                    <div class="code-line indent">
+                      <span class="code-blue">selector</span>
+                      <span class="code-white">:</span>
+                      <span class="code-green">'app-project'</span>
+                    </div>
+                    <div class="code-line">
+                      <span class="code-white">{{ '}' }})</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="monitor-base"></div>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        <app-project-card
+          *ngFor="let project of filterProjects(); let i = index; trackBy: trackByProject"
+          [project]="project"
+          [animationDelay]="i * 100"
+          [@scaleIn]>
+        </app-project-card>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filterProjects().length === 0" [@fadeIn]>
+      <div class="empty-icon">📂</div>
+      <h3 class="empty-title">Nenhum projeto encontrado</h3>
+      <p class="empty-description">
+        Não há projetos na categoria selecionada. Tente outro filtro ou visualize todos os projetos.
+      </p>
+      <button class="empty-button" (click)="setCategory('all')">
+        Ver Todos os Projetos
+      </button>
+    </div>
+
+  </div>
+</section>

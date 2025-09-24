@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SkillIconComponent } from '../skill-icon/skill-icon.component';
 
 export interface SkillData {
   name: string;
@@ -11,7 +10,7 @@ export interface SkillData {
 
 @Component({
   selector: 'app-skill-card',
-  imports: [CommonModule, SkillIconComponent],
+  imports: [CommonModule],
   templateUrl: './skill-card.component.html',
   styleUrl: './skill-card.component.scss'
 })

@@ -1,0 +1,25 @@
+<div
+  class="contact-card"
+  [style.animation-delay.ms]="animationDelay">
+
+  <div class="contact-icon">
+    <span class="icon">{{ contact.icon }}</span>
+  </div>
+
+  <div class="contact-info">
+    <h3 class="contact-label">{{ contact.label }}</h3>
+    <p class="contact-value">{{ contact.value }}</p>
+  </div>
+
+  <div class="contact-action">
+    <a
+      [href]="getContactLink()"
+      [target]="shouldOpenExternal() ? '_blank' : '_self'"
+      [rel]="shouldOpenExternal() ? 'noopener noreferrer' : ''"
+      class="contact-button">
+      <span class="button-icon">🚀</span>
+      Entrar em Contato
+    </a>
+  </div>
+
+</div>

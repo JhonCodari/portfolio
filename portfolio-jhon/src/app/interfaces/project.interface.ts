@@ -2,12 +2,16 @@ export interface Project {
   id: number;
   title: string;
   description: string;
+  shortDescription: string;
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
   imageUrl?: string;
   featured: boolean;
+  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'desktop' | 'web';
+  status: 'completed' | 'in-progress' | 'planned';
   completedAt: Date;
+  highlights: string[];
 }
 
 export interface Skill {
