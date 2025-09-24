@@ -44,6 +44,11 @@ export class SkillIconComponent {
   };
 
   get iconPath(): string | null {
+    // Se fallbackIcon é um caminho SVG, usa ele diretamente
+    if (this.fallbackIcon.includes('.svg')) {
+      return this.fallbackIcon;
+    }
+    // Senão, usa o mapeamento interno
     return this.iconMapping[this.skillName] || null;
   }
 

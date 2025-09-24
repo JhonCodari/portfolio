@@ -15,30 +15,30 @@ export class SkillsComponent implements OnInit {
 
   skills: SkillData[] = [
     // Backend
-    { name: 'Java', icon: '☕', category: 'backend', level: 'expert' },
+    { name: 'Java', icon: 'assets/icons/techs/java.svg', category: 'backend', level: 'expert' },
     { name: 'Spring Boot', icon: '🍃', category: 'backend', level: 'expert' },
     { name: 'Node.js', icon: '🟢', category: 'backend', level: 'intermediate' },
-    { name: 'Python', icon: '🐍', category: 'backend', level: 'intermediate' },
+    { name: 'Python', icon: 'assets/icons/techs/py.svg', category: 'backend', level: 'intermediate' },
 
     // Frontend
-    { name: 'JavaScript', icon: '🟨', category: 'frontend', level: 'advanced' },
-    { name: 'TypeScript', icon: '🔷', category: 'frontend', level: 'advanced' },
+    { name: 'JavaScript', icon: 'assets/icons/techs/js.svg', category: 'frontend', level: 'advanced' },
+    { name: 'TypeScript', icon: 'assets/icons/techs/ts.svg', category: 'frontend', level: 'advanced' },
     { name: 'Angular', icon: '🅰️', category: 'frontend', level: 'advanced' },
-    { name: 'React', icon: '⚛️', category: 'frontend', level: 'intermediate' },
-    { name: 'HTML5', icon: '🌐', category: 'frontend', level: 'expert' },
-    { name: 'CSS3', icon: '🎨', category: 'frontend', level: 'advanced' },
+    { name: 'React', icon: 'assets/icons/techs/react.svg', category: 'frontend', level: 'intermediate' },
+    { name: 'HTML5', icon: 'assets/icons/techs/html.svg', category: 'frontend', level: 'expert' },
+    { name: 'CSS3', icon: 'assets/icons/techs/css.svg', category: 'frontend', level: 'advanced' },
 
     // Database
     { name: 'PostgreSQL', icon: '🐘', category: 'database', level: 'advanced' },
-    { name: 'MySQL', icon: '🗄️', category: 'database', level: 'advanced' },
+    { name: 'MySQL', icon: 'assets/icons/techs/mysql.svg', category: 'database', level: 'advanced' },
     { name: 'MongoDB', icon: '🍃', category: 'database', level: 'intermediate' },
 
     // Cloud & Tools
     { name: 'AWS', icon: '☁️', category: 'cloud', level: 'advanced' },
     { name: 'Docker', icon: '🐳', category: 'tools', level: 'advanced' },
-    { name: 'Git', icon: '📦', category: 'tools', level: 'expert' },
-    { name: 'GitHub', icon: '🐙', category: 'tools', level: 'expert' },
-    { name: 'Figma', icon: '🎭', category: 'tools', level: 'intermediate' },
+    { name: 'Git', icon: 'assets/icons/techs/git.svg', category: 'tools', level: 'expert' },
+    { name: 'GitHub', icon: 'assets/icons/techs/github.svg', category: 'tools', level: 'expert' },
+    { name: 'Figma', icon: 'assets/icons/techs/figma.svg', category: 'tools', level: 'intermediate' },
     { name: 'IntelliJ IDEA', icon: '💡', category: 'tools', level: 'expert' },
     { name: 'VS Code', icon: '💻', category: 'tools', level: 'expert' },
     { name: 'Postman', icon: '📮', category: 'tools', level: 'advanced' },
