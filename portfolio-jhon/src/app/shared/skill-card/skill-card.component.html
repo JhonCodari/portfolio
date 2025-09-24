@@ -3,10 +3,12 @@
   [style.animation-delay.ms]="animationDelay">
 
   <div class="skill-icon-wrapper">
-    <app-skill-icon
-      [skillName]="skill.name"
-      [fallbackIcon]="skill.icon">
-    </app-skill-icon>
+    <ng-container *ngIf="skill.icon.endsWith('.svg'); else emojiIcon">
+      <img [src]="skill.icon" [alt]="skill.name + ' icon'" />
+    </ng-container>
+    <ng-template #emojiIcon>
+      <span class="icon-emoji">{{ skill.icon }}</span>
+    </ng-template>
   </div>
 
   <div class="skill-name">{{ skill.name }}</div>

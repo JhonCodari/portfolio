@@ -48,4 +48,12 @@ export class SkillCardComponent {
       default: return 0;
     }
   }
+
+  onImageError(event: any): void {
+    console.error('Error loading image:', this.skill.name, this.skill.icon, event);
+  }
+
+  onImageLoad(event: any): void {
+    console.log('Image loaded successfully:', this.skill.name, this.skill.icon);
+  }
 }

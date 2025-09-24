@@ -37,6 +37,47 @@
     align-items: center;
     justify-content: center;
 
+    // Padronização dos ícones SVG
+    img {
+      width: 48px !important;
+      height: 48px !important;
+      object-fit: contain;
+      display: block;
+
+      @media (max-width: 768px) {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      @media (max-width: 480px) {
+        width: 36px !important;
+        height: 36px !important;
+      }
+    }
+
+    // Padronização dos ícones emoji
+    .icon-emoji {
+      font-size: 48px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+
+      @media (max-width: 768px) {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
     @media (max-width: 768px) {
       height: 50px;
     }
