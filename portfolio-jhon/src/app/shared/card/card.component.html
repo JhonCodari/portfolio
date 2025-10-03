@@ -14,6 +14,9 @@
 
   <!-- Profile Card Template -->
   <div *ngIf="variant === 'profile'" class="card-content card-content--profile">
+    <div class="profile-image" *ngIf="data.imageUrl">
+      <img [src]="data.imageUrl" [alt]="data.title + ' - Profile Photo'" class="profile-photo">
+    </div>
     <h4 class="profile-name">{{ data.title }}</h4>
     <p class="profile-title" *ngIf="data.subtitle">{{ data.subtitle }}</p>
     <div class="profile-details" *ngIf="data.details">

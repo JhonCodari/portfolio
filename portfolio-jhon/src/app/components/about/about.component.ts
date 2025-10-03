@@ -25,20 +25,7 @@ export class AboutComponent implements OnInit {
     email: 'jhon.codari@example.com'
   };
 
-  aboutText = `
-    Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jhon Codari.
-    Sou um desenvolvedor Backend Java com experiência sólida criando
-    soluções robustas e escaláveis no setor financeiro.
-
-    Formado em Análise e Desenvolvimento de Sistemas pela Faculdade ELO (Recife), atualmente trabalho
-    em uma das maiores consultorias de tecnologia do mundo, onde atuo principalmente em projetos para
-    gigantes do setor financeiro nacional. Possuo certificações AWS e aplico conhecimentos de cloud
-    computing no meu dia a dia profissional.
-
-    Estou sempre estudando e me capacitando, aplicando constantemente o conhecimento adquirido no meu
-    trabalho. Acredito que a educação e o desenvolvimento contínuo são as chaves para a realização
-    pessoal e profissional.
-  `;
+  aboutText = ``;
 
   mission = `
     Minha missão é buscar constantemente o crescimento pessoal e profissional, utilizando o conhecimento
@@ -160,6 +147,7 @@ export class AboutComponent implements OnInit {
     this.profileCard = {
       title: this.personalInfo.displayName,
       subtitle: this.personalInfo.title,
+      imageUrl: '/assets/img/eu.jpg', // Adicione sua foto aqui
       details: [
         { icon: '📍', text: this.personalInfo.location },
         { icon: '⏰', text: `${this.personalInfo.experience} de experiência` },

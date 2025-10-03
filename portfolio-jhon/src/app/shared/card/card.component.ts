@@ -9,6 +9,7 @@ export interface CardData {
   label?: string;
   subtitle?: string;
   details?: Array<{icon: string, text: string}>;
+  imageUrl?: string;
 }
 
 @Component({
