@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fadeInAnimation, scaleInAnimation } from '../../animations/portfolio.animations';
 import { CardComponent, CardData } from '../../shared/card/card.component';
+import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   selector: 'app-about',
@@ -12,19 +13,21 @@ import { CardComponent, CardData } from '../../shared/card/card.component';
 })
 export class AboutComponent implements OnInit {
 
+  constructor(private portfolioService: PortfolioService) {}
+
   personalInfo = {
     displayName: 'Jhon Codari',
     realName: 'Jonatas Severino da Silva',
     title: 'Desenvolvedor Backend Java | AWS',
     location: 'Cabo de Santo Agostinho - PE',
-    experience: '5+ anos',
+    experience: '0+ anos',
     education: 'Análise e Desenvolvimento de Sistemas - Faculdade ELO',
     email: 'jhon.codari@example.com'
   };
 
   aboutText = `
     Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jhon Codari.
-    Sou um desenvolvedor Backend especializado em Java com mais de 5 anos de experiência criando
+    Sou um desenvolvedor Backend Java com experiência sólida criando
     soluções robustas e escaláveis no setor financeiro.
 
     Formado em Análise e Desenvolvimento de Sistemas pela Faculdade ELO (Recife), atualmente trabalho
@@ -80,14 +83,9 @@ export class AboutComponent implements OnInit {
   ];
 
   profileCard: CardData = {
-    title: this.personalInfo.displayName,
-    subtitle: this.personalInfo.title,
-    details: [
-      { icon: '📍', text: this.personalInfo.location },
-      { icon: '⏰', text: `${this.personalInfo.experience} de experiência` },
-      { icon: '🎓', text: this.personalInfo.education },
-      { icon: '✉️', text: this.personalInfo.email }
-    ]
+    title: '',
+    subtitle: '',
+    details: []
   };
 
   timeline = [
@@ -134,5 +132,40 @@ export class AboutComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadDynamicValues();
+  }
+
+  private loadDynamicValues(): void {
+    const years = this.portfolioService.getExperienceYears();
+    this.personalInfo.experience = `${years}+ anos`;
+
+    // Atualiza o aboutText com o valor dinâmico
+    this.aboutText = `
+      Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jhon Codari.
+      Sou um desenvolvedor Backend Java com mais de ${years} anos de experiência criando
+      soluções robustas e escaláveis no setor financeiro.
+
+      Formado em Análise e Desenvolvimento de Sistemas pela Faculdade ELO (Recife), atualmente trabalho
+      em uma das maiores consultorias de tecnologia do mundo, onde atuo principalmente em projetos para
+      gigantes do setor financeiro nacional. Possuo certificações AWS e aplico conhecimentos de cloud
+      computing no meu dia a dia profissional.
+
+      Estou sempre estudando e me capacitando, aplicando constantemente o conhecimento adquirido no meu
+      trabalho. Acredito que a educação e o desenvolvimento contínuo são as chaves para a realização
+      pessoal e profissional.
+    `;
+
+    // Atualiza o profileCard com o valor dinâmico
+    this.profileCard = {
+      title: this.personalInfo.displayName,
+      subtitle: this.personalInfo.title,
+      details: [
+        { icon: '📍', text: this.personalInfo.location },
+        { icon: '⏰', text: `${this.personalInfo.experience} de experiência` },
+        { icon: '🎓', text: this.personalInfo.education },
+        { icon: '✉️', text: this.personalInfo.email }
+      ]
+    };
+  }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { fadeInAnimation, scaleInAnimation } from '../../animations/portfolio.animations';
 import { CardComponent, CardData } from '../../shared/card/card.component';
+import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,10 @@ import { CardComponent, CardData } from '../../shared/card/card.component';
 export class HomeComponent implements OnInit {
 
   programmingTexts = [
-    'Desenvolvedor Backend',
-    'Especialista em Java',
-    'Arquiteto de Soluções AWS',
-    'Desenvolvedor Web'
+    'Desenvolvedor Web Backend',
+    'Experiência sólida com Java e Spring Boot',
+    'Certificado em Cloud AWS',
+    'Conhecimento em frontend com Angular'
   ];
 
   currentTextIndex = 0;
@@ -25,14 +26,38 @@ export class HomeComponent implements OnInit {
   isTyping = true;
 
   statsCards: CardData[] = [
-    { value: '5+', label: 'Anos de Experiência' },
-    { value: '5', label: 'Projetos Concluídos' },
-    { value: '15+', label: 'Tecnologias' },
+    { value: '0', label: 'Anos de Experiência' },
+    { value: '0', label: 'Projetos Concluídos' },
+    { value: '0', label: 'Tecnologias' },
     { value: '100%', label: 'Dedicação' }
   ];
 
+  constructor(private portfolioService: PortfolioService) {}
+
   ngOnInit(): void {
     this.startTypingAnimation();
+    this.loadExperienceYears();
+    this.loadProjectsCount();
+    this.loadTechnologiesCount();
+  }
+
+  private loadProjectsCount(): void {
+    this.portfolioService.getProjects().subscribe(projects => {
+      const projectCount = projects.length;
+      this.statsCards[1].value = projectCount.toString();
+    });
+  }
+
+  private loadTechnologiesCount(): void {
+    this.portfolioService.getSkills().subscribe(skills => {
+      const technologiesCount = skills.length;
+      this.statsCards[2].value = `${technologiesCount.toString()}+`;
+    });
+  }
+
+  private loadExperienceYears(): void {
+    const experienceYears = this.portfolioService.getExperienceYears();
+    this.statsCards[0].value = `${experienceYears}+`;
   }
 
   private startTypingAnimation(): void {

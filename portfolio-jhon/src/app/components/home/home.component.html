@@ -13,15 +13,14 @@
         </div>
 
         <p class="hero-description">
-          Desenvolvedor Backend especializado em Java e AWS, com mais de 5 anos de experiência
-          criando soluções robustas e escaláveis. Trabalho em uma das maiores consultorias de
-          tecnologia do mundo, atuando principalmente no setor financeiro nacional.
+          Desenvolvedor Backend com Experiência sólida em Java, AWS e várias outras tecnologias emergentes no mercado,
+          criando soluções robustas e escaláveis, atuando principalmente no setor financeiro nacional.
         </p>
 
         <div class="hero-actions">
           <a
             routerLink="/projects"
-            class="btn btn-primary"
+            class="btn btn-outline"
             [@scaleIn]
           >
             Ver Projetos
@@ -67,7 +66,7 @@
       </div>
     </div>
 
-    <div class="scroll-indicator" (click)="scrollToSection('about')">
+    <div class="scroll-indicator" (click)="scrollToSection('stats')">
       <div class="scroll-arrow"></div>
       <span>Explore mais</span>
     </div>
@@ -75,7 +74,7 @@
 </section>
 
 <!-- Quick Stats Section -->
-<section class="stats-section">
+<section id="stats" class="stats-section">
   <div class="container">
     <div class="stats-grid">
       <app-card
