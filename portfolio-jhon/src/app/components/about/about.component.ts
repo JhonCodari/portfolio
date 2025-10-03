@@ -147,7 +147,7 @@ export class AboutComponent implements OnInit {
     this.profileCard = {
       title: this.personalInfo.displayName,
       subtitle: this.personalInfo.title,
-      imageUrl: '/assets/img/eu.jpg', // Adicione sua foto aqui
+      imageUrl: './assets/img/eu.jpg', // Caminho relativo funciona no GitHub Pages
       details: [
         { icon: '📍', text: this.personalInfo.location },
         { icon: '⏰', text: `${this.personalInfo.experience} de experiência` },
