@@ -1,69 +1,81 @@
-<p><section class="about-section">
+<section class="about-section">
   <div class="container">
     <!-- Header -->
-    <div class="section-header" [@fadeIn]>
-      <h2 class="section-title">Sobre Mim</h2>
-      <p class="section-subtitle">Conheça um pouco mais sobre minha jornada e paixão por tecnologia</p>
-    </div>
+    <header class="section-header" [@fadeIn]>
+      <h2 class="section-title" id="sobre-titulo">Sobre Mim</h2>
+      <p class="section-subtitle" aria-describedby="sobre-titulo">Conheça um pouco mais sobre minha jornada e paixão por tecnologia</p>
+    </header>
 
     <!-- Main About Content -->
-    <div class="about-content">
-      <div class="about-text" [@fadeIn]>
+    <main class="about-content">
+      <article class="about-text" [@fadeIn]>
         <div class="personal-intro">
-          <h3>{{ personalInfo.displayName }}</h3>
-          <p class="real-name">Nome completo: {{ personalInfo.realName }}</p>
-          <div class="intro-text">
-            <p *ngFor="let paragraph of aboutText.split('\n\n')">{{ paragraph.trim() }}</p>
+          <h3 id="nome-profissional">{{ personalInfo.displayName }}</h3>
+          <p class="real-name" aria-label="Nome completo do desenvolvedor">Nome completo: {{ personalInfo.realName }}</p>
+          <div class="intro-text" role="text" aria-labelledby="nome-profissional">
+            <p *ngFor="let paragraph of aboutText.split('\n\n'); trackBy: trackByIndex">{{ paragraph.trim() }}</p>
           </div>
         </div>
-      </div>
+      </article>
 
       <div class="about-visual" [@scaleIn]>
         <app-card
           [data]="profileCard"
-          variant="profile">
+          variant="profile"
+          [attr.aria-label]="'Informações de perfil de ' + personalInfo.displayName">
         </app-card>
       </div>
-    </div>
+    </main>
 
     <!-- Mission Section -->
-    <div class="mission-section">
-      <h3 class="subsection-title" [@fadeIn]>Minha Missão</h3>
+    <section class="mission-section" aria-labelledby="missao-titulo">
+      <h3 class="subsection-title" [@fadeIn] id="missao-titulo">Minha Missão</h3>
       <div class="mission-content" [@fadeIn]>
-        <div class="mission-text">
-          <p *ngFor="let paragraph of mission.split('\n\n')">{{ paragraph.trim() }}</p>
-        </div>
+        <blockquote class="mission-text" role="text" aria-labelledby="missao-titulo">
+          <p *ngFor="let paragraph of mission.split('\n\n'); trackBy: trackByIndex">{{ paragraph.trim() }}</p>
+        </blockquote>
       </div>
-    </div>
+    </section>
+
+
 
     <!-- Values Section -->
-    <div class="values-section">
-      <h3 class="subsection-title" [@fadeIn]>Meus Valores</h3>
-      <div class="values-grid">
-        <app-card
-          *ngFor="let value of values"
-          [data]="value"
-          variant="value"
-          [@scaleIn]>
-        </app-card>
-      </div>
-    </div>
+    <section class="values-section" aria-labelledby="valores-titulo">
+      <h3 class="subsection-title" [@fadeIn] id="valores-titulo">Meus Valores</h3>
 
-    <!-- Timeline Section -->
-    <div class="timeline-section">
-      <h3 class="subsection-title" [@fadeIn]>Minha Jornada</h3>
-      <div class="timeline">
-        <div class="timeline-item" *ngFor="let item of timeline; let i = index" [@fadeIn]>
-          <div class="timeline-marker" [class.present]="item.isPresent">
-            <span class="year" *ngIf="!item.isPresent">{{ item.year }}</span>
-          </div>
-          <div class="timeline-content" [class.present]="item.isPresent">
-            <div class="present-tag" *ngIf="item.isPresent">Hoje</div>
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-          </div>
+      <!-- Loading state -->
+      <div class="loading-container" *ngIf="isLoadingPersonalValues" [@fadeIn]>
+        <div class="values-loading-grid">
+          <div class="skeleton-value-card" *ngFor="let item of [1,2,3,4]"></div>
         </div>
       </div>
-    </div>
+
+      <!-- Content -->
+      <div class="values-grid" *ngIf="!isLoadingPersonalValues && personalValues.length > 0">
+        <article class="value-card" *ngFor="let value of personalValues" [@scaleIn]>
+          <div class="value-icon" [attr.aria-label]="'Ícone representando ' + value.title">{{ value.icon }}</div>
+          <h4 class="value-title">{{ value.title }}</h4>
+          <p class="value-description">{{ value.description }}</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" aria-labelledby="timeline-titulo">
+      <!-- Loading state -->
+      <div class="timeline-loading" *ngIf="isLoadingTimeline" [@fadeIn]>
+        <h3 class="subsection-title">Minha Jornada</h3>
+        <div class="skeleton-timeline">
+          <div class="skeleton-timeline-item" *ngFor="let item of [1,2,3,4]"></div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <app-timeline
+        *ngIf="!isLoadingTimeline"
+        [title]="'Minha Jornada'"
+        [items]="timeline">
+      </app-timeline>
+    </section>
   </div>
 </section>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Project, Skill, ContactInfo } from '../interfaces/project.interface';
+import { AboutValue, PersonalValue, TimelineItem } from '../interfaces/about.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -196,5 +197,90 @@ export class PortfolioService {
     const startYear = 2020;
     const currentYear = new Date().getFullYear();
     return currentYear - startYear;
+  }
+
+  // Valores/estatísticas da seção About
+  getAboutValues(): Observable<AboutValue[]> {
+    const values: AboutValue[] = [
+      { number: '3+', label: 'Anos de Experiência' },
+      { number: '15+', label: 'Projetos Concluídos' },
+      { number: '8+', label: 'Tecnologias' },
+      { number: '100%', label: 'Dedicação' }
+    ];
+    return of(values);
+  }
+
+  // Valores pessoais/profissionais
+  getPersonalValues(): Observable<PersonalValue[]> {
+    const values: PersonalValue[] = [
+      {
+        title: 'Excelência Técnica',
+        description: 'Busco constantemente aperfeiçoar minhas habilidades técnicas, aplicando as melhores práticas e estudando novas tecnologias para entregar soluções de qualidade.',
+        icon: '🎯'
+      },
+      {
+        title: 'Crescimento Contínuo',
+        description: 'Sempre estudando e aplicando novos conhecimentos para me tornar uma referência na área.',
+        icon: '🚀'
+      },
+      {
+        title: 'Impacto Positivo',
+        description: 'Criar soluções que facilitem a vida das pessoas e gerem valor real para a sociedade.',
+        icon: '🌟'
+      },
+      {
+        title: 'Confiabilidade',
+        description: 'Ser sincero, alegre e confiável, construindo relacionamentos duradouros e significativos.',
+        icon: '🤝'
+      }
+    ];
+    return of(values);
+  }
+
+  getTimelineData(): Observable<TimelineItem[]> {
+    const timeline: TimelineItem[] = [
+      {
+        year: '2020',
+        title: 'Início da Carreira',
+        description: 'Apesar de já programar recreativamente desde os 12 anos de idade, considero que o ingresso na faculdade marcou o início de minha jornada como desenvolvedor profissional, focando em Java e desenvolvimento web.'
+      },
+      {
+        year: '2021',
+        title: 'Migração de Carreira',
+        description: 'Ingressei em uma das maiores consultorias de tecnologia do mundo para realizar meu estágio.'
+      },
+      {
+        year: '2021',
+        title: 'Especialização em Java',
+        description: 'Aprofundei conhecimentos no ecossistema Spring e desenvolvimento de APIs robustas.'
+      },
+      {
+        year: '2022',
+        title: 'Efetivação na Consultoria',
+        description: 'Fui efetivado como desenvolvedor na consultoria, atuando em projetos desafiadores como desenvolvedor júnior.'
+      },
+      {
+        year: '2022',
+        title: 'Formação Acadêmica',
+        description: 'Concluí o curso de Análise e Desenvolvimento de Sistemas na Faculdade ELO, em Recife.'
+      },
+      {
+        year: '2023',
+        title: 'Certificações AWS',
+        description: 'Obtive certificações AWS e comecei a aplicar conhecimentos de cloud computing em projetos.'
+      },
+      {
+        year: '2023',
+        title: 'Promoção a desenvolvedor pleno',
+        description: 'Fui promovido a desenvolvedor pleno na consultoria, assumindo mais responsabilidades e trabalhando em projetos com mais autonomia.'
+      },
+      {
+        year: 'Hoje',
+        title: 'Desenvolvedor Backend Sênior',
+        description: 'Atualmente trabalho como desenvolvedor backend especializado em Java/Spring, liderando iniciativas técnicas em grandes projetos do setor financeiro. Aplico meus conhecimentos em AWS cloud computing, mentorio desenvolvedores juniores e busco constantemente inovação tecnológica. Meu foco atual é me tornar uma referência técnica na área, contribuindo para soluções que impactem milhões de usuários no sistema financeiro nacional.',
+        isPresent: true
+      }
+    ];
+    return of(timeline);
   }
 }

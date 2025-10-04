@@ -44,3 +44,9 @@ Thumbs.db
 # Local documentation (should not be committed)
 DEVELOPMENT_DOCS.md
 docs/development/
+
+# Guia de workflow local (não versionar)
+about-workflow-guia.md
+*-diagnostico-*.md
+*-objetivos-*.md
+*-planejamento-*.md

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fadeInAnimation, scaleInAnimation } from '../../animations/portfolio.animations';
 import { CardComponent, CardData } from '../../shared/card/card.component';
+import { TimelineComponent } from '../../shared/timeline/timeline.component';
 import { PortfolioService } from '../../services/portfolio.service';
+import { PersonalValue, TimelineItem } from '../../interfaces/about.interface';
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, TimelineComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
   animations: [fadeInAnimation, scaleInAnimation]
@@ -22,7 +24,7 @@ export class AboutComponent implements OnInit {
     location: 'Cabo de Santo Agostinho - PE',
     experience: '0+ anos',
     education: 'Análise e Desenvolvimento de Sistemas - Faculdade ELO',
-    email: 'jhon.codari@example.com'
+    email: 'devjonatassilva@gmail.com'
   };
 
   aboutText = ``;
@@ -46,28 +48,12 @@ export class AboutComponent implements OnInit {
     outras pessoas.
   `;
 
-  values: CardData[] = [
-    {
-      title: 'Excelência Técnica',
-      description: 'Código robusto, escalável e bem arquitetado é fundamental para soluções de qualidade.',
-      icon: '🎯'
-    },
-    {
-      title: 'Crescimento Contínuo',
-      description: 'Sempre estudando e aplicando novos conhecimentos para me tornar uma referência na área.',
-      icon: '�'
-    },
-    {
-      title: 'Impacto Positivo',
-      description: 'Criar soluções que facilitem a vida das pessoas e gerem valor real para a sociedade.',
-      icon: '🌟'
-    },
-    {
-      title: 'Confiabilidade',
-      description: 'Ser sincero, alegre e confiável, construindo relacionamentos duradouros e significativos.',
-      icon: '🤝'
-    }
-  ];
+  personalValues: PersonalValue[] = [];
+  timeline: TimelineItem[] = [];
+
+  // Estados de carregamento
+  isLoadingPersonalValues = true;
+  isLoadingTimeline = true;
 
   profileCard: CardData = {
     title: '',
@@ -75,59 +61,15 @@ export class AboutComponent implements OnInit {
     details: []
   };
 
-  timeline = [
-    {
-      year: '2020',
-      title: 'Início da Carreira',
-      description: 'Apesar de já programar recreativamente desde os 12 anos de idade, considero que o ingresso na faculdade marcou o início de minha jornada como desenvolvedor profissional, focando em Java e desenvolvimento web.'
-    },
-    {
-      year: '2021',
-      title: 'Migração de Carreira',
-      description: 'Ingressei em uma das maiores consultorias de tecnologia do mundo para realizar meu estágio.'
-    },
-    {
-      year: '2021',
-      title: 'Especialização em Java',
-      description: 'Aprofundei conhecimentos no ecossistema Spring e desenvolvimento de APIs robustas.'
-    },
-    {
-      year: '2022',
-      title: 'Efetivação na Consultoria',
-      description: 'Fui efetivado como desenvolvedor na consultoria, atuando em projetos desafiadores como desenvolvedor júnior.'
-    },
-    {
-      year: '2022',
-      title: 'Formação Acadêmica',
-      description: 'Concluí o curso de Análise e Desenvolvimento de Sistemas na Faculdade ELO, em Recife.'
-    },
-    {
-      year: '2023',
-      title: 'Certificações AWS',
-      description: 'Obtive certificações AWS e comecei a aplicar conhecimentos de cloud computing em projetos.'
-    },
-    {
-      year: '2023',
-      title: 'Promoção a desenvolvedor pleno',
-      description: 'Fui promovido a desenvolvedor pleno na consultoria, assumindo mais responsabilidades e trabalhando em projetos com mais autonomia.'
-    },
-    {
-      year: 'Hoje',
-      title: 'Desenvolvedor Backend Sênior',
-      description: 'Atualmente trabalho como desenvolvedor backend especializado em Java/Spring, liderando iniciativas técnicas em grandes projetos do setor financeiro. Aplico meus conhecimentos em AWS cloud computing, mentorio desenvolvedores juniores e busco constantemente inovação tecnológica. Meu foco atual é me tornar uma referência técnica na área, contribuindo para soluções que impactem milhões de usuários no sistema financeiro nacional.',
-      isPresent: true
-    }
-  ];
-
   ngOnInit(): void {
     this.loadDynamicValues();
+    this.loadPersonalValues();
+    this.loadTimelineFromService();
   }
 
   private loadDynamicValues(): void {
     const years = this.portfolioService.getExperienceYears();
     this.personalInfo.experience = `${years}+ anos`;
-
-    // Atualiza o aboutText com o valor dinâmico
     this.aboutText = `
       Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jhon Codari.
       Sou um desenvolvedor Backend Java com mais de ${years} anos de experiência criando
@@ -143,11 +85,10 @@ export class AboutComponent implements OnInit {
       pessoal e profissional.
     `;
 
-    // Atualiza o profileCard com o valor dinâmico
     this.profileCard = {
       title: this.personalInfo.displayName,
       subtitle: this.personalInfo.title,
-      imageUrl: './assets/img/eu.jpg', // Caminho relativo funciona no GitHub Pages
+      imageUrl: './assets/img/eu.jpg',
       details: [
         { icon: '📍', text: this.personalInfo.location },
         { icon: '⏰', text: `${this.personalInfo.experience} de experiência` },
@@ -155,5 +96,38 @@ export class AboutComponent implements OnInit {
         { icon: '✉️', text: this.personalInfo.email }
       ]
     };
+  }
+
+
+
+  private loadPersonalValues(): void {
+    this.isLoadingPersonalValues = true;
+    this.portfolioService.getPersonalValues().subscribe({
+      next: (values: PersonalValue[]) => {
+        this.personalValues = values;
+        this.isLoadingPersonalValues = false;
+      },
+      error: () => {
+        this.isLoadingPersonalValues = false;
+      }
+    });
+  }
+
+  private loadTimelineFromService(): void {
+    this.isLoadingTimeline = true;
+    this.portfolioService.getTimelineData().subscribe({
+      next: (timeline: TimelineItem[]) => {
+        this.timeline = timeline;
+        this.isLoadingTimeline = false;
+      },
+      error: () => {
+        this.isLoadingTimeline = false;
+      }
+    });
+  }
+
+  // Método para otimizar a renderização de listas
+  trackByIndex(index: number, item: any): number {
+    return index;
   }
 }
