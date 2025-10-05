@@ -3,7 +3,8 @@
   [style.animation-delay.ms]="animationDelay">
 
   <div class="contact-icon">
-    <span class="icon">{{ contact.icon }}</span>
+    <img *ngIf="isIconImage(contact.icon)" [src]="contact.icon" [alt]="contact.label + ' icon'" class="icon-image">
+    <span *ngIf="!isIconImage(contact.icon)" class="icon">{{ contact.icon }}</span>
   </div>
 
   <div class="contact-info">

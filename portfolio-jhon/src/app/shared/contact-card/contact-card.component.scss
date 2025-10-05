@@ -46,6 +46,23 @@
         font-size: 36px;
       }
     }
+
+    .icon-image {
+      width: 48px;
+      height: 48px;
+      display: block;
+      filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(598%) hue-rotate(181deg) brightness(108%) contrast(97%);
+
+      @media (max-width: 768px) {
+        width: 40px;
+        height: 40px;
+      }
+
+      @media (max-width: 480px) {
+        width: 36px;
+        height: 36px;
+      }
+    }
   }
 
   .contact-info {

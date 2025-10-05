@@ -18,25 +18,25 @@ export class ContactComponent implements OnInit {
       type: 'email',
       label: 'Email',
       value: 'devjonatassilva@gmail.com',
-      icon: '📧'
+      icon: 'assets/icons/email.svg'
     },
     {
       type: 'linkedin',
       label: 'LinkedIn',
-      value: 'jhoncodari',
-      icon: '💼'
+      value: 'jonatas-silva-03400b16a',
+      icon: 'assets/icons/linkedin.svg'
     },
     {
       type: 'github',
       label: 'GitHub',
       value: 'JhonCodari',
-      icon: '💻'
+      icon: 'assets/icons/techs/github.svg'
     },
     {
       type: 'whatsapp',
       label: 'WhatsApp',
-      value: '+55 11 99999-9999',
-      icon: '📱'
+      value: '+55 81 98538-1254',
+      icon: 'assets/icons/whatsapp.svg'
     },
     {
       type: 'location',

@@ -43,4 +43,8 @@ export class ContactCardComponent {
   shouldOpenExternal(): boolean {
     return ['linkedin', 'github', 'whatsapp'].includes(this.contact.type);
   }
+
+  isIconImage(icon: string): boolean {
+    return icon.includes('.svg') || icon.includes('.png') || icon.includes('.jpg') || icon.includes('.jpeg') || icon.includes('.gif') || icon.includes('.webp');
+  }
 }
