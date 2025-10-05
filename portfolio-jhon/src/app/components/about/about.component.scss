@@ -159,18 +159,6 @@
 
 .values-section {
   margin-bottom: var(--spacing-3xl);
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
-
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-
 }
 
 
@@ -179,13 +167,38 @@
 .values-section {
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
+    justify-content: center;
 
+    // Desktop: máximo 4 cards por linha com largura fixa
+    grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    // Limita a 4 colunas no máximo
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 280px);
+    }
+
+    // Tablets: 2-3 cards por linha
+    @media (max-width: 1024px) and (min-width: 769px) {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+      max-width: 860px;
+    }
+
+    // Mobile: 1-2 cards por linha
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
       gap: var(--spacing-lg);
+      max-width: 520px;
+    }
+
+    // Mobile pequeno: 1 card por linha
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      max-width: 300px;
     }
   }
 
@@ -200,6 +213,17 @@
     cursor: default;
     position: relative;
     overflow: hidden;
+
+    // Altura mínima para manter consistência visual
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      min-height: 220px;
+      padding: var(--spacing-lg);
+    }
 
     // Dark mode optimizations
     @media (prefers-color-scheme: dark) {
@@ -276,12 +300,33 @@
 
 .values-loading-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-xl);
+  justify-content: center;
+
+  // Mantém o mesmo layout do grid principal
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 280px);
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+    max-width: 860px;
+  }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
     gap: var(--spacing-lg);
+    max-width: 520px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    max-width: 300px;
   }
 }
 
