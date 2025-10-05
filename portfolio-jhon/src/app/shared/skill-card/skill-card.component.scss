@@ -9,11 +9,12 @@
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
   cursor: pointer;
-  width: 200px;
+  width: 100%; // Largura responsiva em vez de fixa
   min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box; // Garante que padding e border estejam incluídos na largura
 
   &::before {
     content: '';

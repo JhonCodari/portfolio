@@ -43,28 +43,47 @@
   display: grid;
   gap: var(--spacing-lg);
   justify-content: center;
+  padding: 0 var(--spacing-base); // Padding lateral para evitar colagem nas bordas da tela
 
-  // Desktop: exatamente 4 cards por linha
-  grid-template-columns: repeat(4, 200px);
-  max-width: 100%;
+  // Desktop: máximo 5 cards por linha com espaçamento adequado
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Limita a 5 colunas no máximo em telas muito grandes
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(5, minmax(200px, 220px));
+    gap: var(--spacing-xl);
+  }
+
+  // Desktop grande: 5 cards por linha
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    grid-template-columns: repeat(5, minmax(180px, 200px));
+  }
+
+  // Desktop médio: 4 cards por linha
+  @media (min-width: 900px) and (max-width: 1199px) {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+  }
 
   // Tablets: 3 cards por linha
-  @media (max-width: 1024px) and (min-width: 769px) {
-    grid-template-columns: repeat(3, 180px);
+  @media (min-width: 650px) and (max-width: 899px) {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
     gap: var(--spacing-base);
   }
 
   // Mobile: 2 cards por linha
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, minmax(110px, 120px));
+  @media (min-width: 400px) and (max-width: 649px) {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
     gap: var(--spacing-base);
-    max-width: 100%;
   }
 
-  // Mobile pequeno: 2 cards por linha menores
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, minmax(100px, 110px));
+  // Mobile pequeno: mínimo 2 cards por linha sempre
+  @media (max-width: 399px) {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
     gap: var(--spacing-sm);
+    max-width: 350px;
   }
 }
 
