@@ -155,7 +155,7 @@ export class PortfolioService {
   ];
 
   private contactInfo: ContactInfo = {
-    email: 'jhon.codari@example.com',
+    email: 'devjonatassilva@gmail.com',
     linkedin: 'https://linkedin.com/in/jhoncodari',
     github: 'https://github.com/JhonCodari',
     location: 'Cabo de Santo Agostinho - PE'

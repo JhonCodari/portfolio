@@ -17,7 +17,7 @@ export class ContactComponent implements OnInit {
     {
       type: 'email',
       label: 'Email',
-      value: 'jhon.codari@exemplo.com',
+      value: 'devjonatassilva@gmail.com',
       icon: '📧'
     },
     {
@@ -41,7 +41,7 @@ export class ContactComponent implements OnInit {
     {
       type: 'location',
       label: 'Localização',
-      value: 'São Paulo, Brasil',
+      value: 'Cabo de Santo Agostinho - PE',
       icon: '📍'
     }
   ];
