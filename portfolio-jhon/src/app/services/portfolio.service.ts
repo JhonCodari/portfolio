@@ -215,12 +215,12 @@ export class PortfolioService {
     const values: PersonalValue[] = [
       {
         title: 'Excelência Técnica',
-        description: 'Busco constantemente aperfeiçoar minhas habilidades técnicas, aplicando as melhores práticas e estudando novas tecnologias para entregar soluções de qualidade.',
+        description: 'Buscar a maestria em cada detalhe do meu trabalho, unindo conhecimento profundo, precisão na execução e aprimoramento constante para entregar soluções sólidas e de alto padrão.',
         icon: '🎯'
       },
       {
         title: 'Crescimento Contínuo',
-        description: 'Sempre estudando e aplicando novos conhecimentos para me tornar uma referência na área.',
+        description: 'Buscar constantemente aperfeiçoar minhas habilidades técnicas, aplicando as melhores práticas e estudando novas tecnologias para entregar soluções de qualidade.',
         icon: '🚀'
       },
       {
