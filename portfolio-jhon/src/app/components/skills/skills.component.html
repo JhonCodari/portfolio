@@ -19,31 +19,13 @@
     </div>
 
     <!-- Skills Grid -->
-    <div class="skills-container" [@fadeIn]>
-      <div class="skills-visual">
-        <div class="laptop-illustration">
-          <div class="laptop-screen">
-            <div class="screen-content">
-              <div class="code-lines">
-                <div class="code-line"></div>
-                <div class="code-line short"></div>
-                <div class="code-line"></div>
-                <div class="code-line medium"></div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-base"></div>
-        </div>
-      </div>
-
-      <div class="skills-grid">
-        <app-skill-card
-          *ngFor="let skill of filterSkills(); let i = index"
-          [skill]="skill"
-          [animationDelay]="i * 100"
-          [@scaleIn]>
-        </app-skill-card>
-      </div>
+    <div class="skills-grid" [@fadeIn]>
+      <app-skill-card
+        *ngFor="let skill of filterSkills(); let i = index"
+        [skill]="skill"
+        [animationDelay]="i * 100"
+        [@scaleIn]>
+      </app-skill-card>
     </div>
 
     <!-- Next Steps -->

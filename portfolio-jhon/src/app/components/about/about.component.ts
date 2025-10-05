@@ -51,9 +51,9 @@ export class AboutComponent implements OnInit {
   personalValues: PersonalValue[] = [];
   timeline: TimelineItem[] = [];
 
-  // Estados de carregamento
-  isLoadingPersonalValues = true;
-  isLoadingTimeline = true;
+  // Estados de carregamento (otimizado para carregamento instantâneo)
+  isLoadingPersonalValues = false;
+  isLoadingTimeline = false;
 
   profileCard: CardData = {
     title: '',
@@ -101,27 +101,23 @@ export class AboutComponent implements OnInit {
 
 
   private loadPersonalValues(): void {
-    this.isLoadingPersonalValues = true;
     this.portfolioService.getPersonalValues().subscribe({
       next: (values: PersonalValue[]) => {
         this.personalValues = values;
-        this.isLoadingPersonalValues = false;
       },
-      error: () => {
-        this.isLoadingPersonalValues = false;
+      error: (err) => {
+        console.error('Erro ao carregar valores pessoais:', err);
       }
     });
   }
 
   private loadTimelineFromService(): void {
-    this.isLoadingTimeline = true;
     this.portfolioService.getTimelineData().subscribe({
       next: (timeline: TimelineItem[]) => {
         this.timeline = timeline;
-        this.isLoadingTimeline = false;
       },
-      error: () => {
-        this.isLoadingTimeline = false;
+      error: (err) => {
+        console.error('Erro ao carregar timeline:', err);
       }
     });
   }

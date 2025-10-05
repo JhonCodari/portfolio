@@ -1,7 +1,16 @@
 <section class="about-section">
   <div class="container">
-    <!-- Header -->
-    <header class="section-header" [@fadeIn]>
+     <!-- Values Section -->
+    <section class="values-section" aria-labelledby="valores-titulo">
+      <h3 class="subsection-title" [@fadeIn] id="valores-titulo">Meus Valores</h3>
+      <div class="values-grid" *ngIf="personalValues.length > 0">
+        <article class="value-card" *ngFor="let value of personalValues" [@scaleIn]>
+          <div class="value-icon" [attr.aria-label]="'\u00cdcone representando ' + value.title">{{ value.icon }}</div>
+          <h4 class="value-title">{{ value.title }}</h4>
+          <p class="value-description">{{ value.description }}</p>
+        </article>
+      </div>
+    </section>    <header class="section-header" [@fadeIn]>
       <h2 class="section-title" id="sobre-titulo">Sobre Mim</h2>
       <p class="section-subtitle" aria-describedby="sobre-titulo">Conheça um pouco mais sobre minha jornada e paixão por tecnologia</p>
     </header>
@@ -62,17 +71,7 @@
 
     <!-- Timeline Section -->
     <section class="timeline-section" aria-labelledby="timeline-titulo">
-      <!-- Loading state -->
-      <div class="timeline-loading" *ngIf="isLoadingTimeline" [@fadeIn]>
-        <h3 class="subsection-title">Minha Jornada</h3>
-        <div class="skeleton-timeline">
-          <div class="skeleton-timeline-item" *ngFor="let item of [1,2,3,4]"></div>
-        </div>
-      </div>
-
-      <!-- Content -->
       <app-timeline
-        *ngIf="!isLoadingTimeline"
         [title]="'Minha Jornada'"
         [items]="timeline">
       </app-timeline>
