@@ -15,7 +15,7 @@ Portfolio pessoal desenvolvido com Angular 18+, apresentando projetos, habilidad
 
 ## 📋 Sobre o Projeto
 
-Portfolio responsivo e moderno que demonstra minha experiência como Desenvolvedor Backend Pleno, especializado em Java/Spring e projetos do setor financeiro. O projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento frontend e com foco em performance e experiência do usuário.
+Portfolio responsivo e moderno que demonstra minha experiência como Desenvolvedor Backend Pleno, especializado em Java/Spring. O projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento frontend (que eu consigo aplicar dado que minha especialidade é Java/Spring 😂) e com foco em performance e experiência do usuário.
 
 ### ✨ Características Principais
 
