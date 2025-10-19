@@ -52,10 +52,15 @@
 
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(3, minmax(350px, 400px));
       gap: var(--spacing-xl);
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
+      justify-content: center;
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, minmax(350px, 400px));
+      }
 
       @media (max-width: 768px) {
         grid-template-columns: 1fr;
@@ -69,8 +74,9 @@
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
     gap: var(--spacing-xl);
+    justify-content: center;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;

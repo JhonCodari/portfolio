@@ -276,8 +276,8 @@ export class PortfolioService {
       },
       {
         year: 'Hoje',
-        title: 'Desenvolvedor Backend Sênior',
-        description: 'Atualmente trabalho como desenvolvedor backend especializado em Java/Spring, liderando iniciativas técnicas em grandes projetos do setor financeiro. Aplico meus conhecimentos em AWS cloud computing, mentorio desenvolvedores juniores e busco constantemente inovação tecnológica. Meu foco atual é me tornar uma referência técnica na área, contribuindo para soluções que impactem milhões de usuários no sistema financeiro nacional.',
+        title: 'Desenvolvedor Backend Pleno',
+        description: 'Atualmente atuo como desenvolvedor backend pleno. Estou focado em desenvolver habilidades interpessoais, liderança, comunicação clara, colaboração em equipe e visão estratégica. Acredito que ser Sênior vai além do domínio técnico: envolve saber compartilhar conhecimento, tomar decisões responsáveis, apoiar o crescimento dos colegas e contribuir para um ambiente de trabalho saudável e produtivo. Meu objetivo é evoluir nessas competências para assumir novos desafios e gerar impacto positivo por onde passar.',
         isPresent: true
       }
     ];
