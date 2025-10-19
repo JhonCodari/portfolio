@@ -52,14 +52,14 @@
 
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(350px, 400px));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
       gap: var(--spacing-xl);
       max-width: 1300px;
       margin: 0 auto;
       justify-content: center;
 
-      @media (max-width: 1200px) {
-        grid-template-columns: repeat(2, minmax(350px, 400px));
+      @media (min-width: 1201px) {
+        grid-template-columns: repeat(auto-fit, minmax(350px, min(400px, calc((100% - 2 * var(--spacing-xl)) / 3))));
       }
 
       @media (max-width: 768px) {
