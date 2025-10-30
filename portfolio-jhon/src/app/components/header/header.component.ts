@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
     { label: 'Sobre', route: '/about' },
     { label: 'Projetos', route: '/projects' },
     { label: 'Habilidades', route: '/skills' },
+    { label: 'Certificações e Cursos', route: '/certifications' },
     { label: 'Contato', route: '/contact' }
   ];
 
