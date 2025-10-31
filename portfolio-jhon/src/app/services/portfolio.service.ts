@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Project, Skill, ContactInfo } from '../interfaces/project.interface';
 import { AboutValue, PersonalValue, TimelineItem } from '../interfaces/about.interface';
+import { Certification, CertificationFilter } from '../interfaces/certification.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -161,6 +162,156 @@ export class PortfolioService {
     location: 'Cabo de Santo Agostinho - PE'
   };
 
+  private certifications: Certification[] = [
+    // Certificações AWS (Featured)
+    {
+      id: 1,
+      title: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services',
+      imageUrl: 'assets/certifications/aws-cloud-practitioner.png',
+      credentialUrl: 'https://www.credly.com/badges/your-badge-id',
+      issuedDate: new Date('2023-03-15'),
+      expiryDate: new Date('2026-03-15'),
+      type: 'aws',
+      technologies: ['AWS', 'Cloud Computing'],
+      featured: true,
+      description: 'Certificação fundamental da AWS que valida conhecimentos de cloud computing, serviços AWS e melhores práticas.'
+    },
+    {
+      id: 2,
+      title: 'AWS Certified Solutions Architect - Associate',
+      issuer: 'Amazon Web Services',
+      imageUrl: 'assets/certifications/aws-solutions-architect.png',
+      credentialUrl: 'https://www.credly.com/badges/your-badge-id',
+      issuedDate: new Date('2023-06-20'),
+      expiryDate: new Date('2026-06-20'),
+      type: 'aws',
+      technologies: ['AWS', 'Cloud Architecture', 'Solutions Design'],
+      featured: true,
+      description: 'Certificação que valida habilidades em design e implementação de sistemas distribuídos na AWS.'
+    },
+
+    // Cursos de Backend
+    {
+      id: 3,
+      title: 'Formação Java e Spring Framework',
+      issuer: 'Alura',
+      imageUrl: 'assets/certifications/alura-java.png',
+      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+      issuedDate: new Date('2021-08-10'),
+      type: 'course',
+      technologies: ['Java', 'Spring Boot', 'Spring MVC', 'JPA'],
+      description: 'Formação completa em desenvolvimento Java com Spring Framework.'
+    },
+    {
+      id: 4,
+      title: 'Microservices com Spring Cloud',
+      issuer: 'Udemy',
+      imageUrl: 'assets/certifications/udemy-microservices.png',
+      credentialUrl: 'https://udemy.com/certificate/your-cert',
+      issuedDate: new Date('2022-03-15'),
+      type: 'course',
+      technologies: ['Java', 'Spring Cloud', 'Microservices', 'Docker'],
+      description: 'Curso avançado sobre arquitetura de microserviços com Spring Cloud.'
+    },
+    {
+      id: 5,
+      title: 'API REST com Spring Boot',
+      issuer: 'Digital Innovation One',
+      imageUrl: 'assets/certifications/dio-spring-boot.png',
+      credentialUrl: 'https://dio.me/certificate/your-cert',
+      issuedDate: new Date('2021-11-20'),
+      type: 'course',
+      technologies: ['Java', 'Spring Boot', 'REST API', 'PostgreSQL'],
+      description: 'Desenvolvimento de APIs RESTful profissionais com Spring Boot.'
+    },
+
+    // Cursos de Cloud e DevOps
+    {
+      id: 6,
+      title: 'Docker e Kubernetes',
+      issuer: 'Alura',
+      imageUrl: 'assets/certifications/alura-docker.png',
+      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+      issuedDate: new Date('2022-07-10'),
+      type: 'course',
+      technologies: ['Docker', 'Kubernetes', 'DevOps'],
+      description: 'Containerização e orquestração de aplicações com Docker e Kubernetes.'
+    },
+    {
+      id: 7,
+      title: 'AWS para Desenvolvedores',
+      issuer: 'Udemy',
+      imageUrl: 'assets/certifications/udemy-aws.png',
+      credentialUrl: 'https://udemy.com/certificate/your-cert',
+      issuedDate: new Date('2023-01-15'),
+      type: 'course',
+      technologies: ['AWS', 'EC2', 'S3', 'Lambda', 'RDS'],
+      description: 'Curso prático sobre os principais serviços AWS para desenvolvedores.'
+    },
+
+    // Cursos de Banco de Dados
+    {
+      id: 8,
+      title: 'Modelagem de Dados e SQL',
+      issuer: 'Alura',
+      imageUrl: 'assets/certifications/alura-sql.png',
+      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+      issuedDate: new Date('2021-05-20'),
+      type: 'course',
+      technologies: ['SQL', 'MySQL', 'PostgreSQL', 'Database Design'],
+      description: 'Modelagem de dados e consultas SQL avançadas.'
+    },
+    {
+      id: 9,
+      title: 'Redis para Aplicações de Alta Performance',
+      issuer: 'Digital Innovation One',
+      imageUrl: 'assets/certifications/dio-redis.png',
+      credentialUrl: 'https://dio.me/certificate/your-cert',
+      issuedDate: new Date('2022-09-10'),
+      type: 'course',
+      technologies: ['Redis', 'Cache', 'Performance'],
+      description: 'Implementação de cache e otimização de performance com Redis.'
+    },
+
+    // Cursos de Frontend (secundário)
+    {
+      id: 10,
+      title: 'Angular: Fundamentos e Boas Práticas',
+      issuer: 'Alura',
+      imageUrl: 'assets/certifications/alura-angular.png',
+      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+      issuedDate: new Date('2023-11-15'),
+      type: 'course',
+      technologies: ['Angular', 'TypeScript', 'RxJS'],
+      description: 'Desenvolvimento de aplicações web modernas com Angular.'
+    },
+
+    // Cursos da Empresa
+    {
+      id: 11,
+      title: 'Arquitetura de Software Corporativa',
+      issuer: 'Empresa',
+      imageUrl: 'assets/certifications/company-architecture.png',
+      credentialUrl: '#',
+      issuedDate: new Date('2023-04-10'),
+      type: 'course',
+      technologies: ['Architecture', 'Design Patterns', 'Best Practices'],
+      description: 'Curso interno sobre arquitetura de software e padrões de design corporativos.'
+    },
+    {
+      id: 12,
+      title: 'Segurança em Aplicações Java',
+      issuer: 'Empresa',
+      imageUrl: 'assets/certifications/company-security.png',
+      credentialUrl: '#',
+      issuedDate: new Date('2022-11-05'),
+      type: 'course',
+      technologies: ['Java', 'Security', 'Spring Security', 'OAuth2'],
+      description: 'Curso interno sobre segurança em aplicações Java corporativas.'
+    }
+  ];
+
   getProjects(): Observable<Project[]> {
     return of(this.projects);
   }
@@ -282,5 +433,56 @@ export class PortfolioService {
       }
     ];
     return of(timeline);
+  }
+
+  // Métodos para Certificações
+  getCertifications(): Observable<Certification[]> {
+    return of(this.certifications);
+  }
+
+  getFeaturedCertifications(): Observable<Certification[]> {
+    const featured = this.certifications.filter(cert => cert.featured);
+    return of(featured);
+  }
+
+  getCourses(): Observable<Certification[]> {
+    const courses = this.certifications.filter(cert => cert.type === 'course');
+    return of(courses);
+  }
+
+  getAvailableFilters(): Observable<CertificationFilter[]> {
+    const platforms = [...new Set(this.certifications.map(c => c.issuer))];
+    const technologies = [...new Set(this.certifications.flatMap(c => c.technologies || []))];
+    
+    const filters: CertificationFilter[] = [
+      {
+        name: 'Todas',
+        key: 'all',
+        icon: '📚'
+      },
+      ...platforms.map(platform => ({
+        name: platform,
+        key: platform.toLowerCase().replace(/\s+/g, '-'),
+        icon: this.getPlatformIcon(platform)
+      })),
+      ...technologies.slice(0, 10).map(tech => ({
+        name: tech,
+        key: tech.toLowerCase(),
+        icon: '🔧'
+      }))
+    ];
+    
+    return of(filters);
+  }
+
+  private getPlatformIcon(platform: string): string {
+    const icons: { [key: string]: string } = {
+      'Alura': '🎓',
+      'Udemy': '📖',
+      'Digital Innovation One': '💻',
+      'Empresa': '🏢',
+      'Amazon Web Services': '☁️'
+    };
+    return icons[platform] || '📄';
   }
 }

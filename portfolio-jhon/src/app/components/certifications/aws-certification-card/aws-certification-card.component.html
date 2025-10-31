@@ -1,1 +1,55 @@
-<p>aws-certification-card works!</p>
+<div class="aws-certification-card" [class.expired]="isExpired()">
+  <div class="card-header">
+    <div class="certification-badge">
+      <img [src]="certification.imageUrl" [alt]="certification.title" class="certification-image">
+    </div>
+    <div class="certification-info">
+      <h3 class="certification-title">{{ certification.title }}</h3>
+      <p class="certification-issuer">
+        <i class="fas fa-award"></i>
+        {{ certification.issuer }}
+      </p>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p class="certification-description">{{ certification.description }}</p>
+
+    <div class="certification-technologies">
+      <span class="tech-tag" *ngFor="let tech of certification.technologies">
+        {{ tech }}
+      </span>
+    </div>
+
+    <div class="certification-dates">
+      <div class="date-item">
+        <span class="date-label">Data de emissão:</span>
+        <span class="date-value">{{ formatDate(certification.issuedDate) }}</span>
+      </div>
+      <div class="date-item" *ngIf="certification.expiryDate">
+        <span class="date-label">Validade:</span>
+        <span class="date-value" [class.expired]="isExpired()">
+          {{ formatDate(certification.expiryDate) }}
+          <span *ngIf="!isExpired()" class="days-remaining">
+            ({{ getDaysUntilExpiry() }} dias restantes)
+          </span>
+          <span *ngIf="isExpired()" class="expired-label">
+            (Expirada)
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a
+      [href]="certification.credentialUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="verify-button"
+    >
+      <i class="fas fa-external-link-alt"></i>
+      Verificar Certificado
+    </a>
+  </div>
+</div>

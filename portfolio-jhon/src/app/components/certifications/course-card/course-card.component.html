@@ -1,1 +1,44 @@
-<p>course-card works!</p>
+<div class="course-card">
+  <div class="card-image">
+    <img [src]="certification.imageUrl" [alt]="certification.title" class="certification-image">
+    <div class="platform-badge">
+      <i [class]="getPlatformIcon()"></i>
+      <span>{{ certification.issuer }}</span>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <h4 class="course-title">{{ certification.title }}</h4>
+
+    <p class="course-issuer">
+      <i class="fas fa-school"></i>
+      {{ certification.issuer }}
+    </p>
+
+    <p class="course-description">{{ certification.description }}</p>
+
+    <div class="course-technologies">
+      <span class="tech-badge" *ngFor="let tech of certification.technologies">
+        {{ tech }}
+      </span>
+    </div>
+
+    <div class="course-footer">
+      <div class="issue-date">
+        <i class="fas fa-calendar-check"></i>
+        <span>{{ formatDate(certification.issuedDate) }}</span>
+      </div>
+
+      <a
+        [href]="certification.credentialUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="view-certificate"
+        *ngIf="certification.credentialUrl !== '#'"
+      >
+        <i class="fas fa-external-link-alt"></i>
+        Ver certificado
+      </a>
+    </div>
+  </div>
+</div>

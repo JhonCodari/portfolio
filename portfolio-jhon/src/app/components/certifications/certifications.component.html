@@ -1,1 +1,127 @@
-<p>certifications works!</p>
+<div class="certifications-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="page-title">Certificações & Cursos</h1>
+      <p class="page-subtitle">
+        Desenvolvedor Certificado pela AWS com milhares de horas em cursos de capacitação
+      </p>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">{{ awsCertifications.length }}</span>
+          <span class="stat-label">Certificações AWS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ courseCertifications.length }}</span>
+          <span class="stat-label">Cursos Concluídos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ getTotalCertifications() }}</span>
+          <span class="stat-label">Total de Certificações</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificações AWS em Destaque -->
+  <section class="featured-certifications" *ngIf="awsCertifications.length > 0">
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fab fa-aws"></i>
+        Certificações AWS
+      </h2>
+      <p class="section-description">
+        Certificações oficiais da Amazon Web Services validando competências em cloud computing
+      </p>
+    </div>
+
+    <div class="aws-certifications-grid">
+      <app-aws-certification-card
+        *ngFor="let cert of awsCertifications"
+        [certification]="cert">
+      </app-aws-certification-card>
+    </div>
+  </section>
+
+  <!-- Cursos de Capacitação -->
+  <section class="courses-section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-graduation-cap"></i>
+        Cursos de Capacitação
+      </h2>
+      <p class="section-description">
+        Cursos concluídos em diversas plataformas de ensino e tecnologias
+      </p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters-container">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          placeholder="Buscar por curso..."
+          [value]="searchTerm"
+          (input)="onSearchChange($event)"
+        >
+      </div>
+
+      <div class="filter-group">
+        <label for="platform-filter">
+          <i class="fas fa-school"></i>
+          Plataforma:
+        </label>
+        <select
+          id="platform-filter"
+          [value]="selectedPlatform"
+          (change)="onPlatformChange($any($event.target).value)"
+        >
+          <option *ngFor="let platform of platforms" [value]="platform">
+            {{ platform === 'all' ? 'Todas as plataformas' : platform }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="technology-filter">
+          <i class="fas fa-code"></i>
+          Tecnologia:
+        </label>
+        <select
+          id="technology-filter"
+          [value]="selectedTechnology"
+          (change)="onTechnologyChange($any($event.target).value)"
+        >
+          <option *ngFor="let tech of technologies" [value]="tech">
+            {{ tech === 'all' ? 'Todas as tecnologias' : tech }}
+          </option>
+        </select>
+      </div>
+
+      <button class="clear-filters-btn" (click)="clearFilters()">
+        <i class="fas fa-times"></i>
+        Limpar Filtros
+      </button>
+    </div>
+
+    <!-- Grid de Cursos -->
+    <div class="courses-grid" *ngIf="filteredCourses.length > 0">
+      <app-course-card
+        *ngFor="let course of filteredCourses"
+        [certification]="course">
+      </app-course-card>
+    </div>
+
+    <!-- Mensagem de Nenhum Resultado -->
+    <div class="no-results" *ngIf="filteredCourses.length === 0">
+      <i class="fas fa-search"></i>
+      <h3>Nenhum curso encontrado</h3>
+      <p>Tente ajustar os filtros ou buscar por outro termo.</p>
+      <button class="clear-filters-btn" (click)="clearFilters()">
+        <i class="fas fa-redo"></i>
+        Resetar Filtros
+      </button>
+    </div>
+  </section>
+</div>
