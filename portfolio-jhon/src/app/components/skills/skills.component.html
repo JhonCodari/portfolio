@@ -1,15 +1,57 @@
 <section class="skills-section">
   <div class="container">
-    <!-- Header -->
-    <div class="section-header" [@fadeIn]>
-      <h2 class="section-title">� Competências Técnicas & Metodologias</h2>
-      <p class="section-subtitle">
-        Algumas tecnologias, ferramentas, metodologias e conhecimentos que aplico no meu dia a dia como desenvolvedor:
-      </p>
+    <!-- Header with Search -->
+    <div class="header-wrapper">
+      <div class="section-header" [@fadeIn]>
+        <h2 class="section-title">🎯 Competências Técnicas & Metodologias</h2>
+        <p class="section-subtitle">
+          Algumas tecnologias, ferramentas, metodologias e conhecimentos que aplico no meu dia a dia como desenvolvedor:
+        </p>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-container" *ngIf="!isLoading">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            placeholder="Buscar habilidade..."
+            [value]="searchTerm"
+            (input)="onSearchChange($event)"
+          >
+          <button class="clear-search" *ngIf="searchTerm" (click)="clearSearch()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="results-info" *ngIf="searchTerm">
+          <i class="fas fa-filter"></i>
+          <span>{{ getFilteredCount() }} habilidade(s) encontrada(s)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Stats -->
+    <div class="skills-stats" *ngIf="!isLoading">
+      <div class="stat-item">
+        <span class="stat-number">{{ getTotalSkills() }}</span>
+        <span class="stat-label">Total de Skills</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getSkillsByLevel('advanced').length }}</span>
+        <span class="stat-label">Avançado</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getSkillsByLevel('intermediate').length }}</span>
+        <span class="stat-label">Intermediário</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ getSkillsByLevel('beginner').length }}</span>
+        <span class="stat-label">Básico</span>
+      </div>
     </div>
 
     <!-- Category Filters -->
-    <div [@fadeIn]>
+    <div [@fadeIn] *ngIf="!isLoading">
       <app-category-filters
         [categories]="categories"
         [selectedCategory]="selectedCategory"
@@ -19,17 +61,34 @@
     </div>
 
     <!-- Skills Grid -->
-    <div class="skills-grid" [@fadeIn]>
+    <div class="skills-grid" [@fadeIn] *ngIf="!isLoading && filteredSkills.length > 0">
       <app-skill-card
-        *ngFor="let skill of filterSkills(); let i = index"
+        *ngFor="let skill of filteredSkills; let i = index"
         [skill]="skill"
+        [style.animation-delay]="i * 0.03 + 's'"
         [animationDelay]="i * 100"
         [@scaleIn]>
       </app-skill-card>
     </div>
 
+    <!-- Skeleton Loading -->
+    <div class="skills-grid skeleton-grid" *ngIf="isLoading">
+      <div class="skeleton-skill-card" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"></div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="!isLoading && filteredSkills.length === 0">
+      <i class="fas fa-search"></i>
+      <h3>Nenhuma habilidade encontrada</h3>
+      <p>Tente ajustar sua busca ou selecione outra categoria.</p>
+      <button class="btn-primary" (click)="clearSearch(); setCategory('all')">
+        <i class="fas fa-redo"></i>
+        Mostrar Todas
+      </button>
+    </div>
+
     <!-- Next Steps -->
-    <div class="next-steps" [@fadeIn]>
+    <div class="next-steps" [@fadeIn] *ngIf="!isLoading">
       <p class="next-steps-text">
         Meus próximos passos incluem especializações em frameworks e ferramentas emergentes do mercado.
       </p>

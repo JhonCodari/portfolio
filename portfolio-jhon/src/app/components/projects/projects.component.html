@@ -9,20 +9,63 @@
     </div>
 
     <!-- Featured Projects -->
-    <div class="featured-section" [@fadeIn] *ngIf="getFeaturedProjects().length > 0">
+    <div class="featured-section" [@fadeIn] *ngIf="!isLoading && getFeaturedProjects().length > 0">
       <h3 class="featured-title">⭐ Projetos em Destaque</h3>
       <div class="featured-grid">
         <app-project-card
           *ngFor="let project of getFeaturedProjects(); let i = index; trackBy: trackByProject"
           [project]="project"
+          [style.animation-delay]="i * 0.1 + 's'"
           [animationDelay]="i * 100"
           [@scaleIn]>
         </app-project-card>
       </div>
     </div>
 
+    <!-- Filters Header -->
+    <div class="filters-header" *ngIf="!isLoading">
+      <div class="results-info">
+        <i class="fas fa-filter"></i>
+        <span>{{ getFilteredCount() }} projeto(s) encontrado(s)</span>
+      </div>
+
+      <button class="toggle-filters-btn" (click)="toggleFilters()">
+        <i [class]="showFilters ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+        {{ showFilters ? 'Ocultar' : 'Mostrar' }} Filtros
+      </button>
+    </div>
+
+    <!-- Filters Container -->
+    <div class="filters-container" [class.visible]="showFilters" *ngIf="!isLoading">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          placeholder="Buscar por projeto, tecnologia..."
+          [value]="searchTerm"
+          (input)="onSearchChange($event)"
+        >
+      </div>
+
+      <div class="filter-group">
+        <label>
+          <i class="fas fa-sort"></i>
+          Ordenar:
+        </label>
+        <select [value]="sortBy" (change)="onSortChange($any($event.target).value)">
+          <option value="date">Mais Recente</option>
+          <option value="name">Nome (A-Z)</option>
+        </select>
+      </div>
+
+      <button class="clear-filters-btn" (click)="clearFilters()" *ngIf="selectedCategory !== 'all' || searchTerm !== ''">
+        <i class="fas fa-times"></i>
+        Limpar Filtros
+      </button>
+    </div>
+
     <!-- Category Filters -->
-    <div [@fadeIn]>
+    <div [@fadeIn] *ngIf="!isLoading">
       <app-category-filters
         [categories]="categories"
         [selectedCategory]="selectedCategory"
@@ -32,24 +75,30 @@
     </div>
 
     <!-- Projects Grid -->
-    <div class="projects-grid" [@fadeIn]>
+    <div class="projects-grid" [@fadeIn] *ngIf="!isLoading && filteredProjects.length > 0">
       <app-project-card
-        *ngFor="let project of filterProjects(); let i = index; trackBy: trackByProject"
+        *ngFor="let project of filteredProjects; let i = index; trackBy: trackByProject"
         [project]="project"
+        [style.animation-delay]="i * 0.05 + 's'"
         [animationDelay]="i * 100"
         [@scaleIn]>
       </app-project-card>
     </div>
 
+    <!-- Skeleton Loading -->
+    <div class="projects-grid skeleton-grid" *ngIf="isLoading">
+      <div class="skeleton-project-card" *ngFor="let item of [1, 2, 3, 4, 5, 6]"></div>
+    </div>
+
     <!-- Empty State -->
-    <div class="empty-state" *ngIf="filterProjects().length === 0" [@fadeIn]>
+    <div class="empty-state" *ngIf="!isLoading && filteredProjects.length === 0" [@fadeIn]>
       <div class="empty-icon">📂</div>
       <h3 class="empty-title">Nenhum projeto encontrado</h3>
       <p class="empty-description">
-        Não há projetos na categoria selecionada. Tente outro filtro ou visualize todos os projetos.
+        Não há projetos que correspondam aos filtros aplicados. Tente ajustar sua busca ou filtros.
       </p>
-      <button class="empty-button" (click)="setCategory('all')">
-        Ver Todos os Projetos
+      <button class="empty-button" (click)="clearFilters()">
+        Limpar Filtros
       </button>
     </div>
 

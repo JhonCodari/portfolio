@@ -3,9 +3,22 @@
   background: var(--color-bg-primary);
   position: relative;
 
-  .section-header {
-    text-align: center;
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
     margin-bottom: var(--spacing-3xl);
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  .section-header {
+    text-align: left;
+    flex: 1;
 
     .section-title {
       font-size: var(--font-size-4xl);
@@ -24,12 +37,127 @@
       font-size: var(--font-size-lg);
       color: var(--color-text-secondary);
       max-width: 600px;
-      margin: 0 auto;
       line-height: 1.6;
 
       @media (max-width: 768px) {
         font-size: var(--font-size-base);
-        padding: 0 var(--spacing-base);
+      }
+    }
+  }
+
+  .skills-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-2xl);
+    padding: 0 var(--spacing-base);
+
+    .stat-item {
+      background: var(--card-bg);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+  }
+
+  .search-container {
+    min-width: 320px;
+    margin-top: 0;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      min-width: auto;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: var(--spacing-sm);
+
+      i.fa-search {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+      }
+
+      input {
+        width: 100%;
+        padding: 0.875rem 3rem 0.875rem 2.5rem;
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        &::placeholder {
+          color: var(--text-secondary);
+        }
+      }
+
+      .clear-search {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--danger-color);
+        }
+      }
+    }
+
+    .results-info {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--spacing-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+
+      i {
+        color: var(--primary-color);
       }
     }
   }
@@ -43,47 +171,136 @@
   display: grid;
   gap: var(--spacing-lg);
   justify-content: center;
-  padding: 0 var(--spacing-base); // Padding lateral para evitar colagem nas bordas da tela
+  padding: 0 var(--spacing-base);
 
-  // Desktop: máximo 5 cards por linha com espaçamento adequado
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 
-  // Limita a 5 colunas no máximo em telas muito grandes
   @media (min-width: 1400px) {
     grid-template-columns: repeat(5, minmax(200px, 220px));
     gap: var(--spacing-xl);
   }
 
-  // Desktop grande: 5 cards por linha
   @media (min-width: 1200px) and (max-width: 1399px) {
     grid-template-columns: repeat(5, minmax(180px, 200px));
   }
 
-  // Desktop médio: 4 cards por linha
   @media (min-width: 900px) and (max-width: 1199px) {
     grid-template-columns: repeat(4, minmax(180px, 1fr));
   }
 
-  // Tablets: 3 cards por linha
   @media (min-width: 650px) and (max-width: 899px) {
     grid-template-columns: repeat(3, minmax(160px, 1fr));
     gap: var(--spacing-base);
   }
 
-  // Mobile: 2 cards por linha
   @media (min-width: 400px) and (max-width: 649px) {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     gap: var(--spacing-base);
   }
 
-  // Mobile pequeno: mínimo 2 cards por linha sempre
   @media (max-width: 399px) {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
     gap: var(--spacing-sm);
     max-width: 350px;
+  }
+
+  app-skill-card {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+}
+
+.skeleton-grid {
+  .skeleton-skill-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    min-height: 150px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(88, 166, 255, 0.1),
+        transparent
+      );
+      animation: shimmer 1.5s infinite;
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-base);
+  max-width: 500px;
+  margin: 0 auto;
+
+  i {
+    font-size: 4rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
   }
 }
 

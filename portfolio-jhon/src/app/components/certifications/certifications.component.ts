@@ -22,6 +22,10 @@ export class CertificationsComponent implements OnInit {
   selectedPlatform: string = 'all';
   selectedTechnology: string = 'all';
   searchTerm: string = '';
+  sortBy: 'date' | 'name' | 'platform' = 'date';
+
+  isLoading: boolean = true;
+  showFilters: boolean = false;
 
   constructor(private portfolioService: PortfolioService) {}
 
@@ -31,21 +35,32 @@ export class CertificationsComponent implements OnInit {
   }
 
   loadCertifications(): void {
+    this.isLoading = true;
+
     this.portfolioService.getFeaturedCertifications().subscribe(certs => {
       this.awsCertifications = certs;
+      this.checkLoadingComplete();
     });
 
     this.portfolioService.getCourses().subscribe(courses => {
       this.courseCertifications = courses;
       this.filteredCourses = courses;
+      this.applySorting();
+      this.checkLoadingComplete();
     });
+  }
+
+  checkLoadingComplete(): void {
+    if (this.awsCertifications.length > 0 || this.courseCertifications.length > 0) {
+      setTimeout(() => this.isLoading = false, 500);
+    }
   }
 
   loadFilters(): void {
     this.portfolioService.getCertifications().subscribe(certs => {
       const platformsSet = new Set(certs.map(c => c.issuer));
       const techSet = new Set(certs.flatMap(c => c.technologies || []));
-      
+
       this.platforms = ['all', ...Array.from(platformsSet)];
       this.technologies = ['all', ...Array.from(techSet)];
     });
@@ -62,6 +77,8 @@ export class CertificationsComponent implements OnInit {
 
       return matchesPlatform && matchesTechnology && matchesSearch;
     });
+
+    this.applySorting();
   }
 
   onPlatformChange(platform: string): void {
@@ -89,5 +106,53 @@ export class CertificationsComponent implements OnInit {
 
   getTotalCertifications(): number {
     return this.awsCertifications.length + this.courseCertifications.length;
+  }
+
+  onSortChange(sortBy: 'date' | 'name' | 'platform'): void {
+    this.sortBy = sortBy;
+    this.applySorting();
+  }
+
+  applySorting(): void {
+    this.filteredCourses = [...this.filteredCourses].sort((a, b) => {
+      switch (this.sortBy) {
+        case 'date':
+          return new Date(b.issuedDate).getTime() - new Date(a.issuedDate).getTime();
+        case 'name':
+          return a.title.localeCompare(b.title);
+        case 'platform':
+          return a.issuer.localeCompare(b.issuer);
+        default:
+          return 0;
+      }
+    });
+  }
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+  }
+
+  getTopTechnologies(): string[] {
+    const techCount = new Map<string, number>();
+
+    [...this.awsCertifications, ...this.courseCertifications].forEach(cert => {
+      cert.technologies?.forEach(tech => {
+        techCount.set(tech, (techCount.get(tech) || 0) + 1);
+      });
+    });
+
+    return Array.from(techCount.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([tech]) => tech);
+  }
+
+  getTotalStudyHours(): number {
+    // Estimativa: cada certificação AWS = 40h, cada curso = 20h
+    return (this.awsCertifications.length * 40) + (this.courseCertifications.length * 20);
+  }
+
+  getFilteredCount(): number {
+    return this.filteredCourses.length;
   }
 }

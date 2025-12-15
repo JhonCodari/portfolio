@@ -66,19 +66,64 @@ export class SkillsComponent implements OnInit {
   ];
 
   selectedCategory: string = 'all';
+  searchTerm: string = '';
+  isLoading: boolean = true;
+  filteredSkills: SkillData[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filteredSkills = this.skills;
+    setTimeout(() => this.isLoading = false, 500);
+  }
 
-  filterSkills(): SkillData[] {
-    if (this.selectedCategory === 'all') {
-      return this.skills;
+  filterSkills(): void {
+    let filtered = this.skills;
+
+    // Filtro por categoria
+    if (this.selectedCategory !== 'all') {
+      filtered = filtered.filter(skill => skill.category === this.selectedCategory);
     }
-    return this.skills.filter(skill => skill.category === this.selectedCategory);
+
+    // Filtro por busca
+    if (this.searchTerm) {
+      const searchLower = this.searchTerm.toLowerCase();
+      filtered = filtered.filter(skill =>
+        skill.name.toLowerCase().includes(searchLower)
+      );
+    }
+
+    this.filteredSkills = filtered;
   }
 
   setCategory(category: string): void {
     this.selectedCategory = category;
+    this.filterSkills();
   }
 
+  onSearchChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm = input.value;
+    this.filterSkills();
+  }
 
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.filterSkills();
+  }
+
+  getFilteredCount(): number {
+    return this.filteredSkills.length;
+  }
+
+  getTotalSkills(): number {
+    return this.skills.length;
+  }
+
+  getSkillsByLevel(level: string): SkillData[] {
+    return this.filteredSkills.filter(skill => skill.level === level);
+  }
+
+  getCategoryCount(category: string): number {
+    if (category === 'all') return this.skills.length;
+    return this.skills.filter(s => s.category === category).length;
+  }
 }

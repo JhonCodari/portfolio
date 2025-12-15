@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fadeInAnimation, scaleInAnimation } from '../../animations/portfolio.animations';
 import { ContactCardComponent, ContactInfo } from '../../shared/contact-card/contact-card.component';
-import { ContactFormComponent } from '../../shared/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, ContactCardComponent, ContactFormComponent],
+  imports: [CommonModule, ContactCardComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   animations: [fadeInAnimation, scaleInAnimation]
 })
 export class ContactComponent implements OnInit {
+
+  isLoading: boolean = true;
 
   contactMethods: ContactInfo[] = [
     {
@@ -46,7 +47,9 @@ export class ContactComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(() => this.isLoading = false, 400);
+  }
 
   trackByContact(index: number, contact: ContactInfo): string {
     return contact.type;

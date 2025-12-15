@@ -76,13 +76,19 @@
 <!-- Quick Stats Section -->
 <section id="stats" class="stats-section">
   <div class="container">
-    <div class="stats-grid">
+    <div class="stats-grid" *ngIf="!isLoading">
       <app-card
-        *ngFor="let statCard of statsCards"
+        *ngFor="let statCard of statsCards; let i = index"
         [data]="statCard"
         variant="stat"
+        [style.animation-delay]="i * 0.1 + 's'"
         [@fadeIn]>
       </app-card>
+    </div>
+
+    <!-- Skeleton Loading -->
+    <div class="stats-grid skeleton-grid" *ngIf="isLoading">
+      <div class="skeleton-stat-card" *ngFor="let item of [1, 2, 3, 4]"></div>
     </div>
   </div>
 </section>

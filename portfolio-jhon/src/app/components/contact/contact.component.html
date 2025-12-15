@@ -9,22 +9,31 @@
     </div>
 
     <!-- Contact Methods -->
-    <div class="contact-methods" [@fadeIn]>
+    <div class="contact-methods" [@fadeIn] *ngIf="!isLoading">
       <h3 class="methods-title">💬 Formas de Contato</h3>
       <div class="methods-grid">
         <app-contact-card
           *ngFor="let contact of contactMethods; let i = index; trackBy: trackByContact"
           [contact]="contact"
+          [style.animation-delay]="i * 0.1 + 's'"
           [animationDelay]="i * 100"
           [@scaleIn]>
         </app-contact-card>
       </div>
     </div>
 
+    <!-- Skeleton Loading -->
+    <div class="contact-methods skeleton-methods" *ngIf="isLoading">
+      <div class="skeleton-title"></div>
+      <div class="methods-grid">
+        <div class="skeleton-contact-card" *ngFor="let item of [1, 2, 3, 4, 5]"></div>
+      </div>
+    </div>
+
 
 
     <!-- Call to Action -->
-    <div class="cta-section" [@fadeIn]>
+    <div class="cta-section" [@fadeIn] *ngIf="!isLoading">
       <div class="cta-content">
         <h3 class="cta-title">🚀 Pronto para começar?</h3>
         <p class="cta-description">

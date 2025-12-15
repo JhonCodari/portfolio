@@ -19,12 +19,26 @@
           <span class="stat-number">{{ getTotalCertifications() }}</span>
           <span class="stat-label">Total de Certificações</span>
         </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ getTotalStudyHours() }}+</span>
+          <span class="stat-label">Horas de Estudo</span>
+        </div>
+      </div>
+
+      <!-- Top Technologies -->
+      <div class="top-technologies" *ngIf="!isLoading && getTopTechnologies().length > 0">
+        <p class="tech-label">Principais Tecnologias:</p>
+        <div class="tech-tags">
+          <span class="tech-tag" *ngFor="let tech of getTopTechnologies()">
+            {{ tech }}
+          </span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Certificações AWS em Destaque -->
-  <section class="featured-certifications" *ngIf="awsCertifications.length > 0">
+  <section class="featured-certifications" *ngIf="!isLoading && awsCertifications.length > 0">
     <div class="section-header">
       <h2 class="section-title">
         <i class="fab fa-aws"></i>
@@ -37,9 +51,21 @@
 
     <div class="aws-certifications-grid">
       <app-aws-certification-card
-        *ngFor="let cert of awsCertifications"
-        [certification]="cert">
+        *ngFor="let cert of awsCertifications; let i = index"
+        [certification]="cert"
+        [style.animation-delay]="i * 0.1 + 's'">
       </app-aws-certification-card>
+    </div>
+  </section>
+
+  <!-- Skeleton Loading for AWS -->
+  <section class="featured-certifications" *ngIf="isLoading">
+    <div class="section-header">
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-description"></div>
+    </div>
+    <div class="aws-certifications-grid">
+      <div class="skeleton-card" *ngFor="let item of [1, 2]"></div>
     </div>
   </section>
 
@@ -56,7 +82,19 @@
     </div>
 
     <!-- Filtros -->
-    <div class="filters-container">
+    <div class="filters-header">
+      <div class="results-info">
+        <i class="fas fa-filter"></i>
+        <span>{{ getFilteredCount() }} curso(s) encontrado(s)</span>
+      </div>
+
+      <button class="toggle-filters-btn" (click)="toggleFilters()">
+        <i [class]="showFilters ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+        {{ showFilters ? 'Ocultar' : 'Mostrar' }} Filtros
+      </button>
+    </div>
+
+    <div class="filters-container" [class.visible]="showFilters">
       <div class="search-box">
         <i class="fas fa-search"></i>
         <input
@@ -99,22 +137,44 @@
         </select>
       </div>
 
-      <button class="clear-filters-btn" (click)="clearFilters()">
+      <div class="filter-group">
+        <label for="sort-filter">
+          <i class="fas fa-sort"></i>
+          Ordenar por:
+        </label>
+        <select
+          id="sort-filter"
+          [value]="sortBy"
+          (change)="onSortChange($any($event.target).value)"
+        >
+          <option value="date">Data (Mais recente)</option>
+          <option value="name">Nome (A-Z)</option>
+          <option value="platform">Plataforma</option>
+        </select>
+      </div>
+
+      <button class="clear-filters-btn" (click)="clearFilters()" *ngIf="selectedPlatform !== 'all' || selectedTechnology !== 'all' || searchTerm !== ''">
         <i class="fas fa-times"></i>
         Limpar Filtros
       </button>
     </div>
 
     <!-- Grid de Cursos -->
-    <div class="courses-grid" *ngIf="filteredCourses.length > 0">
+    <div class="courses-grid" *ngIf="!isLoading && filteredCourses.length > 0">
       <app-course-card
-        *ngFor="let course of filteredCourses"
-        [certification]="course">
+        *ngFor="let course of filteredCourses; let i = index"
+        [certification]="course"
+        [style.animation-delay]="i * 0.05 + 's'">
       </app-course-card>
     </div>
 
+    <!-- Skeleton Loading for Courses -->
+    <div class="courses-grid" *ngIf="isLoading">
+      <div class="skeleton-card small" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]"></div>
+    </div>
+
     <!-- Mensagem de Nenhum Resultado -->
-    <div class="no-results" *ngIf="filteredCourses.length === 0">
+    <div class="no-results" *ngIf="!isLoading && filteredCourses.length === 0">
       <i class="fas fa-search"></i>
       <h3>Nenhum curso encontrado</h3>
       <p>Tente ajustar os filtros ou buscar por outro termo.</p>
