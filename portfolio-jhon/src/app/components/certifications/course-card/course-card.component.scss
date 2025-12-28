@@ -29,42 +29,12 @@
   align-items: center;
   justify-content: center;
 
-  .certification-image {
+  .certification-image,
+  app-pdf-preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
-
-  // Ícone PDF grande e centralizado
-  .pdf-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-sm);
-    color: var(--danger-color, #e74c3c);
-
-    i {
-      font-size: 4rem;
-      opacity: 0.9;
-    }
-
-    span {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-  }
-
-  .platform-badge {
-    position: absolute;
-    top: var(--spacing-sm);
-    right: var(--spacing-sm);
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -232,7 +202,19 @@
         &.btn-download {
           background: var(--success-color, #27ae60);
           color: white;
-          padding: 0.5rem 0.7rem;
+          padding: 0.5rem 0.9rem;
+
+          .btn-text {
+            display: inline;
+            
+            @media (max-width: 768px) {
+              display: none;
+            }
+          }
+
+          @media (max-width: 768px) {
+            padding: 0.5rem 0.7rem;
+          }
 
           &:hover {
             background: #229954;

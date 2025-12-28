@@ -1,10 +1,11 @@
 <div class="course-card" [class.pdf-card]="certification.isPdf">
   <div class="card-image">
-    <!-- Ícone PDF se for certificado em PDF -->
-    <div class="pdf-icon" *ngIf="certification.isPdf">
-      <i class="fas fa-file-pdf"></i>
-      <span>PDF</span>
-    </div>
+    <!-- Preview PDF real usando PDF.js -->
+    <app-pdf-preview
+      *ngIf="certification.isPdf && certification.pdfPath"
+      [pdfPath]="certification.pdfPath"
+      [pageNumber]="1"
+    ></app-pdf-preview>
 
     <!-- Imagem normal se não for PDF -->
     <img
@@ -70,6 +71,7 @@
           title="Baixar PDF"
         >
           <i class="fas fa-download"></i>
+          <span class="btn-text">Download</span>
         </button>
       </div>
 
