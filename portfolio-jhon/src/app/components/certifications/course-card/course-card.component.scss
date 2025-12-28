@@ -25,12 +25,36 @@
   height: 180px;
   overflow: hidden;
   background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .certification-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+  }
+
+  // Ícone PDF grande e centralizado
+  .pdf-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    color: var(--danger-color, #e74c3c);
+
+    i {
+      font-size: 4rem;
+      opacity: 0.9;
+    }
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
   }
 
   .platform-badge {
@@ -47,9 +71,32 @@
     font-size: 0.8rem;
     color: white;
     font-weight: 500;
+    z-index: 2;
 
     i {
       font-size: 0.9rem;
+    }
+  }
+
+  // Badge de auto-gerado
+  .auto-badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    background: rgba(52, 152, 219, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    color: white;
+    font-weight: 600;
+    z-index: 2;
+
+    i {
+      font-size: 0.75rem;
     }
   }
 }
@@ -97,6 +144,19 @@
     overflow: hidden;
   }
 
+  .course-hours {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-style: italic;
+
+    i {
+      color: var(--primary-color);
+    }
+  }
+
   .course-technologies {
     display: flex;
     flex-wrap: wrap;
@@ -138,6 +198,52 @@
 
       i {
         color: var(--primary-color);
+      }
+    }
+
+    // Ações para PDFs
+    .pdf-actions {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 0.9rem;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.btn-view {
+          background: var(--primary-color);
+          color: var(--bg-primary);
+
+          &:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+          }
+        }
+
+        &.btn-download {
+          background: var(--success-color, #27ae60);
+          color: white;
+          padding: 0.5rem 0.7rem;
+
+          &:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+          }
+        }
+
+        i {
+          font-size: 0.85rem;
+        }
       }
     }
 

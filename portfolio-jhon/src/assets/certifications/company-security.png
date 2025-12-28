@@ -1,5 +1,0 @@
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="600" fill="#2C3E50"/>
-  <text x="400" y="280" font-family="Arial" font-size="48" font-weight="bold" fill="white" text-anchor="middle">EMPRESA</text>
-  <text x="400" y="360" font-family="Arial" font-size="32" fill="white" text-anchor="middle">Java Security</text>
-</svg>
