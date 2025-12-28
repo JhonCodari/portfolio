@@ -153,23 +153,11 @@
 
   .course-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-top: auto;
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--border-color);
-
-    .issue-date {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-
-      i {
-        color: var(--primary-color);
-      }
-    }
 
     // Ações para PDFs
     .pdf-actions {
@@ -206,7 +194,7 @@
 
           .btn-text {
             display: inline;
-            
+
             @media (max-width: 768px) {
               display: none;
             }
