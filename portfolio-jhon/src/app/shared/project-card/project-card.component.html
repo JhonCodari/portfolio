@@ -2,7 +2,6 @@
   class="project-card"
   [style.animation-delay.ms]="animationDelay">
 
-  <!-- Project Image -->
   <div class="project-image">
     <img
       *ngIf="project.imageUrl; else placeholderImage"
@@ -16,32 +15,25 @@
       </div>
     </ng-template>
 
-    <!-- Status Badge -->
     <div class="status-badge" [style.background-color]="getStatusColor(project.status)">
       {{ getStatusText(project.status) }}
     </div>
 
-    <!-- Featured Badge -->
     <div class="featured-badge" *ngIf="project.featured">
       ⭐ Destaque
     </div>
   </div>
 
-  <!-- Project Content -->
   <div class="project-content">
-    <!-- Category -->
     <div class="project-category">
       <span class="category-icon">{{ getCategoryIcon(project.category) }}</span>
       <span class="category-text">{{ getCategoryText(project.category) }}</span>
     </div>
 
-    <!-- Title -->
     <h3 class="project-title">{{ project.title }}</h3>
 
-    <!-- Short Description -->
     <p class="project-description">{{ project.shortDescription }}</p>
 
-    <!-- Technologies -->
     <div class="technologies">
       <span
         *ngFor="let tech of project.technologies; trackBy: trackByTech"
@@ -50,7 +42,6 @@
       </span>
     </div>
 
-    <!-- Highlights -->
     <div class="highlights" *ngIf="project.highlights.length > 0">
       <h4 class="highlights-title">Destaques:</h4>
       <ul class="highlights-list">
@@ -61,7 +52,6 @@
     </div>
   </div>
 
-  <!-- Project Actions -->
   <div class="project-actions">
     <a
       *ngIf="project.liveUrl"

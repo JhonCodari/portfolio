@@ -148,7 +148,6 @@ export class CertificationsComponent implements OnInit {
   }
 
   getTotalStudyHours(): number {
-    // Estimativa: cada certificação AWS = 40h, cada curso = 20h
     return (this.awsCertifications.length * 40) + (this.courseCertifications.length * 20);
   }
 

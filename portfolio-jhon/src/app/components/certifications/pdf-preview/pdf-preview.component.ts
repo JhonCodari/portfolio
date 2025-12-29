@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Declaração global para PDF.js carregado via CDN
 declare const pdfjsLib: any;
 
 @Component({
@@ -129,17 +128,14 @@ export class PdfPreviewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private async ensurePdfJsLoaded(): Promise<void> {
-    // Verifica se já está carregado
     if (typeof pdfjsLib !== 'undefined') {
       this.scriptLoaded = true;
       return;
     }
 
     try {
-      // Carrega o script do PDF.js do CDN
       await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
 
-      // Configura o worker
       if (typeof pdfjsLib !== 'undefined') {
         (pdfjsLib as any).GlobalWorkerOptions.workerSrc =
           'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -167,14 +163,11 @@ export class PdfPreviewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isLoading = true;
       this.hasError = false;
 
-      // Carrega o PDF
       const loadingTask = pdfjsLib.getDocument(this.pdfPath);
       const pdf = await loadingTask.promise;
 
-      // Pega a primeira página
       const page = await pdf.getPage(this.pageNumber);
 
-      // Prepara o canvas
       const canvas = this.canvas.nativeElement;
       const context = canvas.getContext('2d');
 
@@ -182,30 +175,23 @@ export class PdfPreviewComponent implements OnInit, AfterViewInit, OnDestroy {
         throw new Error('Contexto 2D não disponível');
       }
 
-      // Obtém viewport inicial para detectar orientação
       const initialViewport = page.getViewport({ scale: 1 });
 
-      // Detecta se o PDF está em retrato (portrait) e precisa rotacionar para paisagem
-      // Se altura > largura, está em retrato
       let rotation = initialViewport.rotation || 0;
       const isPortrait = initialViewport.height > initialViewport.width;
 
-      // Se está em retrato, rotaciona 90 graus para transformar em paisagem
       if (isPortrait) {
         rotation = 90;
       }
 
-      // Define escala para caber no container (180px de altura do card)
       const containerHeight = 180;
       const viewport = page.getViewport({ scale: 1, rotation });
       const scale = containerHeight / viewport.height;
       const scaledViewport = page.getViewport({ scale, rotation });
 
-      // Configura dimensões do canvas
       canvas.width = scaledViewport.width;
       canvas.height = scaledViewport.height;
 
-      // Renderiza a página
       const renderContext = {
         canvasContext: context,
         viewport: scaledViewport

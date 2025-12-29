@@ -1,6 +1,5 @@
 <section class="contact-section">
   <div class="container">
-    <!-- Header -->
     <div class="section-header" [@fadeIn]>
       <h2 class="section-title">📞 Vamos Conversar?</h2>
       <p class="section-subtitle">
@@ -8,7 +7,6 @@
       </p>
     </div>
 
-    <!-- Contact Methods -->
     <div class="contact-methods" [@fadeIn] *ngIf="!isLoading">
       <h3 class="methods-title">💬 Formas de Contato</h3>
       <div class="methods-grid">
@@ -22,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Skeleton Loading -->
     <div class="contact-methods skeleton-methods" *ngIf="isLoading">
       <div class="skeleton-title"></div>
       <div class="methods-grid">
@@ -30,9 +27,6 @@
       </div>
     </div>
 
-
-
-    <!-- Call to Action -->
     <div class="cta-section" [@fadeIn] *ngIf="!isLoading">
       <div class="cta-content">
         <h3 class="cta-title">🚀 Pronto para começar?</h3>

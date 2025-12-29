@@ -1,5 +1,4 @@
 <div class="certifications-container">
-  <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
       <h1 class="page-title">Certificações & Cursos</h1>
@@ -25,7 +24,6 @@
         </div>
       </div>
 
-      <!-- Top Technologies -->
       <div class="top-technologies" *ngIf="!isLoading && getTopTechnologies().length > 0">
         <p class="tech-label">Principais Tecnologias:</p>
         <div class="tech-tags">
@@ -37,7 +35,6 @@
     </div>
   </section>
 
-  <!-- Certificações AWS em Destaque -->
   <section class="featured-certifications" *ngIf="!isLoading && awsCertifications.length > 0">
     <div class="section-header">
       <h2 class="section-title">
@@ -58,7 +55,6 @@
     </div>
   </section>
 
-  <!-- Skeleton Loading for AWS -->
   <section class="featured-certifications" *ngIf="isLoading">
     <div class="section-header">
       <div class="skeleton skeleton-title"></div>
@@ -69,7 +65,6 @@
     </div>
   </section>
 
-  <!-- Cursos de Capacitação -->
   <section class="courses-section">
     <div class="section-header">
       <h2 class="section-title">
@@ -81,7 +76,6 @@
       </p>
     </div>
 
-    <!-- Filtros -->
     <div class="filters-header">
       <div class="results-info">
         <i class="fas fa-filter"></i>
@@ -159,7 +153,6 @@
       </button>
     </div>
 
-    <!-- Grid de Cursos -->
     <div class="courses-grid" *ngIf="!isLoading && filteredCourses.length > 0">
       <app-course-card
         *ngFor="let course of filteredCourses; let i = index"
@@ -168,12 +161,10 @@
       </app-course-card>
     </div>
 
-    <!-- Skeleton Loading for Courses -->
     <div class="courses-grid" *ngIf="isLoading">
       <div class="skeleton-card small" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]"></div>
     </div>
 
-    <!-- Mensagem de Nenhum Resultado -->
     <div class="no-results" *ngIf="!isLoading && filteredCourses.length === 0">
       <i class="fas fa-search"></i>
       <h3>Nenhum curso encontrado</h3>

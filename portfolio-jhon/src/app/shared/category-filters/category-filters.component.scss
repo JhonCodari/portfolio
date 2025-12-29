@@ -10,7 +10,7 @@
     border: 2px solid var(--color-border);
     background: var(--color-bg-secondary);
     color: var(--color-text-secondary);
-    border-radius: var(--radius-sm); // Menos arredondado (era var(--radius-full))
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all var(--transition-medium);
     font-weight: 500;

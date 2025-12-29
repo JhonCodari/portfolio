@@ -51,7 +51,6 @@ export class AboutComponent implements OnInit {
   personalValues: PersonalValue[] = [];
   timeline: TimelineItem[] = [];
 
-  // Estados de carregamento (otimizado para carregamento instantâneo)
   isLoadingPersonalValues = false;
   isLoadingTimeline = false;
 
@@ -75,10 +74,12 @@ export class AboutComponent implements OnInit {
       Sou um desenvolvedor Backend Java com mais de ${years} anos de experiência criando
       soluções robustas e escaláveis no setor financeiro.
 
-      Formado em Análise e Desenvolvimento de Sistemas pela Faculdade ELO (Recife), atualmente trabalho
-      em uma das maiores consultorias de tecnologia do mundo, onde atuo principalmente em projetos para
-      gigantes do setor financeiro nacional. Possuo certificações AWS e aplico conhecimentos de cloud
-      computing no meu dia a dia profissional.
+      Formado em Análise e Desenvolvimento de Sistemas pela Faculdade ELO (Recife), onde pude desenvolver
+      minhas habilidades e conhecimentos que mais tarde viriam a ser fundamentais na minha carreira.
+
+      Pude aplicar meus conhecimentos e habilidades atuando em uma das maiores consultorias de tecnologia do mundo,
+      trabalhando principalmente em projetos para gigantes do setor financeiro nacional.
+      Alem disso, possuo certificações AWS e aplico conhecimentos de cloud computing no meu dia a dia profissional.
 
       Estou sempre estudando e me capacitando, aplicando constantemente o conhecimento adquirido no meu
       trabalho. Acredito que a educação e o desenvolvimento contínuo são as chaves para a realização
@@ -122,7 +123,6 @@ export class AboutComponent implements OnInit {
     });
   }
 
-  // Método para otimizar a renderização de listas
   trackByIndex(index: number, item: any): number {
     return index;
   }

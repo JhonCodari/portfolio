@@ -1,6 +1,5 @@
 <section class="projects-section">
   <div class="container">
-    <!-- Header -->
     <div class="section-header" [@fadeIn]>
       <h2 class="section-title">💼 Projetos & Portfolio</h2>
       <p class="section-subtitle">
@@ -8,7 +7,6 @@
       </p>
     </div>
 
-    <!-- Featured Projects -->
     <div class="featured-section" [@fadeIn] *ngIf="!isLoading && getFeaturedProjects().length > 0">
       <h3 class="featured-title">⭐ Projetos em Destaque</h3>
       <div class="featured-grid">
@@ -22,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Filters Header -->
     <div class="filters-header" *ngIf="!isLoading">
       <div class="results-info">
         <i class="fas fa-filter"></i>
@@ -35,7 +32,6 @@
       </button>
     </div>
 
-    <!-- Filters Container -->
     <div class="filters-container" [class.visible]="showFilters" *ngIf="!isLoading">
       <div class="search-box">
         <i class="fas fa-search"></i>
@@ -64,7 +60,6 @@
       </button>
     </div>
 
-    <!-- Category Filters -->
     <div [@fadeIn] *ngIf="!isLoading">
       <app-category-filters
         [categories]="categories"
@@ -74,7 +69,6 @@
       </app-category-filters>
     </div>
 
-    <!-- Projects Grid -->
     <div class="projects-grid" [@fadeIn] *ngIf="!isLoading && filteredProjects.length > 0">
       <app-project-card
         *ngFor="let project of filteredProjects; let i = index; trackBy: trackByProject"
@@ -85,12 +79,10 @@
       </app-project-card>
     </div>
 
-    <!-- Skeleton Loading -->
     <div class="projects-grid skeleton-grid" *ngIf="isLoading">
       <div class="skeleton-project-card" *ngFor="let item of [1, 2, 3, 4, 5, 6]"></div>
     </div>
 
-    <!-- Empty State -->
     <div class="empty-state" *ngIf="!isLoading && filteredProjects.length === 0" [@fadeIn]>
       <div class="empty-icon">📂</div>
       <h3 class="empty-title">Nenhum projeto encontrado</h3>

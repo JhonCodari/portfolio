@@ -78,12 +78,10 @@ export class SkillsComponent implements OnInit {
   filterSkills(): void {
     let filtered = this.skills;
 
-    // Filtro por categoria
     if (this.selectedCategory !== 'all') {
       filtered = filtered.filter(skill => skill.category === this.selectedCategory);
     }
 
-    // Filtro por busca
     if (this.searchTerm) {
       const searchLower = this.searchTerm.toLowerCase();
       filtered = filtered.filter(skill =>

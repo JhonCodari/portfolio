@@ -1,5 +1,4 @@
 <div class="skill-icon-container">
-  <!-- Ícone SVG personalizado se disponível -->
   <img
     *ngIf="hasCustomIcon"
     [src]="iconPath"
@@ -7,7 +6,6 @@
     class="custom-icon"
     (error)="onImageError($event)">
 
-  <!-- Fallback para emoji -->
   <span
     *ngIf="!hasCustomIcon"
     class="emoji-icon">

@@ -1,7 +1,7 @@
 .skill-card {
   background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(86, 211, 100, 0.08));
   border: 2px solid var(--color-secondary);
-  border-radius: var(--radius-base); // Menos arredondado (era var(--radius-lg))
+  border-radius: var(--radius-base);
   padding: var(--spacing-lg);
   text-align: center;
   transition: all var(--transition-medium);
@@ -9,12 +9,12 @@
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(88, 166, 255, 0.15);
   cursor: pointer;
-  width: 100%; // Largura responsiva em vez de fixa
+  width: 100%;
   min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box; // Garante que padding e border estejam incluídos na largura
+  box-sizing: border-box;
 
   &::before {
     content: '';
@@ -38,7 +38,6 @@
     align-items: center;
     justify-content: center;
 
-    // Padronização dos ícones SVG
     img {
       width: 48px !important;
       height: 48px !important;
@@ -56,7 +55,6 @@
       }
     }
 
-    // Padronização dos ícones emoji
     .icon-emoji {
       font-size: 48px;
       line-height: 1;
@@ -130,19 +128,18 @@
         width: 100%;
         height: 12px;
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 4px; // Menos arredondado (era 6px)
+        border-radius: 4px;
         overflow: hidden;
         position: relative;
         border: 1px solid rgba(255, 255, 255, 0.15);
 
         .progress-bar-fill {
           height: 100%;
-          border-radius: 4px; // Menos arredondado (era 6px)
+          border-radius: 4px;
           transition: width 1.2s ease-out;
           position: relative;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
-          // Adiciona um gradiente sutil para dar profundidade
           &::before {
             content: '';
             position: absolute;
@@ -151,28 +148,25 @@
             right: 0;
             height: 50%;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
-            border-radius: 4px 4px 0 0; // Menos arredondado
+            border-radius: 4px 4px 0 0;
           }
         }
       }
     }
   }
 
-  // Tablets
   @media (max-width: 1024px) and (min-width: 769px) {
     width: 180px;
     min-height: 220px;
     padding: var(--spacing-base);
   }
 
-  // Mobile
   @media (max-width: 768px) {
     width: 110px;
     min-height: 140px;
     padding: var(--spacing-base);
   }
 
-  // Mobile pequeno
   @media (max-width: 480px) {
     width: 100px;
     min-height: 130px;

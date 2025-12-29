@@ -1,13 +1,12 @@
 <div class="course-card" [class.pdf-card]="certification.isPdf">
   <div class="card-image">
-    <!-- Preview PDF real usando PDF.js -->
+
     <app-pdf-preview
       *ngIf="certification.isPdf && certification.pdfPath"
       [pdfPath]="certification.pdfPath"
       [pageNumber]="1"
     ></app-pdf-preview>
 
-    <!-- Imagem normal se não for PDF -->
     <img
       *ngIf="!certification.isPdf"
       [src]="certification.imageUrl"
@@ -36,14 +35,13 @@
       </span>
     </div>
 
-    <!-- Carga horária se disponível -->
     <div class="course-hours" *ngIf="certification.hours">
       <i class="fas fa-clock"></i>
       <span>{{ certification.hours }}h de curso</span>
     </div>
 
     <div class="course-footer">
-      <!-- Botões para PDF -->
+
       <div class="pdf-actions" *ngIf="certification.isPdf">
         <button
           class="btn-view"
@@ -63,7 +61,6 @@
         </button>
       </div>
 
-      <!-- Link normal para certificados online -->
       <a
         *ngIf="!certification.isPdf && certification.credentialUrl !== '#'"
         [href]="certification.credentialUrl"

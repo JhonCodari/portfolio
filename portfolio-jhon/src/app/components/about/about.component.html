@@ -1,12 +1,11 @@
 <section class="about-section">
   <div class="container">
-    <!-- Sobre Mim Section - PRIMEIRO -->
+
     <header class="section-header" [@fadeIn]>
       <h2 class="section-title" id="sobre-titulo">Sobre Mim</h2>
       <p class="section-subtitle" aria-describedby="sobre-titulo">Conheça um pouco mais sobre minha jornada e paixão por tecnologia</p>
     </header>
 
-    <!-- Main About Content -->
     <main class="about-content">
       <article class="about-text" [@fadeIn]>
         <div class="personal-intro">
@@ -27,7 +26,6 @@
       </div>
     </main>
 
-    <!-- Mission Section - SEGUNDO -->
     <section class="mission-section" aria-labelledby="missao-titulo">
       <h3 class="subsection-title" [@fadeIn] id="missao-titulo">Minha Missão</h3>
       <div class="mission-content" [@fadeIn]>
@@ -37,18 +35,15 @@
       </div>
     </section>
 
-    <!-- Values Section - TERCEIRO (abaixo da missão) -->
     <section class="values-section" aria-labelledby="valores-titulo">
       <h3 class="subsection-title" [@fadeIn] id="valores-titulo">Meus Valores</h3>
 
-      <!-- Loading state -->
       <div class="loading-container" *ngIf="isLoadingPersonalValues" [@fadeIn]>
         <div class="values-loading-grid">
           <div class="skeleton-value-card" *ngFor="let item of [1,2,3,4]"></div>
         </div>
       </div>
 
-      <!-- Content -->
       <div class="values-grid" *ngIf="!isLoadingPersonalValues && personalValues.length > 0">
         <article class="value-card" *ngFor="let value of personalValues" [@scaleIn]>
           <div class="value-icon" [attr.aria-label]="'Ícone representando ' + value.title">{{ value.icon }}</div>
@@ -58,7 +53,6 @@
       </div>
     </section>
 
-    <!-- Timeline Section -->
     <section class="timeline-section" aria-labelledby="timeline-titulo">
       <app-timeline
         [title]="'Minha Jornada'"

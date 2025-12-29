@@ -1,7 +1,7 @@
 <header class="navbar" [class.scrolled]="isScrolled">
   <div class="container">
     <div class="navbar-content">
-      <!-- Logo/Brand -->
+
       <div class="navbar-brand">
         <a routerLink="/" class="brand-link">
           <span class="brand-text">Jhon Codari</span>
@@ -9,7 +9,6 @@
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
       <nav class="navbar-nav desktop-nav">
         <ul class="nav-list">
           <li class="nav-item" *ngFor="let item of navItems">
@@ -25,7 +24,6 @@
         </ul>
       </nav>
 
-      <!-- Mobile Menu Button -->
       <button
         class="mobile-menu-btn"
         (click)="toggleMenu()"
@@ -38,7 +36,6 @@
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
     <nav
       class="mobile-nav"
       [@navbarSlide]="isMenuOpen ? 'open' : 'closed'"
@@ -60,7 +57,6 @@
     </nav>
   </div>
 
-  <!-- Mobile Overlay -->
   <div
     class="mobile-overlay"
     [class.show]="isMenuOpen"

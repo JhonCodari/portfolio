@@ -27,100 +27,13 @@ export class PortfolioService {
       status: 'completed',
       completedAt: new Date('2025-09-24'),
       highlights: [
-        'Arquitetura 100% componentizada para reuso',
-        'Design system consistente',
+        'Arquitetura componentizada para reuso',
         'Animações e transições suaves',
-        'Deploy automatizado via GitHub Actions'
+        'Sistema híbrido de certificados (auto-geração de PDFs + controle manual)',
+        'Preview de PDFs renderizado em Canvas usando PDF.js',
+        'Deploy automatizado via GitHub Actions para GitHub Pages'
       ]
-    },
-
-    // Exemplo de projeto Full Stack
-    // {
-    //   id: 2,
-    //   title: 'Sistema de Gestão Empresarial',
-    //   description: 'Sistema completo de gestão empresarial desenvolvido com Spring Boot no backend e Angular no frontend. Inclui módulos de vendas, estoque, financeiro e relatórios avançados.',
-    //   shortDescription: 'ERP completo com Spring Boot e Angular, incluindo gestão de vendas e estoque.',
-    //   technologies: ['Java', 'Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'JWT'],
-    //   githubUrl: 'https://github.com/JhonCodari/sistema-gestao',
-    //   liveUrl: undefined,
-    //   imageUrl: undefined,
-    //   featured: true,
-    //   category: 'fullstack',
-    //   status: 'completed',
-    //   completedAt: new Date('2025-08-15'),
-    //   highlights: [
-    //     'API REST completa com documentação Swagger',
-    //     'Sistema de autenticação JWT',
-    //     'Dashboard com gráficos em tempo real',
-    //     'Exportação de relatórios em PDF/Excel'
-    //   ]
-    // },
-
-    // Exemplo de projeto Mobile
-    // {
-    //   id: 3,
-    //   title: 'App de Controle Financeiro',
-    //   description: 'Aplicativo mobile para controle financeiro pessoal, desenvolvido com tecnologias híbridas. Permite cadastro de receitas, despesas, metas financeiras e visualização de relatórios.',
-    //   shortDescription: 'App móvel para gestão financeira pessoal com relatórios e gráficos.',
-    //   technologies: ['React Native', 'TypeScript', 'SQLite', 'Expo', 'Chart.js'],
-    //   githubUrl: 'https://github.com/JhonCodari/finapp',
-    //   liveUrl: undefined,
-    //   imageUrl: undefined,
-    //   featured: false,
-    //   category: 'mobile',
-    //   status: 'in-progress',
-    //   completedAt: new Date('2025-10-30'),
-    //   highlights: [
-    //     'Interface intuitiva e responsiva',
-    //     'Gráficos interativos de gastos',
-    //     'Sincronização em nuvem',
-    //     'Notificações de metas financeiras'
-    //   ]
-    // },
-
-    // Exemplo de projeto Backend/API
-    // {
-    //   id: 4,
-    //   title: 'API de E-commerce',
-    //   description: 'API RESTful robusta para e-commerce, desenvolvida com Spring Boot. Inclui gestão de produtos, carrinho de compras, processamento de pagamentos e sistema de avaliações.',
-    //   shortDescription: 'API REST completa para e-commerce com Spring Boot e microserviços.',
-    //   technologies: ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Docker', 'Swagger'],
-    //   githubUrl: 'https://github.com/JhonCodari/ecommerce-api',
-    //   liveUrl: undefined,
-    //   imageUrl: undefined,
-    //   featured: false,
-    //   category: 'backend',
-    //   status: 'completed',
-    //   completedAt: new Date('2025-07-20'),
-    //   highlights: [
-    //     'Arquitetura de microserviços',
-    //     'Cache com Redis para performance',
-    //     'Integração com gateway de pagamento',
-    //     'Testes automatizados com JUnit'
-    //   ]
-    // },
-
-    // Exemplo de projeto Web/Frontend
-    // {
-    //   id: 5,
-    //   title: 'Dashboard Analytics',
-    //   description: 'Dashboard interativo para análise de dados empresariais, desenvolvido com React e D3.js. Apresenta métricas de vendas, performance e KPIs através de gráficos dinâmicos.',
-    //   shortDescription: 'Dashboard de analytics com React e visualizações de dados interativas.',
-    //   technologies: ['React', 'D3.js', 'TypeScript', 'Material-UI', 'REST API'],
-    //   githubUrl: 'https://github.com/JhonCodari/analytics-dashboard',
-    //   liveUrl: 'https://analytics-demo.jhoncodari.com',
-    //   imageUrl: undefined,
-    //   featured: true,
-    //   category: 'frontend',
-    //   status: 'completed',
-    //   completedAt: new Date('2025-06-10'),
-    //   highlights: [
-    //     'Visualizações de dados em tempo real',
-    //     'Interface responsiva e moderna',
-    //     'Filtros avançados de dados',
-    //     'Exportação de relatórios customizados'
-    //   ]
-    // }
+    }
   ];
 
   private skills: Skill[] = [
@@ -177,19 +90,6 @@ export class PortfolioService {
       featured: true,
       description: 'Certificação fundamental da AWS que valida conhecimentos de cloud computing, serviços AWS e melhores práticas.'
     },
-    {
-      id: 2,
-      title: 'AWS Certified Solutions Architect - Associate',
-      issuer: 'Amazon Web Services',
-      imageUrl: 'assets/certifications/aws-solutions-architect.png',
-      credentialUrl: 'https://www.credly.com/badges/your-badge-id',
-      issuedDate: new Date('2023-06-20'),
-      expiryDate: new Date('2026-06-20'),
-      type: 'aws',
-      technologies: ['AWS', 'Cloud Architecture', 'Solutions Design'],
-      featured: true,
-      description: 'Certificação que valida habilidades em design e implementação de sistemas distribuídos na AWS.'
-    },
 
     // // Cursos de Backend
     // {
@@ -203,102 +103,7 @@ export class PortfolioService {
     //   technologies: ['Java', 'Spring Boot', 'Spring MVC', 'JPA'],
     //   description: 'Formação completa em desenvolvimento Java com Spring Framework.'
     // },
-    // {
-    //   id: 4,
-    //   title: 'Microservices com Spring Cloud',
-    //   issuer: 'Udemy',
-    //   imageUrl: 'assets/certifications/udemy-microservices.png',
-    //   credentialUrl: 'https://udemy.com/certificate/your-cert',
-    //   issuedDate: new Date('2022-03-15'),
-    //   type: 'course',
-    //   technologies: ['Java', 'Spring Cloud', 'Microservices', 'Docker'],
-    //   description: 'Curso avançado sobre arquitetura de microserviços com Spring Cloud.'
-    // },
-    // {
-    //   id: 5,
-    //   title: 'API REST com Spring Boot',
-    //   issuer: 'Digital Innovation One',
-    //   imageUrl: 'assets/certifications/dio-spring-boot.png',
-    //   credentialUrl: 'https://dio.me/certificate/your-cert',
-    //   issuedDate: new Date('2021-11-20'),
-    //   type: 'course',
-    //   technologies: ['Java', 'Spring Boot', 'REST API', 'PostgreSQL'],
-    //   description: 'Desenvolvimento de APIs RESTful profissionais com Spring Boot.'
-    // },
 
-    // // Cursos de Cloud e DevOps
-    // {
-    //   id: 6,
-    //   title: 'Docker e Kubernetes',
-    //   issuer: 'Alura',
-    //   imageUrl: 'assets/certifications/alura-docker.png',
-    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-    //   issuedDate: new Date('2022-07-10'),
-    //   type: 'course',
-    //   technologies: ['Docker', 'Kubernetes', 'DevOps'],
-    //   description: 'Containerização e orquestração de aplicações com Docker e Kubernetes.'
-    // },
-    // {
-    //   id: 7,
-    //   title: 'AWS para Desenvolvedores',
-    //   issuer: 'Udemy',
-    //   imageUrl: 'assets/certifications/udemy-aws.png',
-    //   credentialUrl: 'https://udemy.com/certificate/your-cert',
-    //   issuedDate: new Date('2023-01-15'),
-    //   type: 'course',
-    //   technologies: ['AWS', 'EC2', 'S3', 'Lambda', 'RDS'],
-    //   description: 'Curso prático sobre os principais serviços AWS para desenvolvedores.'
-    // },
-
-    // // Cursos de Banco de Dados
-    // {
-    //   id: 8,
-    //   title: 'Modelagem de Dados e SQL',
-    //   issuer: 'Alura',
-    //   imageUrl: 'assets/certifications/alura-sql.png',
-    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-    //   issuedDate: new Date('2021-05-20'),
-    //   type: 'course',
-    //   technologies: ['SQL', 'MySQL', 'PostgreSQL', 'Database Design'],
-    //   description: 'Modelagem de dados e consultas SQL avançadas.'
-    // },
-    // {
-    //   id: 9,
-    //   title: 'Redis para Aplicações de Alta Performance',
-    //   issuer: 'Digital Innovation One',
-    //   imageUrl: 'assets/certifications/dio-redis.png',
-    //   credentialUrl: 'https://dio.me/certificate/your-cert',
-    //   issuedDate: new Date('2022-09-10'),
-    //   type: 'course',
-    //   technologies: ['Redis', 'Cache', 'Performance'],
-    //   description: 'Implementação de cache e otimização de performance com Redis.'
-    // },
-
-    // // Cursos de Frontend (secundário)
-    // {
-    //   id: 10,
-    //   title: 'Angular: Fundamentos e Boas Práticas',
-    //   issuer: 'Alura',
-    //   imageUrl: 'assets/certifications/alura-angular.png',
-    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-    //   issuedDate: new Date('2023-11-15'),
-    //   type: 'course',
-    //   technologies: ['Angular', 'TypeScript', 'RxJS'],
-    //   description: 'Desenvolvimento de aplicações web modernas com Angular.'
-    // },
-
-    // // Cursos da Empresa
-    // {
-    //   id: 11,
-    //   title: 'Arquitetura de Software Corporativa',
-    //   issuer: 'Empresa',
-    //   imageUrl: 'assets/certifications/company-architecture.png',
-    //   credentialUrl: '#',
-    //   issuedDate: new Date('2023-04-10'),
-    //   type: 'course',
-    //   technologies: ['Architecture', 'Design Patterns', 'Best Practices'],
-    //   description: 'Curso interno sobre arquitetura de software e padrões de design corporativos.'
-    // }
   ];
 
   // ========================================

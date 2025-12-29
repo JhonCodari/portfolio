@@ -11,7 +11,6 @@ export class SkillIconComponent {
   @Input() skillName: string = '';
   @Input() fallbackIcon: string = '🔧';
 
-  // Mapeamento de ícones SVG para cada tecnologia
   iconMapping: { [key: string]: string } = {
     // Backend
     'Java': 'assets/icons/java.svg',
@@ -44,11 +43,9 @@ export class SkillIconComponent {
   };
 
   get iconPath(): string | null {
-    // Se fallbackIcon é um caminho SVG, usa ele diretamente
     if (this.fallbackIcon.includes('.svg')) {
       return this.fallbackIcon;
     }
-    // Senão, usa o mapeamento interno
     return this.iconMapping[this.skillName] || null;
   }
 
@@ -57,7 +54,6 @@ export class SkillIconComponent {
   }
 
   onImageError(event: any): void {
-    // Se a imagem falhar ao carregar, esconde o elemento
     event.target.style.display = 'none';
   }
 }

@@ -50,12 +50,10 @@ export class ProjectsComponent implements OnInit {
   filterProjects(): void {
     let filtered = this.projects;
 
-    // Filtro por categoria
     if (this.selectedCategory !== 'all') {
       filtered = filtered.filter(project => project.category === this.selectedCategory);
     }
 
-    // Filtro por busca
     if (this.searchTerm) {
       const searchLower = this.searchTerm.toLowerCase();
       filtered = filtered.filter(project =>

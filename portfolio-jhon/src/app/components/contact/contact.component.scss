@@ -95,8 +95,6 @@
   }
 }
 
-/* Animações */
-// Methods Grid - Cards de Contato com largura fixa e máximo 2 por linha
 .contact-methods {
   margin-bottom: var(--spacing-3xl);
 
@@ -209,7 +207,6 @@
   animation: fadeInUp 1s ease-out;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .contact-container {
     padding: 1.5rem;
@@ -239,7 +236,6 @@
   }
 }
 
-/* Efeitos hover para toda a seção */
 .contact-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);

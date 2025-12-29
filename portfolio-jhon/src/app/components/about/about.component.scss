@@ -153,17 +153,10 @@
   }
 }
 
-// Removido: Seção de estatísticas redundante (mantida apenas na Home)
-
-
-
 .values-section {
   margin-bottom: var(--spacing-3xl);
 }
 
-
-
-// Seção de valores pessoais
 .values-section {
   .values-grid {
     display: grid;
@@ -171,31 +164,26 @@
     margin-top: var(--spacing-xl);
     justify-content: center;
 
-    // Desktop: máximo 4 cards por linha com largura fixa
     grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 
-    // Limita a 4 colunas no máximo
     @media (min-width: 1200px) {
       grid-template-columns: repeat(4, 280px);
     }
 
-    // Tablets: 2-3 cards por linha
     @media (max-width: 1024px) and (min-width: 769px) {
       grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
       max-width: 860px;
     }
 
-    // Mobile: 1-2 cards por linha
     @media (max-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
       gap: var(--spacing-lg);
       max-width: 520px;
     }
 
-    // Mobile pequeno: 1 card por linha
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
       max-width: 300px;
@@ -214,7 +202,6 @@
     position: relative;
     overflow: hidden;
 
-    // Altura mínima para manter consistência visual
     min-height: 240px;
     display: flex;
     flex-direction: column;
@@ -225,7 +212,6 @@
       padding: var(--spacing-lg);
     }
 
-    // Dark mode optimizations
     @media (prefers-color-scheme: dark) {
       background: rgba(255, 255, 255, 0.03);
       border-color: rgba(255, 255, 255, 0.1);
@@ -291,7 +277,6 @@
   }
 }
 
-// Estados de carregamento (skeleton loading)
 .loading-container {
   margin-top: var(--spacing-xl);
 }
@@ -303,7 +288,6 @@
   gap: var(--spacing-xl);
   justify-content: center;
 
-  // Mantém o mesmo layout do grid principal
   grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
   max-width: 1200px;
   margin-left: auto;
@@ -329,8 +313,6 @@
     max-width: 300px;
   }
 }
-
-// Removidos: Skeletons de loading desnecessários para melhor performance
 
 .mission-section {
   margin-bottom: var(--spacing-3xl);
@@ -358,7 +340,6 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
 
-    // Dark mode optimizations
     @media (prefers-color-scheme: dark) {
       background: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(86, 211, 100, 0.15));
       border-color: rgba(255, 255, 255, 0.1);

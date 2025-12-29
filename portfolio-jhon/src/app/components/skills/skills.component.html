@@ -1,6 +1,5 @@
 <section class="skills-section">
   <div class="container">
-    <!-- Header with Search -->
     <div class="header-wrapper">
       <div class="section-header" [@fadeIn]>
         <h2 class="section-title">🎯 Competências Técnicas & Metodologias</h2>
@@ -9,7 +8,6 @@
         </p>
       </div>
 
-      <!-- Search Box -->
       <div class="search-container" *ngIf="!isLoading">
         <div class="search-box">
           <i class="fas fa-search"></i>
@@ -30,7 +28,6 @@
       </div>
     </div>
 
-    <!-- Skills Stats -->
     <div class="skills-stats" *ngIf="!isLoading">
       <div class="stat-item">
         <span class="stat-number">{{ getTotalSkills() }}</span>
@@ -50,7 +47,6 @@
       </div>
     </div>
 
-    <!-- Category Filters -->
     <div [@fadeIn] *ngIf="!isLoading">
       <app-category-filters
         [categories]="categories"
@@ -60,7 +56,6 @@
       </app-category-filters>
     </div>
 
-    <!-- Skills Grid -->
     <div class="skills-grid" [@fadeIn] *ngIf="!isLoading && filteredSkills.length > 0">
       <app-skill-card
         *ngFor="let skill of filteredSkills; let i = index"
@@ -71,12 +66,10 @@
       </app-skill-card>
     </div>
 
-    <!-- Skeleton Loading -->
     <div class="skills-grid skeleton-grid" *ngIf="isLoading">
       <div class="skeleton-skill-card" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"></div>
     </div>
 
-    <!-- Empty State -->
     <div class="empty-state" *ngIf="!isLoading && filteredSkills.length === 0">
       <i class="fas fa-search"></i>
       <h3>Nenhuma habilidade encontrada</h3>
@@ -87,7 +80,6 @@
       </button>
     </div>
 
-    <!-- Next Steps -->
     <div class="next-steps" [@fadeIn] *ngIf="!isLoading">
       <p class="next-steps-text">
         Meus próximos passos incluem especializações em frameworks e ferramentas emergentes do mercado.

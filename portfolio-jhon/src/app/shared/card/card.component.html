@@ -1,18 +1,15 @@
 <div class="card" [ngClass]="'card--' + variant">
-  <!-- Stat Card Template -->
   <div *ngIf="variant === 'stat'" class="card-content card-content--stat">
     <div class="stat-number">{{ data.value }}</div>
     <div class="stat-label">{{ data.label }}</div>
   </div>
 
-  <!-- Value Card Template -->
   <div *ngIf="variant === 'value'" class="card-content card-content--value">
     <div class="value-icon" *ngIf="data.icon">{{ data.icon }}</div>
     <h4 class="card-title">{{ data.title }}</h4>
     <p class="card-description" *ngIf="data.description">{{ data.description }}</p>
   </div>
 
-  <!-- Profile Card Template -->
   <div *ngIf="variant === 'profile'" class="card-content card-content--profile">
     <div class="profile-image" *ngIf="data.imageUrl">
       <img [src]="data.imageUrl" [alt]="data.title + ' - Profile Photo'" class="profile-photo">
