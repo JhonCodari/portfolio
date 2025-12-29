@@ -165,6 +165,105 @@ export class PortfolioService {
       });
     });
 
+    // Certificados Digital Innovation One
+    const digitalInnovationOneCertificates = [
+      // Java & OOP
+      { file: 'Abstraindo um Bootcamp Usando Orientação a Objetos em Java.pdf', tech: ['Java', 'OOP'] },
+      { file: 'Aprenda a aplicar testes com Java.pdf', tech: ['Java', 'Testing', 'JUnit'] },
+      { file: 'Criando um Banco Digital com Java e Orientação a Objetos.pdf', tech: ['Java', 'OOP'] },
+      { file: 'Desenvolvimento avançado em Java.pdf', tech: ['Java', 'Advanced'] },
+      { file: 'Desenvolvimento básico em Java.pdf', tech: ['Java', 'Fundamentals'] },
+      { file: 'dominando IDEs java.pdf', tech: ['Java', 'IDE', 'Tools'] },
+      { file: 'Estrutura de dados em Java.pdf', tech: ['Java', 'Data Structures'] },
+      { file: 'Estruturas de Repetição e Arrays em Java.pdf', tech: ['Java', 'Arrays'] },
+      { file: 'Implementando Collections e Streams com Java.pdf', tech: ['Java', 'Collections', 'Streams'] },
+      { file: 'Introdução a orientação a objetos com Java.pdf', tech: ['Java', 'OOP'] },
+      { file: 'Lógica Condicional e Controle de Fluxos em Java.pdf', tech: ['Java', 'Logic'] },
+      { file: 'Programação Orientada a.pdf', tech: ['OOP', 'Programming'] },
+      { file: 'Reforçando o Conceito de Laços em Java.pdf', tech: ['Java', 'Loops'] },
+      { file: 'Trabalhando com Collections Java.pdf', tech: ['Java', 'Collections'] },
+      { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em.pdf', tech: ['Java', 'Fundamentals'] },
+      { file: 'coleções.pdf', tech: ['Java', 'Collections'] },
+
+      // Spring Framework
+      { file: 'Criando aplicações web com spring web MVC.pdf', tech: ['Java', 'Spring', 'MVC'] },
+      { file: 'Desenvolvendo um sistema de gerenciamento de pessoas em API REST.pdf', tech: ['Java', 'Spring', 'REST API'] },
+      { file: 'Desenvolvimento de testes unitários para validar uma API REST de gerenciamento estoques de cerveja.pdf', tech: ['Java', 'Spring', 'Testing', 'REST API'] },
+      { file: 'Introdução ao framework Spring Boot.pdf', tech: ['Java', 'Spring Boot'] },
+
+      // Databases
+      { file: 'Conceitos e melhores práticas com bancos de dados PostgreSQL.pdf', tech: ['PostgreSQL', 'Database'] },
+      { file: 'SQL SERVER - Criando suas primeiras consultas.pdf', tech: ['SQL Server', 'Database', 'SQL'] },
+
+      // Web Development
+      { file: 'construindo paginas para internet com bootstrap.pdf', tech: ['Bootstrap', 'HTML', 'CSS', 'Frontend'] },
+      { file: 'Introdução a criação de websites com HTML5 e CSS3.pdf', tech: ['HTML5', 'CSS3', 'Frontend'] },
+      { file: 'Primeiros passos para desenvolvimento web.pdf', tech: ['Web Development', 'Frontend'] },
+      { file: 'Recriando a página inicial do Instagram.pdf', tech: ['HTML', 'CSS', 'Frontend'] },
+
+      // JavaScript
+      { file: 'Debugging e Error Handling java script.pdf', tech: ['JavaScript', 'Debugging'] },
+      { file: 'Javascript Assíncrono.pdf', tech: ['JavaScript', 'Async'] },
+      { file: 'Programação para internet com JavaScript.pdf', tech: ['JavaScript', 'Web'] },
+
+      // Git & GitHub
+      { file: 'Criando seu Primeiro Repositório github para compartilhar seu progresso.pdf', tech: ['Git', 'GitHub'] },
+      { file: 'Introdução ao Git e Controle de Versões.pdf', tech: ['Git', 'Version Control'] },
+      { file: 'introdução ao git e github.pdf', tech: ['Git', 'GitHub'] },
+      { file: 'Introdução ao GitHub e comandos para trabalhar em equipe.pdf', tech: ['Git', 'GitHub', 'Collaboration'] },
+
+      // Architecture & Software Engineering
+      { file: 'Arquitetura de Sistemas Avançado.pdf', tech: ['Architecture', 'Software Engineering'] },
+      { file: 'Fundamentos de Arquitetura de Sistemas.pdf', tech: ['Architecture', 'Fundamentals'] },
+      { file: 'Introdução aos Conceitos de API e Clean Architecture.pdf', tech: ['API', 'Clean Architecture'] },
+      { file: 'Introdução a APIs e métodos HTTP.pdf', tech: ['API', 'HTTP', 'REST'] },
+      { file: 'Introdução ao Desenvolvimento Moderno de Software(897D2912).pdf', tech: ['Software Development', 'Modern Practices'] },
+      { file: 'Introdução a Qualidade de Software.pdf', tech: ['Quality Assurance', 'Testing'] },
+
+      // Cloud & AWS
+      { file: 'Introdução prática a computação em nuvem usando AWS.pdf', tech: ['AWS', 'Cloud Computing'] },
+
+      // Linux & DevOps
+      { file: 'Gerenciando Usuários no Linux.pdf', tech: ['Linux', 'System Administration'] },
+      { file: 'Linux  A introdução ao sistema operacional.pdf', tech: ['Linux', 'Operating Systems'] },
+      { file: 'Manipulando Arquivos no Linux.pdf', tech: ['Linux', 'Shell'] },
+      { file: 'Shell script - Manipulando Arquivos.pdf', tech: ['Shell Script', 'Linux'] },
+
+      // Tools & IDE
+      { file: 'IDE Instalação e Configuração (Visual Studio Code).pdf', tech: ['VS Code', 'IDE', 'Tools'] },
+
+      // Algorithms & Data Structures
+      { file: 'aprenda o que são estrutura de dados e algoritmos.pdf', tech: ['Data Structures', 'Algorithms'] },
+      { file: 'logica de programação essencial.pdf', tech: ['Programming Logic', 'Fundamentals'] },
+
+      // Agile & Scrum
+      { file: 'Projetos ágeis com SCRUM (2).pdf', tech: ['Scrum', 'Agile'] },
+      { file: 'Projetos ágeis com SCRUM.pdf', tech: ['Scrum', 'Agile'] },
+
+      // Bootcamps
+      { file: 'bootcamp become remote - Impulso.pdf', tech: ['Bootcamp', 'Remote Work'] },
+      { file: 'bootcamp everis new talents java #2.pdf', tech: ['Bootcamp', 'Java'] },
+      { file: 'bootcamp GFT START #2 Java.pdf', tech: ['Bootcamp', 'Java'] },
+      { file: 'bootcamp spread java developer.pdf', tech: ['Bootcamp', 'Java'] }
+    ];
+
+    digitalInnovationOneCertificates.forEach(cert => {
+      certificates.push({
+        id: autoId++,
+        title: this.extractTitleFromFilename(cert.file),
+        issuer: 'Digital Innovation One',
+        imageUrl: 'assets/icons/techs/digital-innovation-one-icon.png',
+        credentialUrl: '#',
+        pdfPath: `assets/certifications/certificados Digital Innovation One/${cert.file}`,
+        isPdf: true,
+        issuedDate: new Date(2024, 0), // Janeiro de 2024 (mês é 0-indexed)
+        type: 'course',
+        technologies: cert.tech,
+        autoGenerated: true,
+        description: `Curso da plataforma Digital Innovation One sobre ${cert.tech[0]}.`
+      });
+    });
+
     // Certificados NTT Data
     const nttDataCertificates = [
       { file: 'Introdução ao Git.pdf', tech: ['Git', 'Version Control'] },
