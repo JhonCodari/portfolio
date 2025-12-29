@@ -139,70 +139,14 @@ export class PortfolioService {
     let autoId = 2000; // IDs automáticos começam em 2000
 
     // Mapeamento de horas extraídas dos PDFs (Digital Innovation One)
-    const pdfHours: { [key: string]: number } = {
-      'Abstraindo um Bootcamp Usando Orientação a Objetos em Java.pdf': 2,
-      'Aprenda a aplicar testes com Java.pdf': 2,
-      'aprenda o que são estrutura de dados e algoritmos.pdf': 2,
-      'Arquitetura de Sistemas Avançado.pdf': 3,
-      'bootcamp become remote - Impulso.pdf': 17,
-      'bootcamp everis new talents java.pdf': 70,
-      'bootcamp GFT START  Java.pdf': 82,
-      'bootcamp spread java developer.pdf': 97,
-      'coleções.pdf': 1,
-      'Conceitos e melhores práticas com bancos de dados PostgreSQL.pdf': 9,
-      'construindo paginas para internet com bootstrap.pdf': 4,
-      'Criando aplicações web com spring web MVC.pdf': 7,
-      'Criando seu Primeiro Repositório github para compartilhar seu progresso.pdf': 1,
-      'Criando um Banco Digital com Java e Orientação a Objetos.pdf': 2,
-      'Debugging e Error Handling java script.pdf': 2,
-      'Desenvolvendo um sistema de gerenciamento de pessoas em API REST.pdf': 6,
-      'Desenvolvimento avançado em Java.pdf': 8,
-      'Desenvolvimento básico em Java.pdf': 9,
-      'Desenvolvimento de testes unitários para validar uma API REST de gerenciamento estoques de cerveja.pdf': 6,
-      'dominando IDEs java.pdf': 4,
-      'Estrutura de dados em Java.pdf': 10,
-      'Estruturas de Repetição e Arrays em Java.pdf': 3,
-      'Fundamentos de Arquitetura de Sistemas.pdf': 6,
-      'Gerenciando Usuários no Linux.pdf': 2,
-      'IDE Instalação e Configuração (Visual Studio Code).pdf': 2,
-      'Implementando Collections e Streams com Java.pdf': 6,
-      'Introdução a APIs e métodos HTTP.pdf': 2,
-      'Introdução a criação de websites com HTML5 e CSS3.pdf': 6,
-      'Introdução a orientação a objetos com Java.pdf': 2,
-      'Introdução a Qualidade de Software.pdf': 2,
-      'Introdução ao Desenvolvimento Moderno de Software(897D2912).pdf': 2,
-      'Introdução ao framework Spring Boot.pdf': 2,
-      'Introdução ao Git e Controle de Versões.pdf': 2,
-      'introdução ao git e github.pdf': 5,
-      'Introdução ao GitHub e comandos para trabalhar em equipe.pdf': 4,
-      'Introdução aos Conceitos de API e Clean Architecture.pdf': 4,
-      'Introdução prática a computação em nuvem usando AWS.pdf': 2,
-      'Javascript Assíncrono.pdf': 1,
-      'Linux  A introdução ao sistema operacional.pdf': 10,
-      'logica de programação essencial.pdf': 4,
-      'Lógica Condicional e Controle de Fluxos em Java.pdf': 1,
-      'Manipulando Arquivos no Linux.pdf': 3,
-      'Primeiros passos para desenvolvimento web.pdf': 6,
-      'Programação Orientada a.pdf': 4,
-      'Programação para internet com JavaScript.pdf': 2,
-      'Projetos ágeis com SCRUM (2).pdf': 2,
-      'Projetos ágeis com SCRUM.pdf': 2,
-      'Recriando a página inicial do Instagram.pdf': 2,
-      'Reforçando o Conceito de Laços em Java.pdf': 1,
-      'Shell script - Manipulando Arquivos.pdf': 2,
-      'SQL SERVER - Criando suas primeiras consultas.pdf': 4,
-      'Trabalhando com Collections Java.pdf': 6,
-      'Variáveis, Tipos de Dados e Operadores Matemáticos em Java.pdf': 2
-    };
-
     // Certificados Alura
     const aluraCertificates = [
-      { file: 'Java e Spring - Realizando processamento em lote com Spring Batch.pdf', tech: ['Java', 'Spring', 'Spring Batch'] },
-      { file: 'Java e Spring - construindo aplicações reativas com WebFlux.pdf', tech: ['Java', 'Spring', 'WebFlux', 'Reactive'] },
-      { file: 'TypeScript na prática implemente um projeto completo com TypeScript e módulos.pdf', tech: ['TypeScript', 'JavaScript'] },
-      { file: 'TypeScript -  aplicando orientação a objetos no Front-end.pdf', tech: ['TypeScript', 'OOP', 'Frontend'] },
-      { file: 'Kafka produtores, consumidores e streams.pdf', tech: ['Kafka', 'Streaming', 'Microservices'] },
-      { file: 'KAFKA - BATCHES CORRELATION IDS E DEAD LETTERS.pdf', tech: ['Kafka', 'Message Queue'] }
+      { file: 'Java e Spring - Realizando processamento em lote com Spring Batch.pdf', tech: ['Java', 'Spring', 'Spring Batch'], hours: 8 },
+      { file: 'Java e Spring - construindo aplicações reativas com WebFlux.pdf', tech: ['Java', 'Spring', 'WebFlux', 'Reactive'], hours: 10 },
+      { file: 'TypeScript na prática implemente um projeto completo com TypeScript e módulos.pdf', tech: ['TypeScript', 'JavaScript'], hours: 12 },
+      { file: 'TypeScript -  aplicando orientação a objetos no Front-end.pdf', tech: ['TypeScript', 'OOP', 'Frontend'], hours: 6 },
+      { file: 'Kafka produtores, consumidores e streams.pdf', tech: ['Kafka', 'Streaming', 'Microservices'], hours: 8 },
+      { file: 'KAFKA - BATCHES CORRELATION IDS E DEAD LETTERS.pdf', tech: ['Kafka', 'Message Queue'], hours: 8 }
     ];
 
     aluraCertificates.forEach(cert => {
@@ -217,6 +161,7 @@ export class PortfolioService {
         issuedDate: new Date(2024, 0), // Janeiro de 2024 (mês é 0-indexed)
         type: 'course',
         technologies: cert.tech,
+        hours: cert.hours,
         autoGenerated: true,
         description: `Curso da plataforma Alura sobre ${cert.tech[0]}.`
       });
@@ -225,83 +170,83 @@ export class PortfolioService {
     // Certificados Digital Innovation One
     const digitalInnovationOneCertificates = [
       // Java & OOP
-      { file: 'Abstraindo um Bootcamp Usando Orientação a Objetos em Java.pdf', tech: ['Java', 'OOP'] },
-      { file: 'Aprenda a aplicar testes com Java.pdf', tech: ['Java', 'Testing', 'JUnit'] },
-      { file: 'Criando um Banco Digital com Java e Orientação a Objetos.pdf', tech: ['Java', 'OOP'] },
-      { file: 'Desenvolvimento avançado em Java.pdf', tech: ['Java', 'Advanced'] },
-      { file: 'Desenvolvimento básico em Java.pdf', tech: ['Java', 'Fundamentals'] },
-      { file: 'dominando IDEs java.pdf', tech: ['Java', 'IDE', 'Tools'] },
-      { file: 'Estrutura de dados em Java.pdf', tech: ['Java', 'Data Structures'] },
-      { file: 'Estruturas de Repetição e Arrays em Java.pdf', tech: ['Java', 'Arrays'] },
-      { file: 'Implementando Collections e Streams com Java.pdf', tech: ['Java', 'Collections', 'Streams'] },
-      { file: 'Introdução a orientação a objetos com Java.pdf', tech: ['Java', 'OOP'] },
-      { file: 'Lógica Condicional e Controle de Fluxos em Java.pdf', tech: ['Java', 'Logic'] },
-      { file: 'Programação Orientada a.pdf', tech: ['OOP', 'Programming'] },
-      { file: 'Reforçando o Conceito de Laços em Java.pdf', tech: ['Java', 'Loops'] },
-      { file: 'Trabalhando com Collections Java.pdf', tech: ['Java', 'Collections'] },
-      { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em java.pdf', tech: ['Java', 'Fundamentals'] },
-      { file: 'coleções.pdf', tech: ['Java', 'Collections'] },
+      { file: 'Abstraindo um Bootcamp Usando Orientação a Objetos em Java.pdf', tech: ['Java', 'OOP'], hours: 2 },
+      { file: 'Aprenda a aplicar testes com Java.pdf', tech: ['Java', 'Testing', 'JUnit'], hours: 2 },
+      { file: 'Criando um Banco Digital com Java e Orientação a Objetos.pdf', tech: ['Java', 'OOP'], hours: 2 },
+      { file: 'Desenvolvimento avançado em Java.pdf', tech: ['Java', 'Advanced'], hours: 8 },
+      { file: 'Desenvolvimento básico em Java.pdf', tech: ['Java', 'Fundamentals'], hours: 9 },
+      { file: 'dominando IDEs java.pdf', tech: ['Java', 'IDE', 'Tools'], hours: 4 },
+      { file: 'Estrutura de dados em Java.pdf', tech: ['Java', 'Data Structures'], hours: 10 },
+      { file: 'Estruturas de Repetição e Arrays em Java.pdf', tech: ['Java', 'Arrays'], hours: 3 },
+      { file: 'Implementando Collections e Streams com Java.pdf', tech: ['Java', 'Collections', 'Streams'], hours: 6 },
+      { file: 'Introdução a orientação a objetos com Java.pdf', tech: ['Java', 'OOP'], hours: 2 },
+      { file: 'Lógica Condicional e Controle de Fluxos em Java.pdf', tech: ['Java', 'Logic'], hours: 1 },
+      { file: 'Programação Orientada a.pdf', tech: ['OOP', 'Programming'], hours: 4 },
+      { file: 'Reforçando o Conceito de Laços em Java.pdf', tech: ['Java', 'Loops'], hours: 1 },
+      { file: 'Trabalhando com Collections Java.pdf', tech: ['Java', 'Collections'], hours: 6 },
+      { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em Java.pdf', tech: ['Java', 'Fundamentals'], hours: 2 },
+      { file: 'coleções.pdf', tech: ['Java', 'Collections'], hours: 1 },
 
       // Spring Framework
-      { file: 'Criando aplicações web com spring web MVC.pdf', tech: ['Java', 'Spring', 'MVC'] },
-      { file: 'Desenvolvendo um sistema de gerenciamento de pessoas em API REST.pdf', tech: ['Java', 'Spring', 'REST API'] },
-      { file: 'Desenvolvimento de testes unitários para validar uma API REST de gerenciamento estoques de cerveja.pdf', tech: ['Java', 'Spring', 'Testing', 'REST API'] },
-      { file: 'Introdução ao framework Spring Boot.pdf', tech: ['Java', 'Spring Boot'] },
+      { file: 'Criando aplicações web com spring web MVC.pdf', tech: ['Java', 'Spring', 'MVC'], hours: 7 },
+      { file: 'Desenvolvendo um sistema de gerenciamento de pessoas em API REST.pdf', tech: ['Java', 'Spring', 'REST API'], hours: 6 },
+      { file: 'Desenvolvimento de testes unitários para validar uma API REST de gerenciamento estoques de cerveja.pdf', tech: ['Java', 'Spring', 'Testing', 'REST API'], hours: 6 },
+      { file: 'Introdução ao framework Spring Boot.pdf', tech: ['Java', 'Spring Boot'], hours: 2 },
 
       // Databases
-      { file: 'Conceitos e melhores práticas com bancos de dados PostgreSQL.pdf', tech: ['PostgreSQL', 'Database'] },
-      { file: 'SQL SERVER - Criando suas primeiras consultas.pdf', tech: ['SQL Server', 'Database', 'SQL'] },
+      { file: 'Conceitos e melhores práticas com bancos de dados PostgreSQL.pdf', tech: ['PostgreSQL', 'Database'], hours: 9 },
+      { file: 'SQL SERVER - Criando suas primeiras consultas.pdf', tech: ['SQL Server', 'Database', 'SQL'], hours: 4 },
 
       // Web Development
-      { file: 'construindo paginas para internet com bootstrap.pdf', tech: ['Bootstrap', 'HTML', 'CSS', 'Frontend'] },
-      { file: 'Introdução a criação de websites com HTML5 e CSS3.pdf', tech: ['HTML5', 'CSS3', 'Frontend'] },
-      { file: 'Primeiros passos para desenvolvimento web.pdf', tech: ['Web Development', 'Frontend'] },
-      { file: 'Recriando a página inicial do Instagram.pdf', tech: ['HTML', 'CSS', 'Frontend'] },
+      { file: 'construindo paginas para internet com bootstrap.pdf', tech: ['Bootstrap', 'HTML', 'CSS', 'Frontend'], hours: 4 },
+      { file: 'Introdução a criação de websites com HTML5 e CSS3.pdf', tech: ['HTML5', 'CSS3', 'Frontend'], hours: 6 },
+      { file: 'Primeiros passos para desenvolvimento web.pdf', tech: ['Web Development', 'Frontend'], hours: 6 },
+      { file: 'Recriando a página inicial do Instagram.pdf', tech: ['HTML', 'CSS', 'Frontend'], hours: 2 },
 
       // JavaScript
-      { file: 'Debugging e Error Handling java script.pdf', tech: ['JavaScript', 'Debugging'] },
-      { file: 'Javascript Assíncrono.pdf', tech: ['JavaScript', 'Async'] },
-      { file: 'Programação para internet com JavaScript.pdf', tech: ['JavaScript', 'Web'] },
+      { file: 'Debugging e Error Handling java script.pdf', tech: ['JavaScript', 'Debugging'], hours: 2 },
+      { file: 'Javascript Assíncrono.pdf', tech: ['JavaScript', 'Async'], hours: 1 },
+      { file: 'Programação para internet com JavaScript.pdf', tech: ['JavaScript', 'Web'], hours: 2 },
 
       // Git & GitHub
-      { file: 'Criando seu Primeiro Repositório github para compartilhar seu progresso.pdf', tech: ['Git', 'GitHub'] },
-      { file: 'Introdução ao Git e Controle de Versões.pdf', tech: ['Git', 'Version Control'] },
-      { file: 'introdução ao git e github.pdf', tech: ['Git', 'GitHub'] },
-      { file: 'Introdução ao GitHub e comandos para trabalhar em equipe.pdf', tech: ['Git', 'GitHub', 'Collaboration'] },
+      { file: 'Criando seu Primeiro Repositório github para compartilhar seu progresso.pdf', tech: ['Git', 'GitHub'], hours: 1 },
+      { file: 'Introdução ao Git e Controle de Versões.pdf', tech: ['Git', 'Version Control'], hours: 2 },
+      { file: 'introdução ao git e github.pdf', tech: ['Git', 'GitHub'], hours: 5 },
+      { file: 'Introdução ao GitHub e comandos para trabalhar em equipe.pdf', tech: ['Git', 'GitHub', 'Collaboration'], hours: 4 },
 
       // Architecture & Software Engineering
-      { file: 'Arquitetura de Sistemas Avançado.pdf', tech: ['Architecture', 'Software Engineering'] },
-      { file: 'Fundamentos de Arquitetura de Sistemas.pdf', tech: ['Architecture', 'Fundamentals'] },
-      { file: 'Introdução aos Conceitos de API e Clean Architecture.pdf', tech: ['API', 'Clean Architecture'] },
-      { file: 'Introdução a APIs e métodos HTTP.pdf', tech: ['API', 'HTTP', 'REST'] },
-      { file: 'Introdução ao Desenvolvimento Moderno de Software(897D2912).pdf', tech: ['Software Development', 'Modern Practices'] },
-      { file: 'Introdução a Qualidade de Software.pdf', tech: ['Quality Assurance', 'Testing'] },
+      { file: 'Arquitetura de Sistemas Avançado.pdf', tech: ['Architecture', 'Software Engineering'], hours: 3 },
+      { file: 'Fundamentos de Arquitetura de Sistemas.pdf', tech: ['Architecture', 'Fundamentals'], hours: 6 },
+      { file: 'Introdução aos Conceitos de API e Clean Architecture.pdf', tech: ['API', 'Clean Architecture'], hours: 4 },
+      { file: 'Introdução a APIs e métodos HTTP.pdf', tech: ['API', 'HTTP', 'REST'], hours: 2 },
+      { file: 'Introdução ao Desenvolvimento Moderno de Software(897D2912).pdf', tech: ['Software Development', 'Modern Practices'], hours: 2 },
+      { file: 'Introdução a Qualidade de Software.pdf', tech: ['Quality Assurance', 'Testing'], hours: 2 },
 
       // Cloud & AWS
-      { file: 'Introdução prática a computação em nuvem usando AWS.pdf', tech: ['AWS', 'Cloud Computing'] },
+      { file: 'Introdução prática a computação em nuvem usando AWS.pdf', tech: ['AWS', 'Cloud Computing'], hours: 2 },
 
       // Linux & DevOps
-      { file: 'Gerenciando Usuários no Linux.pdf', tech: ['Linux', 'System Administration'] },
-      { file: 'Linux  A introdução ao sistema operacional.pdf', tech: ['Linux', 'Operating Systems'] },
-      { file: 'Manipulando Arquivos no Linux.pdf', tech: ['Linux', 'Shell'] },
-      { file: 'Shell script - Manipulando Arquivos.pdf', tech: ['Shell Script', 'Linux'] },
+      { file: 'Gerenciando Usuários no Linux.pdf', tech: ['Linux', 'System Administration'], hours: 2 },
+      { file: 'Linux  A introdução ao sistema operacional.pdf', tech: ['Linux', 'Operating Systems'], hours: 10 },
+      { file: 'Manipulando Arquivos no Linux.pdf', tech: ['Linux', 'Shell'], hours: 3 },
+      { file: 'Shell script - Manipulando Arquivos.pdf', tech: ['Shell Script', 'Linux'], hours: 2 },
 
       // Tools & IDE
-      { file: 'IDE Instalação e Configuração (Visual Studio Code).pdf', tech: ['VS Code', 'IDE', 'Tools'] },
+      { file: 'IDE Instalação e Configuração (Visual Studio Code).pdf', tech: ['VS Code', 'IDE', 'Tools'], hours: 2 },
 
       // Algorithms & Data Structures
-      { file: 'aprenda o que são estrutura de dados e algoritmos.pdf', tech: ['Data Structures', 'Algorithms'] },
-      { file: 'logica de programação essencial.pdf', tech: ['Programming Logic', 'Fundamentals'] },
+      { file: 'aprenda o que são estrutura de dados e algoritmos.pdf', tech: ['Data Structures', 'Algorithms'], hours: 2 },
+      { file: 'logica de programação essencial.pdf', tech: ['Programming Logic', 'Fundamentals'], hours: 4 },
 
       // Agile & Scrum
-      { file: 'Projetos ágeis com SCRUM (2).pdf', tech: ['Scrum', 'Agile'] },
-      { file: 'Projetos ágeis com SCRUM.pdf', tech: ['Scrum', 'Agile'] },
+      { file: 'Projetos ágeis com SCRUM (2).pdf', tech: ['Scrum', 'Agile'], hours: 2 },
+      { file: 'Projetos ágeis com SCRUM.pdf', tech: ['Scrum', 'Agile'], hours: 2 },
 
       // Bootcamps
-      { file: 'bootcamp become remote - Impulso.pdf', tech: ['Bootcamp', 'Remote Work'] },
-      { file: 'bootcamp everis new talents java.pdf', tech: ['Bootcamp', 'Java'] },
-      { file: 'bootcamp GFT START  Java.pdf', tech: ['Bootcamp', 'Java'] },
-      { file: 'bootcamp spread java developer.pdf', tech: ['Bootcamp', 'Java'] }
+      { file: 'bootcamp become remote - Impulso.pdf', tech: ['Bootcamp', 'Remote Work'], hours: 17 },
+      { file: 'bootcamp everis new talents java.pdf', tech: ['Bootcamp', 'Java'], hours: 70 },
+      { file: 'bootcamp GFT START  Java.pdf', tech: ['Bootcamp', 'Java'], hours: 82 },
+      { file: 'bootcamp spread java developer.pdf', tech: ['Bootcamp', 'Java'], hours: 97 }
     ];
 
     digitalInnovationOneCertificates.forEach(cert => {
@@ -316,7 +261,7 @@ export class PortfolioService {
         issuedDate: new Date(2024, 0), // Janeiro de 2024 (mês é 0-indexed)
         type: 'course',
         technologies: cert.tech,
-        hours: pdfHours[cert.file] || undefined, // Usa horas reais do PDF se disponível
+        hours: cert.hours,
         autoGenerated: true,
         description: `Curso da plataforma Digital Innovation One sobre ${cert.tech[0]}.`
       });
@@ -324,12 +269,12 @@ export class PortfolioService {
 
     // Certificados NTT Data
     const nttDataCertificates = [
-      { file: 'Introdução ao Git.pdf', tech: ['Git', 'Version Control'] },
-      { file: 'Introdução a integração continua com Jenkins.pdf', tech: ['Jenkins', 'CI/CD', 'DevOps'] },
-      { file: 'Introduction to DevOps.pdf', tech: ['DevOps', 'Automation'] },
-      { file: 'GenAI Academy Yellow Belt Level 2 for Developers.pdf', tech: ['AI', 'GenAI', 'Development'] },
-      { file: 'GenAI Academy - Yellow Belt P1.pdf', tech: ['AI', 'GenAI'] },
-      { file: 'GenAI Academy - White Belt.pdf', tech: ['AI', 'GenAI'] }
+      { file: 'Introdução ao Git.pdf', tech: ['Git', 'Version Control'], hours: 4 },
+      { file: 'Introdução a integração continua com Jenkins.pdf', tech: ['Jenkins', 'CI/CD', 'DevOps'], hours: 6 },
+      { file: 'Introduction to DevOps.pdf', tech: ['DevOps', 'Automation'], hours: 8 },
+      { file: 'GenAI Academy Yellow Belt Level 2 for Developers.pdf', tech: ['AI', 'GenAI', 'Development'], hours: 12 },
+      { file: 'GenAI Academy - Yellow Belt P1.pdf', tech: ['AI', 'GenAI'], hours: 10 },
+      { file: 'GenAI Academy - White Belt.pdf', tech: ['AI', 'GenAI'], hours: 6 }
     ];
 
     nttDataCertificates.forEach(cert => {
@@ -344,8 +289,33 @@ export class PortfolioService {
         issuedDate: new Date(2024, 0),
         type: 'course',
         technologies: cert.tech,
+        hours: cert.hours,
         autoGenerated: true,
         description: `Curso corporativo NTT Data sobre ${cert.tech[0]}.`
+      });
+    });
+
+    // Certificados Udemy
+    const udemyCertificates = [
+      { file: 'Modelo de arquitetura C4 Model.pdf', tech: ['Architecture', 'C4 Model', 'Software Design'], hours: 1 },
+      { file: 'preparatorio para certificação Developer Associate.pdf', tech: ['AWS', 'Cloud', 'Developer Associate'], hours: 17 }
+    ];
+
+    udemyCertificates.forEach(cert => {
+      certificates.push({
+        id: autoId++,
+        title: this.extractTitleFromFilename(cert.file),
+        issuer: 'Udemy',
+        imageUrl: 'assets/icons/techs/review.svg',
+        credentialUrl: '#',
+        pdfPath: `assets/certifications/certificados Udemy/${cert.file}`,
+        isPdf: true,
+        issuedDate: new Date(2024, 0),
+        type: 'course',
+        technologies: cert.tech,
+        hours: cert.hours,
+        autoGenerated: true,
+        description: `Curso da plataforma Udemy sobre ${cert.tech[0]}.`
       });
     });
 

@@ -148,7 +148,9 @@ export class CertificationsComponent implements OnInit {
   }
 
   getTotalStudyHours(): number {
-    return (this.awsCertifications.length * 40) + (this.courseCertifications.length * 20);
+    const awsHours = this.awsCertifications.reduce((total, cert) => total + (cert.hours || 0), 0);
+    const courseHours = this.courseCertifications.reduce((total, cert) => total + (cert.hours || 0), 0);
+    return awsHours + courseHours;
   }
 
   getFilteredCount(): number {
