@@ -9,7 +9,7 @@
 
 # Node modules and dependency files
 */node_modules/
-/package-lock.json
+
 /yarn.lock
 
 # Environment files
@@ -30,6 +30,9 @@ yarn-error.log*
 # Markdown files (allow only README.md)
 *.md
 !README.md
+
+# Backup files
+*.backup
 
 # Compiled output
 /bazel-out
