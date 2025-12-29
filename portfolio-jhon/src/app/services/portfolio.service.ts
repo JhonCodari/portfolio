@@ -191,114 +191,114 @@ export class PortfolioService {
       description: 'Certificação que valida habilidades em design e implementação de sistemas distribuídos na AWS.'
     },
 
-    // Cursos de Backend
-    {
-      id: 3,
-      title: 'Formação Java e Spring Framework',
-      issuer: 'Alura',
-      imageUrl: 'assets/certifications/alura-java.png',
-      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-      issuedDate: new Date('2021-08-10'),
-      type: 'course',
-      technologies: ['Java', 'Spring Boot', 'Spring MVC', 'JPA'],
-      description: 'Formação completa em desenvolvimento Java com Spring Framework.'
-    },
-    {
-      id: 4,
-      title: 'Microservices com Spring Cloud',
-      issuer: 'Udemy',
-      imageUrl: 'assets/certifications/udemy-microservices.png',
-      credentialUrl: 'https://udemy.com/certificate/your-cert',
-      issuedDate: new Date('2022-03-15'),
-      type: 'course',
-      technologies: ['Java', 'Spring Cloud', 'Microservices', 'Docker'],
-      description: 'Curso avançado sobre arquitetura de microserviços com Spring Cloud.'
-    },
-    {
-      id: 5,
-      title: 'API REST com Spring Boot',
-      issuer: 'Digital Innovation One',
-      imageUrl: 'assets/certifications/dio-spring-boot.png',
-      credentialUrl: 'https://dio.me/certificate/your-cert',
-      issuedDate: new Date('2021-11-20'),
-      type: 'course',
-      technologies: ['Java', 'Spring Boot', 'REST API', 'PostgreSQL'],
-      description: 'Desenvolvimento de APIs RESTful profissionais com Spring Boot.'
-    },
+    // // Cursos de Backend
+    // {
+    //   id: 3,
+    //   title: 'Formação Java e Spring Framework',
+    //   issuer: 'Alura',
+    //   imageUrl: 'assets/certifications/alura-java.png',
+    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+    //   issuedDate: new Date('2021-08-10'),
+    //   type: 'course',
+    //   technologies: ['Java', 'Spring Boot', 'Spring MVC', 'JPA'],
+    //   description: 'Formação completa em desenvolvimento Java com Spring Framework.'
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Microservices com Spring Cloud',
+    //   issuer: 'Udemy',
+    //   imageUrl: 'assets/certifications/udemy-microservices.png',
+    //   credentialUrl: 'https://udemy.com/certificate/your-cert',
+    //   issuedDate: new Date('2022-03-15'),
+    //   type: 'course',
+    //   technologies: ['Java', 'Spring Cloud', 'Microservices', 'Docker'],
+    //   description: 'Curso avançado sobre arquitetura de microserviços com Spring Cloud.'
+    // },
+    // {
+    //   id: 5,
+    //   title: 'API REST com Spring Boot',
+    //   issuer: 'Digital Innovation One',
+    //   imageUrl: 'assets/certifications/dio-spring-boot.png',
+    //   credentialUrl: 'https://dio.me/certificate/your-cert',
+    //   issuedDate: new Date('2021-11-20'),
+    //   type: 'course',
+    //   technologies: ['Java', 'Spring Boot', 'REST API', 'PostgreSQL'],
+    //   description: 'Desenvolvimento de APIs RESTful profissionais com Spring Boot.'
+    // },
 
-    // Cursos de Cloud e DevOps
-    {
-      id: 6,
-      title: 'Docker e Kubernetes',
-      issuer: 'Alura',
-      imageUrl: 'assets/certifications/alura-docker.png',
-      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-      issuedDate: new Date('2022-07-10'),
-      type: 'course',
-      technologies: ['Docker', 'Kubernetes', 'DevOps'],
-      description: 'Containerização e orquestração de aplicações com Docker e Kubernetes.'
-    },
-    {
-      id: 7,
-      title: 'AWS para Desenvolvedores',
-      issuer: 'Udemy',
-      imageUrl: 'assets/certifications/udemy-aws.png',
-      credentialUrl: 'https://udemy.com/certificate/your-cert',
-      issuedDate: new Date('2023-01-15'),
-      type: 'course',
-      technologies: ['AWS', 'EC2', 'S3', 'Lambda', 'RDS'],
-      description: 'Curso prático sobre os principais serviços AWS para desenvolvedores.'
-    },
+    // // Cursos de Cloud e DevOps
+    // {
+    //   id: 6,
+    //   title: 'Docker e Kubernetes',
+    //   issuer: 'Alura',
+    //   imageUrl: 'assets/certifications/alura-docker.png',
+    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+    //   issuedDate: new Date('2022-07-10'),
+    //   type: 'course',
+    //   technologies: ['Docker', 'Kubernetes', 'DevOps'],
+    //   description: 'Containerização e orquestração de aplicações com Docker e Kubernetes.'
+    // },
+    // {
+    //   id: 7,
+    //   title: 'AWS para Desenvolvedores',
+    //   issuer: 'Udemy',
+    //   imageUrl: 'assets/certifications/udemy-aws.png',
+    //   credentialUrl: 'https://udemy.com/certificate/your-cert',
+    //   issuedDate: new Date('2023-01-15'),
+    //   type: 'course',
+    //   technologies: ['AWS', 'EC2', 'S3', 'Lambda', 'RDS'],
+    //   description: 'Curso prático sobre os principais serviços AWS para desenvolvedores.'
+    // },
 
-    // Cursos de Banco de Dados
-    {
-      id: 8,
-      title: 'Modelagem de Dados e SQL',
-      issuer: 'Alura',
-      imageUrl: 'assets/certifications/alura-sql.png',
-      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-      issuedDate: new Date('2021-05-20'),
-      type: 'course',
-      technologies: ['SQL', 'MySQL', 'PostgreSQL', 'Database Design'],
-      description: 'Modelagem de dados e consultas SQL avançadas.'
-    },
-    {
-      id: 9,
-      title: 'Redis para Aplicações de Alta Performance',
-      issuer: 'Digital Innovation One',
-      imageUrl: 'assets/certifications/dio-redis.png',
-      credentialUrl: 'https://dio.me/certificate/your-cert',
-      issuedDate: new Date('2022-09-10'),
-      type: 'course',
-      technologies: ['Redis', 'Cache', 'Performance'],
-      description: 'Implementação de cache e otimização de performance com Redis.'
-    },
+    // // Cursos de Banco de Dados
+    // {
+    //   id: 8,
+    //   title: 'Modelagem de Dados e SQL',
+    //   issuer: 'Alura',
+    //   imageUrl: 'assets/certifications/alura-sql.png',
+    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+    //   issuedDate: new Date('2021-05-20'),
+    //   type: 'course',
+    //   technologies: ['SQL', 'MySQL', 'PostgreSQL', 'Database Design'],
+    //   description: 'Modelagem de dados e consultas SQL avançadas.'
+    // },
+    // {
+    //   id: 9,
+    //   title: 'Redis para Aplicações de Alta Performance',
+    //   issuer: 'Digital Innovation One',
+    //   imageUrl: 'assets/certifications/dio-redis.png',
+    //   credentialUrl: 'https://dio.me/certificate/your-cert',
+    //   issuedDate: new Date('2022-09-10'),
+    //   type: 'course',
+    //   technologies: ['Redis', 'Cache', 'Performance'],
+    //   description: 'Implementação de cache e otimização de performance com Redis.'
+    // },
 
-    // Cursos de Frontend (secundário)
-    {
-      id: 10,
-      title: 'Angular: Fundamentos e Boas Práticas',
-      issuer: 'Alura',
-      imageUrl: 'assets/certifications/alura-angular.png',
-      credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-      issuedDate: new Date('2023-11-15'),
-      type: 'course',
-      technologies: ['Angular', 'TypeScript', 'RxJS'],
-      description: 'Desenvolvimento de aplicações web modernas com Angular.'
-    },
+    // // Cursos de Frontend (secundário)
+    // {
+    //   id: 10,
+    //   title: 'Angular: Fundamentos e Boas Práticas',
+    //   issuer: 'Alura',
+    //   imageUrl: 'assets/certifications/alura-angular.png',
+    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
+    //   issuedDate: new Date('2023-11-15'),
+    //   type: 'course',
+    //   technologies: ['Angular', 'TypeScript', 'RxJS'],
+    //   description: 'Desenvolvimento de aplicações web modernas com Angular.'
+    // },
 
-    // Cursos da Empresa
-    {
-      id: 11,
-      title: 'Arquitetura de Software Corporativa',
-      issuer: 'Empresa',
-      imageUrl: 'assets/certifications/company-architecture.png',
-      credentialUrl: '#',
-      issuedDate: new Date('2023-04-10'),
-      type: 'course',
-      technologies: ['Architecture', 'Design Patterns', 'Best Practices'],
-      description: 'Curso interno sobre arquitetura de software e padrões de design corporativos.'
-    }
+    // // Cursos da Empresa
+    // {
+    //   id: 11,
+    //   title: 'Arquitetura de Software Corporativa',
+    //   issuer: 'Empresa',
+    //   imageUrl: 'assets/certifications/company-architecture.png',
+    //   credentialUrl: '#',
+    //   issuedDate: new Date('2023-04-10'),
+    //   type: 'course',
+    //   technologies: ['Architecture', 'Design Patterns', 'Best Practices'],
+    //   description: 'Curso interno sobre arquitetura de software e padrões de design corporativos.'
+    // }
   ];
 
   // ========================================
@@ -362,17 +362,12 @@ export class PortfolioService {
 
     // Certificados NTT Data
     const nttDataCertificates = [
-      { file: 'Data Breaches.pdf', tech: ['Security', 'Data Protection'] },
-      { file: 'Compliance NTT DATA Europe & LATAM FY24.pdf', tech: ['Compliance', 'Governance'] },
-      { file: 'Micromódulo — Engenharia social.pdf', tech: ['Security', 'Social Engineering'] },
       { file: 'Introdução ao Git.pdf', tech: ['Git', 'Version Control'] },
       { file: 'Introdução a integração continua com Jenkins.pdf', tech: ['Jenkins', 'CI/CD', 'DevOps'] },
       { file: 'Introduction to DevOps.pdf', tech: ['DevOps', 'Automation'] },
-      { file: 'GitFlow-based Branch Management.pdf', tech: ['Git', 'GitFlow', 'Version Control'] },
       { file: 'GenAI Academy Yellow Belt Level 2 for Developers.pdf', tech: ['AI', 'GenAI', 'Development'] },
       { file: 'GenAI Academy - Yellow Belt P1.pdf', tech: ['AI', 'GenAI'] },
-      { file: 'GenAI Academy - White Belt.pdf', tech: ['AI', 'GenAI'] },
-      { file: 'Engenharia social.pdf', tech: ['Security', 'Social Engineering'] }
+      { file: 'GenAI Academy - White Belt.pdf', tech: ['AI', 'GenAI'] }
     ];
 
     nttDataCertificates.forEach(cert => {

@@ -10,17 +10,17 @@ declare const pdfjsLib: any;
   imports: [CommonModule],
   template: `
     <div class="pdf-preview-container">
-      <canvas 
-        #pdfCanvas 
+      <canvas
+        #pdfCanvas
         [class.loading]="isLoading"
         [class.error]="hasError"
       ></canvas>
-      
+
       <div class="loading-overlay" *ngIf="isLoading">
         <i class="fas fa-spinner fa-spin"></i>
         <span>Carregando preview...</span>
       </div>
-      
+
       <div class="error-overlay" *ngIf="hasError">
         <i class="fas fa-file-pdf"></i>
         <span>PDF</span>
@@ -31,11 +31,11 @@ declare const pdfjsLib: any;
     .pdf-preview-container {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: 90%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f5f5f5;
+      background: none;
       overflow: hidden;
     }
 
@@ -44,11 +44,11 @@ declare const pdfjsLib: any;
       max-height: 100%;
       object-fit: contain;
       transition: opacity 0.3s ease;
-      
+
       &.loading {
         opacity: 0;
       }
-      
+
       &.error {
         display: none;
       }
@@ -74,7 +74,7 @@ declare const pdfjsLib: any;
         font-size: 2rem;
         color: var(--primary-color);
       }
-      
+
       span {
         font-size: 0.85rem;
         color: var(--text-secondary);
@@ -87,7 +87,7 @@ declare const pdfjsLib: any;
         color: #e74c3c;
         opacity: 0.8;
       }
-      
+
       span {
         font-size: 0.9rem;
         font-weight: 600;
@@ -138,10 +138,10 @@ export class PdfPreviewComponent implements OnInit, AfterViewInit, OnDestroy {
     try {
       // Carrega o script do PDF.js do CDN
       await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
-      
+
       // Configura o worker
       if (typeof pdfjsLib !== 'undefined') {
-        (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 
+        (pdfjsLib as any).GlobalWorkerOptions.workerSrc =
           'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
         this.scriptLoaded = true;
       }
@@ -177,16 +177,29 @@ export class PdfPreviewComponent implements OnInit, AfterViewInit, OnDestroy {
       // Prepara o canvas
       const canvas = this.canvas.nativeElement;
       const context = canvas.getContext('2d');
-      
+
       if (!context) {
         throw new Error('Contexto 2D não disponível');
       }
 
+      // Obtém viewport inicial para detectar orientação
+      const initialViewport = page.getViewport({ scale: 1 });
+
+      // Detecta se o PDF está em retrato (portrait) e precisa rotacionar para paisagem
+      // Se altura > largura, está em retrato
+      let rotation = initialViewport.rotation || 0;
+      const isPortrait = initialViewport.height > initialViewport.width;
+
+      // Se está em retrato, rotaciona 90 graus para transformar em paisagem
+      if (isPortrait) {
+        rotation = 90;
+      }
+
       // Define escala para caber no container (180px de altura do card)
       const containerHeight = 180;
-      const viewport = page.getViewport({ scale: 1 });
+      const viewport = page.getViewport({ scale: 1, rotation });
       const scale = containerHeight / viewport.height;
-      const scaledViewport = page.getViewport({ scale });
+      const scaledViewport = page.getViewport({ scale, rotation });
 
       // Configura dimensões do canvas
       canvas.width = scaledViewport.width;
