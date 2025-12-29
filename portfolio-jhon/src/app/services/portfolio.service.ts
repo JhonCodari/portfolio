@@ -138,6 +138,63 @@ export class PortfolioService {
     const certificates: Certification[] = [];
     let autoId = 2000; // IDs automáticos começam em 2000
 
+    // Mapeamento de horas extraídas dos PDFs (Digital Innovation One)
+    const pdfHours: { [key: string]: number } = {
+      'Abstraindo um Bootcamp Usando Orientação a Objetos em Java.pdf': 2,
+      'Aprenda a aplicar testes com Java.pdf': 2,
+      'aprenda o que são estrutura de dados e algoritmos.pdf': 2,
+      'Arquitetura de Sistemas Avançado.pdf': 3,
+      'bootcamp become remote - Impulso.pdf': 17,
+      'bootcamp everis new talents java.pdf': 70,
+      'bootcamp GFT START  Java.pdf': 82,
+      'bootcamp spread java developer.pdf': 97,
+      'coleções.pdf': 1,
+      'Conceitos e melhores práticas com bancos de dados PostgreSQL.pdf': 9,
+      'construindo paginas para internet com bootstrap.pdf': 4,
+      'Criando aplicações web com spring web MVC.pdf': 7,
+      'Criando seu Primeiro Repositório github para compartilhar seu progresso.pdf': 1,
+      'Criando um Banco Digital com Java e Orientação a Objetos.pdf': 2,
+      'Debugging e Error Handling java script.pdf': 2,
+      'Desenvolvendo um sistema de gerenciamento de pessoas em API REST.pdf': 6,
+      'Desenvolvimento avançado em Java.pdf': 8,
+      'Desenvolvimento básico em Java.pdf': 9,
+      'Desenvolvimento de testes unitários para validar uma API REST de gerenciamento estoques de cerveja.pdf': 6,
+      'dominando IDEs java.pdf': 4,
+      'Estrutura de dados em Java.pdf': 10,
+      'Estruturas de Repetição e Arrays em Java.pdf': 3,
+      'Fundamentos de Arquitetura de Sistemas.pdf': 6,
+      'Gerenciando Usuários no Linux.pdf': 2,
+      'IDE Instalação e Configuração (Visual Studio Code).pdf': 2,
+      'Implementando Collections e Streams com Java.pdf': 6,
+      'Introdução a APIs e métodos HTTP.pdf': 2,
+      'Introdução a criação de websites com HTML5 e CSS3.pdf': 6,
+      'Introdução a orientação a objetos com Java.pdf': 2,
+      'Introdução a Qualidade de Software.pdf': 2,
+      'Introdução ao Desenvolvimento Moderno de Software(897D2912).pdf': 2,
+      'Introdução ao framework Spring Boot.pdf': 2,
+      'Introdução ao Git e Controle de Versões.pdf': 2,
+      'introdução ao git e github.pdf': 5,
+      'Introdução ao GitHub e comandos para trabalhar em equipe.pdf': 4,
+      'Introdução aos Conceitos de API e Clean Architecture.pdf': 4,
+      'Introdução prática a computação em nuvem usando AWS.pdf': 2,
+      'Javascript Assíncrono.pdf': 1,
+      'Linux  A introdução ao sistema operacional.pdf': 10,
+      'logica de programação essencial.pdf': 4,
+      'Lógica Condicional e Controle de Fluxos em Java.pdf': 1,
+      'Manipulando Arquivos no Linux.pdf': 3,
+      'Primeiros passos para desenvolvimento web.pdf': 6,
+      'Programação Orientada a.pdf': 4,
+      'Programação para internet com JavaScript.pdf': 2,
+      'Projetos ágeis com SCRUM (2).pdf': 2,
+      'Projetos ágeis com SCRUM.pdf': 2,
+      'Recriando a página inicial do Instagram.pdf': 2,
+      'Reforçando o Conceito de Laços em Java.pdf': 1,
+      'Shell script - Manipulando Arquivos.pdf': 2,
+      'SQL SERVER - Criando suas primeiras consultas.pdf': 4,
+      'Trabalhando com Collections Java.pdf': 6,
+      'Variáveis, Tipos de Dados e Operadores Matemáticos em Java.pdf': 2
+    };
+
     // Certificados Alura
     const aluraCertificates = [
       { file: 'Java e Spring - Realizando processamento em lote com Spring Batch.pdf', tech: ['Java', 'Spring', 'Spring Batch'] },
@@ -182,7 +239,7 @@ export class PortfolioService {
       { file: 'Programação Orientada a.pdf', tech: ['OOP', 'Programming'] },
       { file: 'Reforçando o Conceito de Laços em Java.pdf', tech: ['Java', 'Loops'] },
       { file: 'Trabalhando com Collections Java.pdf', tech: ['Java', 'Collections'] },
-      { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em.pdf', tech: ['Java', 'Fundamentals'] },
+      { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em java.pdf', tech: ['Java', 'Fundamentals'] },
       { file: 'coleções.pdf', tech: ['Java', 'Collections'] },
 
       // Spring Framework
@@ -242,8 +299,8 @@ export class PortfolioService {
 
       // Bootcamps
       { file: 'bootcamp become remote - Impulso.pdf', tech: ['Bootcamp', 'Remote Work'] },
-      { file: 'bootcamp everis new talents java #2.pdf', tech: ['Bootcamp', 'Java'] },
-      { file: 'bootcamp GFT START #2 Java.pdf', tech: ['Bootcamp', 'Java'] },
+      { file: 'bootcamp everis new talents java.pdf', tech: ['Bootcamp', 'Java'] },
+      { file: 'bootcamp GFT START  Java.pdf', tech: ['Bootcamp', 'Java'] },
       { file: 'bootcamp spread java developer.pdf', tech: ['Bootcamp', 'Java'] }
     ];
 
@@ -259,6 +316,7 @@ export class PortfolioService {
         issuedDate: new Date(2024, 0), // Janeiro de 2024 (mês é 0-indexed)
         type: 'course',
         technologies: cert.tech,
+        hours: pdfHours[cert.file] || undefined, // Usa horas reais do PDF se disponível
         autoGenerated: true,
         description: `Curso da plataforma Digital Innovation One sobre ${cert.tech[0]}.`
       });
