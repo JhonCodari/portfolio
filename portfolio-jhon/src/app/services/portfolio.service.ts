@@ -38,34 +38,34 @@ export class PortfolioService {
 
   private skills: Skill[] = [
     // Backend & Core
-    { name: 'Java', level: 95, category: 'backend' },
-    { name: 'Spring Framework', level: 90, category: 'backend' },
-    { name: 'Spring Boot', level: 90, category: 'backend' },
-    { name: 'Spring Security', level: 85, category: 'backend' },
-    { name: 'Spring Data JPA', level: 85, category: 'backend' },
+    { name: 'Java', level: 85, category: 'backend' },
+    { name: 'Spring Framework', level: 80, category: 'backend' },
+    { name: 'Spring Boot', level: 80, category: 'backend' },
+    { name: 'Spring Security', level: 55, category: 'backend' },
+    { name: 'Spring Data JPA', level: 55, category: 'backend' },
 
     // Cloud & DevOps
-    { name: 'AWS', level: 85, category: 'tools' },
-    { name: 'Docker', level: 80, category: 'tools' },
-    { name: 'Kubernetes', level: 75, category: 'tools' },
+    { name: 'AWS', level: 65, category: 'tools' },
+    { name: 'Docker', level: 50, category: 'tools' },
+    { name: 'Kubernetes', level: 25, category: 'tools' },
 
     // Databases
-    { name: 'MySQL', level: 85, category: 'database' },
-    { name: 'PostgreSQL', level: 85, category: 'database' },
-    { name: 'Redis', level: 80, category: 'database' },
+    { name: 'MySQL', level: 45, category: 'database' },
+    { name: 'PostgreSQL', level: 45, category: 'database' },
+    { name: 'Redis', level: 20, category: 'database' },
 
     // Messaging & Integration
-    { name: 'Apache Kafka', level: 80, category: 'tools' },
-    { name: 'REST APIs', level: 95, category: 'backend' },
+    { name: 'Apache Kafka', level: 50, category: 'tools' },
+    { name: 'REST APIs', level: 75, category: 'backend' },
 
     // Version Control & Tools
-    { name: 'Git/GitHub', level: 90, category: 'tools' },
-    { name: 'GitLab', level: 85, category: 'tools' },
+    { name: 'Git/GitHub', level: 70, category: 'tools' },
+    { name: 'GitLab', level: 70, category: 'tools' },
 
     // Frontend (Secondary skills)
-    { name: 'Angular', level: 75, category: 'frontend' },
-    { name: 'TypeScript', level: 80, category: 'frontend' },
-    { name: 'JavaScript', level: 85, category: 'frontend' }
+    { name: 'Angular', level: 25, category: 'frontend' },
+    { name: 'TypeScript', level: 25, category: 'frontend' },
+    { name: 'JavaScript', level: 25, category: 'frontend' }
   ];
 
   private contactInfo: ContactInfo = {
@@ -81,14 +81,15 @@ export class PortfolioService {
       id: 1,
       title: 'AWS Certified Cloud Practitioner',
       issuer: 'Amazon Web Services',
-      imageUrl: 'assets/certifications/aws-cloud-practitioner.png',
-      credentialUrl: 'https://www.credly.com/badges/your-badge-id',
-      issuedDate: new Date('2023-03-15'),
-      expiryDate: new Date('2026-03-15'),
+      // imageUrl: 'assets/certifications/AWS Certified Cloud Practitioner certificate.png',
+      imageUrl: 'https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png',
+      credentialUrl: 'https://www.credly.com/badges/c355e02b-1a6b-4e29-894c-3c8183fa0299/public_url',
+      issuedDate: new Date('2023-07-06'),
+      expiryDate: new Date('2026-07-06'),
       type: 'aws',
-      technologies: ['AWS', 'Cloud Computing'],
+      technologies: ['AWS', 'Cloud Computing', 'Amazon Web Services', 'Fundamentos de Nuvem', 'Serviços AWS'],
       featured: true,
-      description: 'Certificação fundamental da AWS que valida conhecimentos de cloud computing, serviços AWS e melhores práticas.'
+      description: 'O AWS Certified Cloud Practitioner valida a compreensão básica e de alto nível dos serviços, da terminologia e da Nuvem AWS.'
     },
 
     // // Cursos de Backend
@@ -144,7 +145,7 @@ export class PortfolioService {
       { file: 'Java e Spring - Realizando processamento em lote com Spring Batch.pdf', tech: ['Java', 'Spring', 'Spring Batch'], hours: 8 },
       { file: 'Java e Spring - construindo aplicações reativas com WebFlux.pdf', tech: ['Java', 'Spring', 'WebFlux', 'Reactive'], hours: 10 },
       { file: 'TypeScript na prática implemente um projeto completo com TypeScript e módulos.pdf', tech: ['TypeScript', 'JavaScript'], hours: 12 },
-      { file: 'TypeScript -  aplicando orientação a objetos no Front-end.pdf', tech: ['TypeScript', 'OOP', 'Frontend'], hours: 6 },
+      { file: 'TypeScript -  aplicando orientação a objetos no Front-end.pdf', tech: ['TypeScript', 'OOP'], hours: 6 },
       { file: 'Kafka produtores, consumidores e streams.pdf', tech: ['Kafka', 'Streaming', 'Microservices'], hours: 8 },
       { file: 'KAFKA - BATCHES CORRELATION IDS E DEAD LETTERS.pdf', tech: ['Kafka', 'Message Queue'], hours: 8 }
     ];
@@ -198,10 +199,10 @@ export class PortfolioService {
       { file: 'SQL SERVER - Criando suas primeiras consultas.pdf', tech: ['SQL Server', 'Database', 'SQL'], hours: 4 },
 
       // Web Development
-      { file: 'construindo paginas para internet com bootstrap.pdf', tech: ['Bootstrap', 'HTML', 'CSS', 'Frontend'], hours: 4 },
-      { file: 'Introdução a criação de websites com HTML5 e CSS3.pdf', tech: ['HTML5', 'CSS3', 'Frontend'], hours: 6 },
-      { file: 'Primeiros passos para desenvolvimento web.pdf', tech: ['Web Development', 'Frontend'], hours: 6 },
-      { file: 'Recriando a página inicial do Instagram.pdf', tech: ['HTML', 'CSS', 'Frontend'], hours: 2 },
+      { file: 'construindo paginas para internet com bootstrap.pdf', tech: ['Bootstrap', 'HTML', 'CSS'], hours: 4 },
+      { file: 'Introdução a criação de websites com HTML5 e CSS3.pdf', tech: ['HTML5', 'CSS3'], hours: 6 },
+      { file: 'Primeiros passos para desenvolvimento web.pdf', tech: ['Web Development'], hours: 6 },
+      { file: 'Recriando a página inicial do Instagram.pdf', tech: ['HTML', 'CSS'], hours: 2 },
 
       // JavaScript
       { file: 'Debugging e Error Handling java script.pdf', tech: ['JavaScript', 'Debugging'], hours: 2 },
@@ -322,7 +323,6 @@ export class PortfolioService {
     return certificates;
   }
 
-  // Extrai título limpo do nome do arquivo
   private extractTitleFromFilename(filename: string): string {
     return filename
       .replace('.pdf', '')
