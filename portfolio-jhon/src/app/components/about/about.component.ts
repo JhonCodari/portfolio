@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit {
   constructor(private portfolioService: PortfolioService) {}
 
   personalInfo = {
-    displayName: 'Jhon Codari',
+    displayName: 'Jonatas Silva',
     realName: 'Jonatas Severino da Silva',
     title: 'Desenvolvedor Backend Java | AWS',
     location: 'Cabo de Santo Agostinho - PE',
@@ -70,7 +70,7 @@ export class AboutComponent implements OnInit {
     const years = this.portfolioService.getExperienceYears();
     this.personalInfo.experience = `${years}+ anos`;
     this.aboutText = `
-      Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jhon Codari.
+      Olá! Meu nome é Jonatas Severino da Silva, mas profissionalmente sou conhecido como Jonatas Silva.
       Sou um desenvolvedor Backend Java com mais de ${years} anos de experiência criando
       soluções robustas e escaláveis no setor financeiro.
 

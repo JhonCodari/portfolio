@@ -16,15 +16,15 @@ export class PortfolioService {
     {
       id: 1,
       title: 'Portfolio Pessoal',
-      description: 'Portfolio pessoal desenvolvido com Angular 18+, utilizando standalone components e design responsivo. Apresenta projetos, habilidades técnicas e informações profissionais de forma interativa e moderna.',
-      shortDescription: 'Portfolio responsivo desenvolvido com Angular 18+ e componentes standalone.',
+      description: 'Portfolio pessoal desenvolvido com Angular 19+, utilizando standalone components e design responsivo. Apresenta projetos, habilidades técnicas e informações profissionais de forma interativa e moderna.',
+      shortDescription: 'Portfolio responsivo desenvolvido com Angular 19+ e componentes standalone.',
       technologies: ['Angular', 'TypeScript', 'SCSS', 'HTML5', 'CSS Grid', 'GitHub Pages'],
       githubUrl: 'https://github.com/JhonCodari/portfolio',
       liveUrl: 'https://jhoncodari.github.io/portfolio/',
-      imageUrl: undefined,
+      imageUrl: 'assets/images/projetos/portfolio.png',
       featured: true,
       category: 'frontend',
-      status: 'completed',
+      status: 'in-progress',// as opções são 'completed', 'in-progress', 'planned'
       completedAt: new Date('2025-09-24'),
       highlights: [
         'Arquitetura componentizada para reuso',
@@ -91,20 +91,6 @@ export class PortfolioService {
       featured: true,
       description: 'O AWS Certified Cloud Practitioner valida a compreensão básica e de alto nível dos serviços, da terminologia e da Nuvem AWS.'
     },
-
-    // // Cursos de Backend
-    // {
-    //   id: 3,
-    //   title: 'Formação Java e Spring Framework',
-    //   issuer: 'Alura',
-    //   imageUrl: 'assets/certifications/alura-java.png',
-    //   credentialUrl: 'https://cursos.alura.com.br/certificate/your-cert',
-    //   issuedDate: new Date('2021-08-10'),
-    //   type: 'course',
-    //   technologies: ['Java', 'Spring Boot', 'Spring MVC', 'JPA'],
-    //   description: 'Formação completa em desenvolvimento Java com Spring Framework.'
-    // },
-
   ];
 
   // ========================================
@@ -455,7 +441,7 @@ export class PortfolioService {
       {
         year: '2023',
         title: 'Certificações AWS',
-        description: 'Obtive certificações AWS e comecei a aplicar conhecimentos de cloud computing em projetos.'
+        description: 'Obtive minha primeira certificação AWS, apesar de já aplicar conhecimentos de cloud computing em projetos.'
       },
       {
         year: '2023',

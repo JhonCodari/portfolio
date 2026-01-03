@@ -1,4 +1,4 @@
-# 🚀 Portfolio Pessoal - Jhon Codari
+# 🚀 Portfolio Pessoal - Jonatas Silva
 
 [![Deploy Status](https://img.shields.io/badge/deploy-active-success)](https://jhoncodari.github.io/portfolio/)
 [![Angular](https://img.shields.io/badge/Angular-19.2-red)](https://angular.io/)
@@ -204,7 +204,7 @@ Este é um projeto de portfólio frontend estático. Não há credenciais, chave
 
 ## 📝 Licença e Direitos Autorais
 
-**© 2025-2026 Jhon Codari. Todos os direitos reservados.**
+**© 2025-2026 Jonatas Silva. Todos os direitos reservados.**
 
 Este projeto é de propriedade exclusiva do autor e **não está sob licença pública**. O código-fonte está disponível publicamente para fins de demonstração do portfólio, mas todos os direitos são reservados.
 
@@ -219,7 +219,7 @@ Se você deseja utilizar alguma parte deste projeto, entre em contato para solic
 
 ## 👤 Autor
 
-**Jhon Codari**
+**Jonatas Silva**
 
 - 🌐 Portfolio: [jhoncodari.github.io/portfolio](https://jhoncodari.github.io/portfolio/)
 - 💼 LinkedIn: [linkedin.com/in/Jonatas Silva](https://www.linkedin.com/in/jonatas-silva-03400b16a/)
