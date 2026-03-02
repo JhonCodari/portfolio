@@ -99,6 +99,26 @@ export class PortfolioService {
   // Adicione aqui certificados com informações personalizadas
   // Se houver um PDF com nome similar, as informações manuais terão prioridade
   private manualCertificates: Certification[] = [
+
+    // Exemplo de certificado manual customizado:
+    {
+      id: 1000,
+      title: 'Java e Spring - WebFlux',
+      issuer: 'Alura',
+      imageUrl: 'assets/certifications/certificados Alura/Java e Spring - construindo aplicações reativas com WebFlux.png',
+      credentialUrl: 'https://cursos.alura.com.br/certificate/xxxxx',
+      pdfPath: 'assets/certifications/certificados Alura/Java e Spring - construindo aplicações reativas com WebFlux.pdf',
+      isPdf: true,
+      issuedDate: new Date('2024-11-15'),
+      type: 'course',
+      technologies: ['Java', 'Spring', 'WebFlux', 'Reactive'],
+      hours: 12,
+      instructor: 'Instrutor Alura',
+      description: 'Curso completo sobre programação reativa com Spring WebFlux.',
+      featured: true
+    }
+
+
     // Exemplo de certificado manual customizado:
     // {
     //   id: 1000,
