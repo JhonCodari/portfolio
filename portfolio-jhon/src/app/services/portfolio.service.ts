@@ -157,7 +157,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Alura',
-        imageUrl: this.getImagePathFromPdf(cert.file, 'alura'),
+        imageUrl: this.getImagePathFromPdf(cert.file, 'certificados Alura'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Alura/${cert.file}`,
         isPdf: true,
@@ -257,7 +257,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Digital Innovation One',
-        imageUrl: this.getImagePathFromPdf(cert.file, 'digital-innovation-one'),
+        imageUrl: this.getImagePathFromPdf(cert.file, 'certificados Digital Innovation One'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Digital Innovation One/${cert.file}`,
         isPdf: true,
@@ -285,7 +285,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'NTT Data',
-        imageUrl: this.getImagePathFromPdf(cert.file, 'empresa-nttdata'),
+        imageUrl: this.getImagePathFromPdf(cert.file, 'certificados empresa nttdata'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados empresa nttdata/${cert.file}`,
         isPdf: true,
@@ -309,7 +309,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Udemy',
-        imageUrl: this.getImagePathFromPdf(cert.file, 'udemy'),
+        imageUrl: this.getImagePathFromPdf(cert.file, 'certificados Udemy'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Udemy/${cert.file}`,
         isPdf: true,
@@ -332,9 +332,9 @@ export class PortfolioService {
       .trim();
   }
 
-  private getImagePathFromPdf(pdfFilename: string, folder: string): string {
+  private getImagePathFromPdf(pdfFilename: string, pdfFolder: string): string {
     const imageFilename = pdfFilename.replace('.pdf', '.png');
-    return `assets/images/certifications/${folder}/${imageFilename}`;
+    return `assets/certifications/${pdfFolder}/${imageFilename}`;
   }
 
   private getAllCourseCertificates(): Certification[] {

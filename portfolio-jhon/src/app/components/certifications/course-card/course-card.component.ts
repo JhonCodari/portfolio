@@ -10,6 +10,7 @@ import { Certification } from '../../../interfaces/certification.interface';
 })
 export class CourseCardComponent {
   @Input() certification!: Certification;
+  imageLoadFailed = false;
 
   formatDate(date: Date): string {
     return new Date(date).toLocaleDateString('pt-BR', {
@@ -53,5 +54,24 @@ export class CourseCardComponent {
 
   getCardIcon(): string {
     return this.certification.isPdf ? 'fas fa-file-pdf' : 'fas fa-certificate';
+  }
+
+  onImageError(event: Event): void {
+    if (this.imageLoadFailed) return; // evita loop infinito
+    this.imageLoadFailed = true;
+    const img = event.target as HTMLImageElement;
+    img.src = this.getPlatformFallbackImage();
+    img.classList.add('fallback-image');
+  }
+
+  private getPlatformFallbackImage(): string {
+    const fallbacks: { [key: string]: string } = {
+      'Alura': 'assets/icons/techs/java.svg',
+      'Udemy': 'assets/icons/techs/review.svg',
+      'Digital Innovation One': 'assets/icons/techs/java.svg',
+      'NTT Data': 'assets/icons/techs/git.svg',
+      'Amazon Web Services': 'assets/icons/techs/aws.svg'
+    };
+    return fallbacks[this.certification.issuer] || 'assets/icons/techs/review.svg';
   }
 }

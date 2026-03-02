@@ -6,6 +6,7 @@
       [alt]="certification.title"
       class="certification-image"
       loading="lazy"
+      (error)="onImageError($event)"
     >
 
     <div class="platform-badge">
