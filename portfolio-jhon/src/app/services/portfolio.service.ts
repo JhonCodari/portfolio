@@ -29,8 +29,8 @@ export class PortfolioService {
       highlights: [
         'Arquitetura componentizada para reuso',
         'Animações e transições suaves',
-        'Sistema híbrido de certificados (auto-geração de PDFs + controle manual)',
-        'Preview de PDFs renderizado em Canvas usando PDF.js',
+        'Sistema híbrido de certificados (auto-geração + controle manual)',
+        'Thumbnails estáticos de certificados com lazy loading',
         'Deploy automatizado via GitHub Actions para GitHub Pages'
       ]
     }
@@ -137,7 +137,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Alura',
-        imageUrl: 'assets/icons/techs/alura-icon.png',
+        imageUrl: this.getImagePathFromPdf(cert.file, 'alura'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Alura/${cert.file}`,
         isPdf: true,
@@ -237,7 +237,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Digital Innovation One',
-        imageUrl: 'assets/icons/techs/digital-innovation-one-icon.png',
+        imageUrl: this.getImagePathFromPdf(cert.file, 'digital-innovation-one'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Digital Innovation One/${cert.file}`,
         isPdf: true,
@@ -265,7 +265,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'NTT Data',
-        imageUrl: 'assets/icons/techs/company-icon.png',
+        imageUrl: this.getImagePathFromPdf(cert.file, 'empresa-nttdata'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados empresa nttdata/${cert.file}`,
         isPdf: true,
@@ -289,7 +289,7 @@ export class PortfolioService {
         id: autoId++,
         title: this.extractTitleFromFilename(cert.file),
         issuer: 'Udemy',
-        imageUrl: 'assets/icons/techs/review.svg',
+        imageUrl: this.getImagePathFromPdf(cert.file, 'udemy'),
         credentialUrl: '#',
         pdfPath: `assets/certifications/certificados Udemy/${cert.file}`,
         isPdf: true,
@@ -310,6 +310,11 @@ export class PortfolioService {
       .replace('.pdf', '')
       .replace(/[-_]/g, ' ')
       .trim();
+  }
+
+  private getImagePathFromPdf(pdfFilename: string, folder: string): string {
+    const imageFilename = pdfFilename.replace('.pdf', '.png');
+    return `assets/images/certifications/${folder}/${imageFilename}`;
   }
 
   private getAllCourseCertificates(): Certification[] {

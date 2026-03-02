@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Certification } from '../../../interfaces/certification.interface';
-import { PdfPreviewComponent } from '../pdf-preview/pdf-preview.component';
 
 @Component({
   selector: 'app-course-card',
-  imports: [CommonModule, PdfPreviewComponent],
+  imports: [CommonModule],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.scss'
 })

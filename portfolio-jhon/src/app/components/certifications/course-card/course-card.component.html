@@ -1,17 +1,11 @@
 <div class="course-card" [class.pdf-card]="certification.isPdf">
   <div class="card-image">
 
-    <app-pdf-preview
-      *ngIf="certification.isPdf && certification.pdfPath"
-      [pdfPath]="certification.pdfPath"
-      [pageNumber]="1"
-    ></app-pdf-preview>
-
     <img
-      *ngIf="!certification.isPdf"
       [src]="certification.imageUrl"
       [alt]="certification.title"
       class="certification-image"
+      loading="lazy"
     >
 
     <div class="platform-badge">
