@@ -33,6 +33,29 @@ export class PortfolioService {
         'Thumbnails estáticos de certificados com lazy loading',
         'Deploy automatizado via GitHub Actions para GitHub Pages'
       ]
+    },
+    {
+      id: 2,
+      title: 'GestorFacil',
+      description: 'API de gestão financeira para clientes bancários, desenvolvida em Java 25 com Spring Boot. Permite gerenciamento de usuários, transações, análise de despesas, importação via Excel, autenticação, integração com APIs externas e geração de relatórios.',
+      shortDescription: 'API de gestão financeira desenvolvida em Java 25 com Spring Boot.',
+      technologies: ['Java 25', 'Spring Boot', 'Maven', 'Docker', 'Spring Security', 'JWT', 'Spring Data JPA', 'PostgreSQL', 'Redis', 'Apache POI', 'springdoc-openapi', 'WireMock', 'REST APIs'],
+      githubUrl: 'https://github.com/JhonCodari/gestorfacil',
+      liveUrl: 'https://github.com/JhonCodari/GestorFacil/blob/main/README.md',
+      imageUrl: 'assets/images/projetos/GestorFacil.png',
+      featured: false,
+      category: 'backend',
+      status: 'completed',// as opções são 'completed', 'in-progress', 'planned'
+      completedAt: new Date('2026-02-27'),
+      highlights: [
+        'Gestão financeira completa para clientes bancários',
+        'Arquitetura robusta com Java 25 e Spring Boot',
+        'Autenticação segura com JWT e Spring Security',
+        'Importação de dados e geração de relatórios via Excel (Apache POI)',
+        'Integração com APIs externas',
+        'Testes automatizados e documentação OpenAPI',
+        'Deploy com Docker e Redis para caching de dados'
+      ]
     }
   ];
 
