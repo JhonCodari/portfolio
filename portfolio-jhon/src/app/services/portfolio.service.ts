@@ -101,25 +101,6 @@ export class PortfolioService {
   private manualCertificates: Certification[] = [
 
     // Exemplo de certificado manual customizado:
-    {
-      id: 1000,
-      title: 'Java e Spring - WebFlux',
-      issuer: 'Alura',
-      imageUrl: 'assets/certifications/certificados Alura/Java e Spring - construindo aplicações reativas com WebFlux.png',
-      credentialUrl: 'https://cursos.alura.com.br/certificate/xxxxx',
-      pdfPath: 'assets/certifications/certificados Alura/Java e Spring - construindo aplicações reativas com WebFlux.pdf',
-      isPdf: true,
-      issuedDate: new Date('2024-11-15'),
-      type: 'course',
-      technologies: ['Java', 'Spring', 'WebFlux', 'Reactive'],
-      hours: 12,
-      instructor: 'Instrutor Alura',
-      description: 'Curso completo sobre programação reativa com Spring WebFlux.',
-      featured: true
-    }
-
-
-    // Exemplo de certificado manual customizado:
     // {
     //   id: 1000,
     //   title: 'Java e Spring - WebFlux',
@@ -149,7 +130,13 @@ export class PortfolioService {
       { file: 'TypeScript na prática implemente um projeto completo com TypeScript e módulos.pdf', tech: ['TypeScript', 'JavaScript'], hours: 12 },
       { file: 'TypeScript -  aplicando orientação a objetos no Front-end.pdf', tech: ['TypeScript', 'OOP'], hours: 6 },
       { file: 'Kafka produtores, consumidores e streams.pdf', tech: ['Kafka', 'Streaming', 'Microservices'], hours: 8 },
-      { file: 'KAFKA - BATCHES CORRELATION IDS E DEAD LETTERS.pdf', tech: ['Kafka', 'Message Queue'], hours: 8 }
+      { file: 'KAFKA - BATCHES CORRELATION IDS E DEAD LETTERS.pdf', tech: ['Kafka', 'Message Queue'], hours: 8 },
+      { file: 'Kafka-Fast delegate evolução e cluster de brokers.pdf', tech: ['Kafka', 'Streaming'], hours: 8 },
+      { file: 'Kafka-idempotência e garantias.pdf', tech: ['Kafka', 'Streaming'], hours: 8 },
+      { file: 'Java-aplicando a Orientação a Objetos.pdf', tech: ['Java', 'OOP'], hours: 10 },
+      { file: 'Java-consumindo API gravando arquivos e lidando com erros.pdf', tech: ['Java', 'API Rest'], hours: 10 },
+      { file: 'Java-criando a sua primeira aplicação.pdf', tech: ['Java'], hours: 10 },
+      { file: 'Java-trabalhando com listas e coleções de dados.pdf', tech: ['Java', 'Collections', 'Streams'], hours: 8 },
     ];
 
     aluraCertificates.forEach(cert => {
@@ -184,7 +171,7 @@ export class PortfolioService {
       { file: 'Implementando Collections e Streams com Java.pdf', tech: ['Java', 'Collections', 'Streams'], hours: 6 },
       { file: 'Introdução a orientação a objetos com Java.pdf', tech: ['Java', 'OOP'], hours: 2 },
       { file: 'Lógica Condicional e Controle de Fluxos em Java.pdf', tech: ['Java', 'Logic'], hours: 1 },
-      { file: 'Programação Orientada a.pdf', tech: ['OOP', 'Programming'], hours: 4 },
+      { file: 'Programação Orientada a Objetos.pdf', tech: ['Java', 'OOP'], hours: 4 },
       { file: 'Reforçando o Conceito de Laços em Java.pdf', tech: ['Java', 'Loops'], hours: 1 },
       { file: 'Trabalhando com Collections Java.pdf', tech: ['Java', 'Collections'], hours: 6 },
       { file: 'Variáveis, Tipos de Dados e Operadores Matemáticos em Java.pdf', tech: ['Java', 'Fundamentals'], hours: 2 },
