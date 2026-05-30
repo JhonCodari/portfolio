@@ -56,6 +56,29 @@ export class PortfolioService {
         'Testes automatizados e documentação OpenAPI',
         'Deploy com Docker e Redis para caching de dados'
       ]
+    },
+    {
+      id: 3,
+      title: 'Pomode',
+      description: 'Aplicativo web de Pomodoro minimalista, moderno e responsivo desenvolvido com Angular 19.2+. Combina timer com ciclos automáticos, player de música ambiente, estatísticas de sessão e suporte a múltiplos idiomas (PT, EN, ES) para proporcionar uma experiência de produtividade focada e sem distrações.',
+      shortDescription: 'Timer Pomodoro web com Angular 19+, temas claro/escuro e suporte a múltiplos idiomas.',
+      technologies: ['Angular', 'TypeScript', 'SCSS', 'ngx-translate', 'Web Workers', 'GitHub Pages', 'GitHub Actions'],
+      githubUrl: 'https://github.com/JhonCodari/Pomode',
+      liveUrl: 'https://www.pomode.com.br',
+      imageUrl: 'assets/images/projetos/pomode.png',
+      featured: true,
+      category: 'frontend',
+      status: 'completed',// as opções são 'completed', 'in-progress', 'planned'
+      completedAt: new Date('2026-05-30'),
+      highlights: [
+        'Timer com ciclos automáticos: foco → pausa curta → pausa longa',
+        'Web Worker dedicado para garantir precisão do timer em background',
+        'Player de música ambiente integrado com controle de volume',
+        'Suporte a três idiomas via ngx-translate (PT, EN, ES)',
+        'Tema claro e escuro com design tokens e CSS custom properties',
+        'CI/CD automatizado com GitHub Actions e versionamento semântico',
+        'Layout 100% responsivo para desktop e mobile'
+      ]
     }
   ];
 
